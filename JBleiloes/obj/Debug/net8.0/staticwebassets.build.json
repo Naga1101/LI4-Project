@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DG76P+uMytGJpJNCtP2kuFKzImUkiBEoT3iPW0fePgY=",
+  "Hash": "oP1+nBiPpPlm6v/BCpLPmVK1qKFy+P5w1wwQKnBltN0=",
   "Source": "JBleiloes",
   "BasePath": "_content/JBleiloes",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "JBleiloes\\wwwroot",
       "Source": "JBleiloes",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\",
       "BasePath": "_content/JBleiloes",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Rui\\Desktop\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\bundle\\JBleiloes.styles.css",
+      "Identity": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\bundle\\JBleiloes.styles.css",
       "SourceId": "JBleiloes",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/JBleiloes",
       "RelativePath": "JBleiloes.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Rui\\Desktop\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\bundle\\JBleiloes.styles.css"
+      "OriginalItemSpec": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\bundle\\JBleiloes.styles.css"
     },
     {
-      "Identity": "C:\\Users\\Rui\\Desktop\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css",
+      "Identity": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css",
       "SourceId": "JBleiloes",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/JBleiloes",
       "RelativePath": "JBleiloes.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Rui\\Desktop\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\app.css",
       "SourceId": "JBleiloes",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\",
       "BasePath": "_content/JBleiloes",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "JBleiloes",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\",
       "BasePath": "_content/JBleiloes",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "JBleiloes",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\",
       "BasePath": "_content/JBleiloes",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\favicon.png",
       "SourceId": "JBleiloes",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\",
       "BasePath": "_content/JBleiloes",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\JBlogo.png",
+      "Identity": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\JBlogo.png",
       "SourceId": "JBleiloes",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Rui\\Desktop\\JBleiloes\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\wwwroot\\",
       "BasePath": "_content/JBleiloes",
       "RelativePath": "JBlogo.png",
       "AssetKind": "All",

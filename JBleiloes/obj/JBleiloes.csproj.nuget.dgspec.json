@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rui\\Desktop\\JBleiloes\\JBleiloes.csproj": {}
+    "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rui\\Desktop\\JBleiloes\\JBleiloes.csproj": {
+    "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rui\\Desktop\\JBleiloes\\JBleiloes.csproj",
+        "projectUniqueName": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
         "projectName": "JBleiloes",
-        "projectPath": "C:\\Users\\Rui\\Desktop\\JBleiloes\\JBleiloes.csproj",
-        "packagesPath": "C:\\Users\\Rui\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rui\\Desktop\\JBleiloes\\obj\\",
+        "projectPath": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
+        "packagesPath": "C:\\Users\\ruipe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Rui\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ruipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.28, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
