@@ -1,5 +1,5 @@
-﻿using JBleiloes.data;
-
+﻿using JBleiloes.data.Leiloes;
+using JBleiloes.data.Utilizadores;
 using JBleiloes.DB.Tabelas;
 
 namespace JBleiloes.DB
@@ -23,6 +23,11 @@ namespace JBleiloes.DB
         public Leilao getLeilao(int idLeilao)
         {
             return this.DBLeilao.getLeilao(idLeilao);
+        }
+
+        public ICollection<Leilao> getLeiloesDecorrer()
+        {
+            return this.DBLeilao.getLeiloesDecorrer();
         }
     
     }

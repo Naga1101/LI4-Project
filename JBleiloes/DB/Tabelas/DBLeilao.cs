@@ -1,7 +1,6 @@
 ﻿using Dapper;
-using JBleiloes.data;
-
-
+using JBleiloes.Components.Pages.Leilões;
+using JBleiloes.data.Leiloes;
 using System.Data.SqlClient;
 
 namespace JBleiloes.DB.Tabelas
@@ -37,6 +36,28 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex) { throw new Exception(ex.Message); }
 
             return leilao;
+        }
+
+        public ICollection<Leilao> getLeiloesDecorrer()
+        {
+            ICollection<Leilao> leiloes = new HashSet<Leilao>();
+            string query = "SELECT * FROM dbo.Leilão";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    IEnumerable<Leilao> aux = connection.Query<Leilao>(query);
+                    foreach (Leilao l in aux)
+                    {
+                        leiloes.Add(l);
+                    }
+
+                }
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+            return leiloes;
         }
     }
 }

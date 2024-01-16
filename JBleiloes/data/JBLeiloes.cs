@@ -1,4 +1,6 @@
-﻿using JBleiloes.DB;
+﻿using JBleiloes.data.Leiloes;
+using JBleiloes.data.Utilizadores;
+using JBleiloes.DB;
 
 
 namespace JBleiloes.data
@@ -26,6 +28,11 @@ namespace JBleiloes.data
                 if(user.getPassword().Equals(password)) { return true; };
             }
             return false;
+        }
+
+        public ICollection<Leilao> getLeilõesDecorrer()
+        {
+            return db.getLeiloesDecorrer();
         }
     }
 }

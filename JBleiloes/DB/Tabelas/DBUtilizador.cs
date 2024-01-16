@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
-using JBleiloes.data;
 using Dapper;
+using JBleiloes.data.Utilizadores;
 
 namespace JBleiloes.DB.Tabelas
 {

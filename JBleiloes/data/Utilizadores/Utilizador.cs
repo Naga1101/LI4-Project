@@ -1,4 +1,4 @@
-﻿namespace JBleiloes.data
+﻿namespace JBleiloes.data.Utilizadores
 {
     public class Utilizador
     {
@@ -6,12 +6,11 @@
         public string password { get; private set; }
         public string nome { get; private set; }
         public string email { get; private set; }
-        public int n_cc { get; private set; } 
+        public int n_cc { get; private set; }
         public int NIF { get; private set; }
         public string data_nascimento { get; private set; }
         public byte tipo_utilizador { get; private set; }
 
-        // Parameterized constructor
         public Utilizador(string username, string password, string nome, string email, int n_cc, int NIF, string data_nascimento, byte tipo_utilizador)
         {
             this.username = username;
@@ -29,7 +28,7 @@
 
         public string getPassword()
         {
-            return this.password;
+            return password;
         }
     }
 }

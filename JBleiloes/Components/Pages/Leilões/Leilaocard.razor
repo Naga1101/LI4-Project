@@ -1,0 +1,33 @@
+﻿@using JBleiloes.data.Leiloes
+
+@if (Leilao == null)
+{
+    <h3>Loading. . . </h3>
+}
+else
+{
+    <div class="card leilao-card">
+        <div class="card-body">
+            <h3 class="card-title">@Leilao.getTitulo()</h3>
+            <div class="card-text">
+                <div class="d-flex justify-content-between">
+                    <p class="mb-0"><strong>Current Bid:</strong> $@Leilao.getValorMini()</p>
+                    <p class="mb-0"><strong>Minimum Bid:</strong> 0</p>
+                </div>
+                <p><strong>Seller:</strong> VENDEDOR</p>
+                <p><strong>Time Remaining:</strong> TEMPO</p>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .card-title {
+        margin-top: 0;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public Leilao? Leilao { get; set; }
+}
