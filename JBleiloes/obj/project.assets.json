@@ -505,19 +505,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ruipe\\.nuget\\packages\\": {}
+    "C:\\Users\\Nuno\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
+      "projectUniqueName": "C:\\Users\\Nuno\\Desktop\\Projeto-LI4-main\\JBleiloes\\JBleiloes.csproj",
       "projectName": "JBleiloes",
-      "projectPath": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
-      "packagesPath": "C:\\Users\\ruipe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ruipe\\Desktop\\Git\\Projeto-LI4\\JBleiloes\\obj\\",
+      "projectPath": "C:\\Users\\Nuno\\Desktop\\Projeto-LI4-main\\JBleiloes\\JBleiloes.csproj",
+      "packagesPath": "C:\\Users\\Nuno\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nuno\\Desktop\\Projeto-LI4-main\\JBleiloes\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ruipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nuno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -525,6 +530,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -571,7 +577,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

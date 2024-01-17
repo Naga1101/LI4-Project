@@ -22,21 +22,31 @@ namespace JBleiloes.DB.Tabelas
         public Utilizador getUser(string username)
         {
             Utilizador? user = null;
-            string query = $"SELECT * FROM dbo.Utilizador where username = '{username}'";
+            string query = "SELECT * FROM dbo.Utilizador WHERE username = @Username";
+            var parameters = new { Username = username };
+
             try
             {
-                using(SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
                 {
                     connection.Open();
-                    user = connection.QueryFirst<Utilizador>(query);
+                    user = connection.QueryFirst<Utilizador>(query, parameters);
                 }
+            }
+            catch (SqlException ex)
+            {
+                // Handle specific SQL exceptions if needed
+                throw new Exception($"Error retrieving user: {ex.Message}");
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                // Handle other exceptions
+                throw new Exception($"Unexpected error: {ex.Message}");
             }
+
             return user;
         }
+
 
         public IEnumerable<Utilizador> getAllUsers()
         {

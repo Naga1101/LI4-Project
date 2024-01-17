@@ -9,7 +9,7 @@ namespace JBleiloes.DB
     {
         public static string Connection()
         {
-            return "Data Source =.; Initial Catalog = jbleiloes; Integrated Security = True; Encrypt = False";
+            return "Data Source=.;Initial Catalog=JBLeiloes;Integrated Security=True;Encrypt=False";
         }
     }
 }

@@ -20,6 +20,13 @@
                 <Leilaocard Leilao="leilao" />
             </div>
         }
+        /**
+        @foreach (Leilao leilao in leiloes2)
+        {
+            <div class="rectangle">
+                <Leilaocard Leilao="leilao" />
+            </div>
+        }*/
     }
 </div>
 
@@ -36,11 +43,21 @@
     .rectangle {
         width: 200px;
         height: 100px;
-        background-color: #3498db;
     }
 
 </style>
 
 @code {
-    private ICollection<Leilao> leiloes = new JBLeiloes().getLeilõesDecorrer();
+    private ICollection<Leilao> leiloes2 = new JBLeiloes().getLeilõesDecorrer();
+
+    private IEnumerable<Leilao> leiloes;
+
+    // Instantiate LeilaoRepository
+    private LeilaoRepository leilaoRepository = new LeilaoRepository();
+
+    // Call the GetLeiloes method during the component initialization
+    protected override void OnInitialized()
+    {
+        leiloes = leilaoRepository.GetLeiloes();
+    }
 }

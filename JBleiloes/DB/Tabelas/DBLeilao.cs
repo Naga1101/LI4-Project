@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using JBleiloes.Components.Pages.Leilões;
 using JBleiloes.data.Leiloes;
+using JBleiloes.DB;
 using System.Data.SqlClient;
 
 namespace JBleiloes.DB.Tabelas
@@ -23,7 +24,7 @@ namespace JBleiloes.DB.Tabelas
         public Leilao getLeilao(int idLeilao)
         {
             Leilao? leilao = null;
-            string query = $"SELECT * FROM dbo.Leilão WHERE id = '{idLeilao}'";
+            string query = "SELECT * FROM [dbo].[Leilão] WHERE id = @Id";
 
             try
             {
@@ -58,6 +59,24 @@ namespace JBleiloes.DB.Tabelas
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
             return leiloes;
+        }
+    }
+}
+
+public class LeilaoRepository
+{
+    public IEnumerable<Leilao> GetLeiloes()
+    {
+        string query = "SELECT * FROM [dbo].[Leilão]";
+
+        using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+        {
+            connection.Open();
+            var reader = connection.QueryMultiple(query);
+
+            var leilao = new Leilao(reader);
+
+            yield return leilao;
         }
     }
 }

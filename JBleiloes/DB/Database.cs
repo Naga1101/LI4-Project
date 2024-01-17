@@ -1,4 +1,6 @@
-﻿using JBleiloes.data.Leiloes;
+﻿using System;
+using System.Collections.Generic;
+using JBleiloes.data.Leiloes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.DB.Tabelas;
 
@@ -13,6 +15,34 @@ namespace JBleiloes.DB
         {
             this.DBUtilizador = DBUtilizador.getInstance();
             this.DBLeilao = DBLeilao.getInstance();
+
+            // Check if tables were loaded successfully
+            if (CheckTablesLoaded())
+            {
+                Console.WriteLine("Tables loaded successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Error loading tables.");
+            }
+        }
+
+        private bool CheckTablesLoaded()
+        {
+            try
+            {
+                // You can perform additional checks here if needed
+                // For now, just check if getUser and getLeiloesDecorrer methods return non-null values
+                Utilizador user = this.DBUtilizador.getUser("sampleUsername");
+                ICollection<Leilao> leiloes = this.DBLeilao.getLeiloesDecorrer();
+
+                return user != null && leiloes != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error checking tables: {ex.Message}");
+                return false;
+            }
         }
 
         public Utilizador getUtilizador(string username)
@@ -29,6 +59,5 @@ namespace JBleiloes.DB
         {
             return this.DBLeilao.getLeiloesDecorrer();
         }
-    
     }
 }

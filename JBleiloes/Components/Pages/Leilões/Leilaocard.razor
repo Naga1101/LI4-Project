@@ -1,4 +1,5 @@
-﻿@using JBleiloes.data.Leiloes
+﻿@using System
+@using JBleiloes.data.Leiloes
 
 @if (Leilao == null)
 {
@@ -8,22 +9,68 @@ else
 {
     <div class="card leilao-card">
         <div class="card-body">
-            <h3 class="card-title">@Leilao.getTitulo()</h3>
+            <h5 class="card-title">@Leilao.Titulo</h5>
+            <div style="height: 10px"></div>
             <div class="card-text">
                 <div class="d-flex justify-content-between">
-                    <p class="mb-0"><strong>Current Bid:</strong> $@Leilao.getValorMini()</p>
-                    <p class="mb-0"><strong>Minimum Bid:</strong> 0</p>
+                    <p class="mb-0"><strong>Minimum Bid:</strong> $@Leilao.ValorMinimo</p>
+                    <p class="mb-0"><strong>Current Bid:</strong> $@Leilao.ValorInicial</p>
                 </div>
-                <p><strong>Seller:</strong> VENDEDOR</p>
-                <p><strong>Time Remaining:</strong> TEMPO</p>
+                <p><strong>Seller:</strong> @Leilao.VendedorUsername</p>
+                <p><strong>Time Remaining:</strong> @Leilao.TempoDeLeilao</p>
             </div>
         </div>
     </div>
+ 
+
 }
 
 <style>
     .card-title {
         margin-top: 0;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        height: 170%;
+        width: 100%;
+        font-size: 12px;
+        border-radius: 10px;
+        transition: transform 0.4s, filter 0.4s; /* Add filter transition */
+        filter: blur(0); /* Initial no blur */
+    }
+
+        .card:hover {
+            transform: scale(1.3);
+            cursor: pointer;
+            filter: blur(5%); /* Apply a 5% blur effect on hover */
+        }
+
+    .card-body {
+        padding: 2px 16px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .ilustr {
+        width: 80%;
+        height: 30%;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .card:not(:hover) {
+        outline: none; /* Remove the blue outline when not hovered */
+    }
+
+    .card:focus {
+        outline: none;
     }
 </style>
 

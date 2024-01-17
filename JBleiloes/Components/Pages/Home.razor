@@ -1,7 +1,15 @@
-﻿@page "/home"
+﻿@using JBleiloes.data.Utilizadores
+@page "/home"
 
 <PageTitle>Leilões a  </PageTitle>
 
-<h1>Hello, !</h1>
+@if (user != null)
+{
+    <h1>Hello, !</h1>
+    <p>@user.NIF | @user.n_cc | @user.username</p>
+}
 
-
+@code {
+    [Parameter]
+    public Utilizador? user { get; set; }
+}
