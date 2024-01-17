@@ -21,13 +21,7 @@ namespace JBleiloes.data
 
         public bool validarLogin(string username, string password)
         {
-            Utilizador user = db.getUtilizador(username);
-            if (user == null) { return false; }
-            else
-            {
-                if(user.getPassword().Equals(password)) { return true; };
-            }
-            return false;
+            return db.validateLoginData(username, password);   
         }
 
         public ICollection<Leilao> getLeilõesDecorrer()

@@ -45,6 +45,11 @@ namespace JBleiloes.DB
             }
         }
 
+        public bool validateLoginData(string username, string password)
+        {
+            return DBUtilizador.validateLoginInfo(username, password);
+        }
+
         public Utilizador getUtilizador(string username)
         {
             return this.DBUtilizador.getUser(username);

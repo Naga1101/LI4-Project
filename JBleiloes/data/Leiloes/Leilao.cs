@@ -32,7 +32,6 @@ namespace JBleiloes.data.Leiloes
             this.TempoDeLeilao = tempoDeLeilao;
             this.Imagem = imagem;
         }
-
         public Leilao(SqlMapper.GridReader reader)
         {
             var result = reader.Read().SingleOrDefault();

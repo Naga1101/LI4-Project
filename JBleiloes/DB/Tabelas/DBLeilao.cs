@@ -72,11 +72,28 @@ public class LeilaoRepository
         using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
         {
             connection.Open();
-            var reader = connection.QueryMultiple(query);
+            var leiloes = connection.Query<Leilao>(query);
 
-            var leilao = new Leilao(reader);
+            foreach (var leilao in leiloes)
+            {
+                yield return leilao;
+            }
+        }
+    }
 
-            yield return leilao;
+    public IEnumerable<Leilao> getLeiloesUtilizador(string username)
+    {
+        string query = $"SELECT * FROM [dbo].[Leilão] where vendedor = '{username}'";
+
+        using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+        {
+            connection.Open();
+            var leiloes = connection.Query<Leilao>(query);
+
+            foreach (var leilao in leiloes)
+            {
+                yield return leilao;
+            }
         }
     }
 }

@@ -39,6 +39,7 @@
         JBLeiloes jb = new JBLeiloes();
         if(jb.validarLogin(username, password))
         {
+            //jb.validarLogin(username, password);
             Utilizador u = jb.getUtilizador(username);
             SessionUser.setSessionUser(u);
             NavigationManager.NavigateTo("/lotes");

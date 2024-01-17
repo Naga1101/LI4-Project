@@ -88,5 +88,30 @@ namespace JBleiloes.DB.Tabelas
 
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
+
+        public bool validateLoginInfo(string username, string password)
+        {
+            string query= $"SELECT COUNT(*) as UserCount FROM [dbo].[Utilizador] WHERE [username] = '{username}' AND [password] = '{password}'";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    int res = connection.QuerySingle<int>(query);
+
+                    if (res == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
     }
 }

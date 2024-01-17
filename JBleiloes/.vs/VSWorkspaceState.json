@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Components",
+    "\\Components\\login",
     "\\Components\\Pages",
     "\\Components\\Pages\\Leil\u00F5es",
     "\\data",
+    "\\data\\Leiloes",
     "\\data\\Utilizadores",
     "\\DB",
     "\\DB\\Tabelas"
   ],
-  "SelectedNode": "\\data\\Utilizadores\\Utilizador.cs",
+  "SelectedNode": "\\Components\\login\\Register.razor",
   "PreviewInSolutionExplorer": false
 }

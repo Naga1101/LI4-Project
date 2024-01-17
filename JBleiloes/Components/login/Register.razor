@@ -1,6 +1,7 @@
 ﻿@page "/register"
 @using JBleiloes.Components.Layout
 @using JBleiloes.data
+@using System.Globalization
 @layout LoginLayout
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
@@ -69,9 +70,22 @@
         return allFilled;
     }
 
+    private bool AllFieldsValid()
+    {
+        if (!DateTime.TryParseExact(data_nascimento, "yyyy-MM-dd", null, DateTimeStyles.None, out _))
+        {
+            return false;
+        }
+
+        DateTime parsedDate = DateTime.ParseExact(data_nascimento, "yyyy-MM-dd", null);
+
+        return parsedDate.Day <= 31 && parsedDate.Month <= 12;
+    }
+
+
     private void registo()
     {
-        if (!AllFieldsFilled())
+        if (!AllFieldsFilled() && !AllFieldsValid()
         {
 
         }

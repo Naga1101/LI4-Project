@@ -30,8 +30,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/login/register.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxyZWdpc3Rlci5yYXpvcg==
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/login/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxSZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Counter.razor]
@@ -52,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Leilões/Leiloes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xMZWlsb2VzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Leilões/meusLotes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xtZXVzTG90ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Weather.razor]
