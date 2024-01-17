@@ -34,5 +34,10 @@ namespace JBleiloes.data
         {
             return db.getLeiloesDecorrer();
         }
+
+        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
+        }
     }
 }

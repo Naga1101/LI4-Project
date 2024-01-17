@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@using JBleiloes.data.Utilizadores
 
 <PageTitle>JBLeilões</PageTitle>
 
@@ -30,7 +31,7 @@
             </div>
         </nav>
         <div class="dir">
-            Welcome.
+            @SessionUser.getSessionUser().getUsername()
         </div>
     </div>
 </div>

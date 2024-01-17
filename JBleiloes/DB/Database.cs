@@ -59,5 +59,10 @@ namespace JBleiloes.DB
         {
             return this.DBLeilao.getLeiloesDecorrer();
         }
+
+        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            DBUtilizador.addUtilizador(username, password, nome, email, nº_cc, NIF, data_nascimento);
+        }   
     }
 }

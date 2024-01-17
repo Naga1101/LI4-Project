@@ -9,63 +9,67 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = JBleiloes
 build_property.RootNamespace = JBleiloes
-build_property.ProjectDir = C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\
+build_property.ProjectDir = C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes
+build_property.MSBuildProjectDirectory = C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/App.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Layout/LoginLayout.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Layout/LoginLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTG9naW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/login/Login.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/login/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Counter.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/login/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Error.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Home.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Leilões/Leilaocard.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Leilões/Leilaocard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xMZWlsYW9jYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Leilões/Leiloes.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Leilões/Leiloes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xMZWlsb2VzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Weather.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Routes.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/_Imports.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Layout/MainLayout.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-oyj5ymxggc
 
-[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Layout/NavMenu.razor]
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-flnu0b2y2f

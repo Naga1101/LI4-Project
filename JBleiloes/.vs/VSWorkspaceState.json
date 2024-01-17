@@ -5,9 +5,10 @@
     "\\Components\\Pages",
     "\\Components\\Pages\\Leil\u00F5es",
     "\\data",
+    "\\data\\Utilizadores",
     "\\DB",
     "\\DB\\Tabelas"
   ],
-  "SelectedNode": "\\JBleiloes.sln",
+  "SelectedNode": "\\data\\Utilizadores\\Utilizador.cs",
   "PreviewInSolutionExplorer": false
 }
