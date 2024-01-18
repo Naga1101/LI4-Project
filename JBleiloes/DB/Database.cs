@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using JBleiloes.data.Leiloes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.DB.Tabelas;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace JBleiloes.DB
 {
@@ -10,40 +13,15 @@ namespace JBleiloes.DB
     {
         private DBUtilizador DBUtilizador;
         private DBLeilao DBLeilao;
+        private DBVeiculo DBVeiculo;
 
         public Database()
         {
-            this.DBUtilizador = DBUtilizador.getInstance();
-            this.DBLeilao = DBLeilao.getInstance();
-
-            // Check if tables were loaded successfully
-            if (CheckTablesLoaded())
-            {
-                Console.WriteLine("Tables loaded successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Error loading tables.");
-            }
+            DBUtilizador = DBUtilizador.getInstance();
+            DBLeilao = DBLeilao.getInstance();
+            DBVeiculo = DBVeiculo.getInstance();
         }
 
-        private bool CheckTablesLoaded()
-        {
-            try
-            {
-                // You can perform additional checks here if needed
-                // For now, just check if getUser and getLeiloesDecorrer methods return non-null values
-                Utilizador user = this.DBUtilizador.getUser("sampleUsername");
-                ICollection<Leilao> leiloes = this.DBLeilao.getLeiloesDecorrer();
-
-                return user != null && leiloes != null;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error checking tables: {ex.Message}");
-                return false;
-            }
-        }
 
         public bool validateLoginData(string username, string password)
         {
@@ -73,6 +51,12 @@ namespace JBleiloes.DB
         public byte getUserTypeFromLeilao(string username)
         {
             return DBUtilizador.getUserTypeLeilao(username);
+        }
+
+        public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, TimeSpan tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
+        {
+            DBVeiculo.registaVeiculo(Marca, Modelo, Ano, Quilometragem, vendedor);
+            DBLeilao.registaLeilao(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao);
         }
     }
 }

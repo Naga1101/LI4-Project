@@ -1,6 +1,9 @@
 ﻿using JBleiloes.data.Leiloes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.DB;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 
 namespace JBleiloes.data
@@ -42,6 +45,11 @@ namespace JBleiloes.data
         public byte getUserTypeFromLeilao(string username)
         {
             return db.getUserTypeFromLeilao(username);
+        }
+        public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, TimeSpan tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
+        {
+            db.registaLeilaoEVeiculo(titulo, valor_inicial,vendedor,valor_minimo,tempo_de_leilao, Marca, Modelo, Ano, Quilometragem);
+            
         }
     }
 }

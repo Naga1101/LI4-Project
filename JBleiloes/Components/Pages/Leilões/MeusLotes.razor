@@ -3,11 +3,18 @@
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
+@inject NavigationManager NavigationManager
 
 <PageTitle>Leilões @SessionUser.getSessionUser().getUsername()</PageTitle>
 
-<h1>Leilões @SessionUser.getSessionUser().getUsername()</h1>
+<h1>@SessionUser.getSessionUser().getUsername()</h1>
+<h6>@SessionUser.getSessionUser().nome</h6>
 
+<div class="redirect-link" @onclick="registarLeilao">
+    <p class="link-text">Criar Leilão</p>
+</div>
+
+<h2>Leilões ativos </h2>
 <div class="leilao-container">
     @if (leiloes == null)
     {
@@ -37,6 +44,17 @@
         width: 500;
         height: 500;
     }
+
+    .redirect-link {
+        cursor: pointer;
+    }
+
+    .link-text {
+        font-size: 40px; /* Adjust as needed */
+        color: gray;
+        text-decoration: none;
+    }
+
 </style>
 
 @code {
@@ -49,5 +67,10 @@
     protected override void OnInitialized()
     {
         leiloes = leilaoRepository.getLeiloesUtilizador(@SessionUser.getSessionUser().getUsername());
+    }
+
+    private void registarLeilao()
+    {
+        NavigationManager.NavigateTo("/registarLeilao");
     }
 }

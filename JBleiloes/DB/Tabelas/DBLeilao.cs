@@ -60,6 +60,23 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex) { throw new Exception(ex.Message); }
             return leiloes;
         }
+
+        public void registaLeilao(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, TimeSpan tempo_de_leilao)
+        {
+            string query = "INSERT INTO [dbo].[Leilão] (id, titulo, valor_inicial, vendedor, valor_minimo, valor_atual, veiculo, aprovado, a_decorrer, comprador, tempo_de_leilão, imagem)" +
+                $"(5,'{titulo}', {valor_inicial}, '{valor_inicial}', {vendedor}, {valor_minimo}, 0, 0, 0, NULL, '{tempo_de_leilao}', 'car_image1.jpg')";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    connection.Query(query);
+                }
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+
+        }
     }
 }
 

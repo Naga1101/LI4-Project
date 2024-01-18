@@ -26,14 +26,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTG9naW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/login/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxMb2dpbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/login/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxSZWdpc3Rlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Leilões/CriarLeilao.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xDcmlhckxlaWxhby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Leilões/Leilaocard.razor]
@@ -60,6 +56,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Leilões/VisualizarLeilao.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xWaXN1YWxpemFyTGVpbGFvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/login/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xsb2dpblxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/login/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xsb2dpblxSZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ruipe/Desktop/Git/Projeto-LI4/JBleiloes/Components/Pages/Weather.razor]
