@@ -33,5 +33,10 @@ namespace JBleiloes.data
         {
             db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
+
+        public Leilao getleilaobyid(int id)
+        {
+            return db.getLeilao(id);
+        }
     }
 }

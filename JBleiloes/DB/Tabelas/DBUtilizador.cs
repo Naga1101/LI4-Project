@@ -20,7 +20,7 @@ namespace JBleiloes.DB.Tabelas
             return singleton;
         }
 
-        public Utilizador getUser(string username)
+        public Utilizador? getUser(string username)
         {
             Utilizador? user = null;
             string query = "SELECT * FROM dbo.Utilizador WHERE username = @Username";
@@ -31,17 +31,15 @@ namespace JBleiloes.DB.Tabelas
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
                 {
                     connection.Open();
-                    user = connection.QueryFirst<Utilizador>(query, parameters);
+                    user = connection.QueryFirstOrDefault<Utilizador>(query, parameters);
                 }
             }
             catch (SqlException ex)
             {
-                // Handle specific SQL exceptions if needed
                 throw new Exception($"Error retrieving user: {ex.Message}");
             }
             catch (Exception ex)
             {
-                // Handle other exceptions
                 throw new Exception($"Unexpected error: {ex.Message}");
             }
 

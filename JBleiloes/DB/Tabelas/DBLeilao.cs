@@ -24,7 +24,7 @@ namespace JBleiloes.DB.Tabelas
         public Leilao getLeilao(int idLeilao)
         {
             Leilao? leilao = null;
-            string query = "SELECT * FROM [dbo].[Leilão] WHERE id = @Id";
+            string query = $"SELECT * FROM [dbo].[Leilão] WHERE id = '{idLeilao}'";
 
             try
             {
@@ -94,6 +94,19 @@ public class LeilaoRepository
             {
                 yield return leilao;
             }
+        }
+    }
+
+    public Leilao getLeilaoById(int id)
+    {
+        string query = $"SELECT * FROM [dbo].[Leilão] where id = '{id}'";
+
+        using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+        {
+            connection.Open();
+            Leilao l = connection.QueryFirst<Leilao>(query);
+
+            return l;
         }
     }
 }

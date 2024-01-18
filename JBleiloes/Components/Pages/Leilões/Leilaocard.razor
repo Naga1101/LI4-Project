@@ -1,5 +1,9 @@
 ﻿@using System
 @using JBleiloes.data.Leiloes
+@using JBleiloes.data.Utilizadores
+@using JBleiloes.DB.Tabelas
+@using JBleiloes.Components.Pages
+@inject NavigationManager NavigationManager 
 
 @if (Leilao == null)
 {
@@ -7,21 +11,26 @@
 }
 else
 {
-    <div class="card leilao-card">
+    var dbUtilizador = DBUtilizador.getInstance();
+    var userVendedor = dbUtilizador.getUser(@Leilao.VendedorUsername);
+    <div class="card leilao-card" @onclick="() => showLeilao(Leilao.Id)">
         <div class="card-body">
-            <h5 class="card-title">@Leilao.Titulo</h5>
+            <div class="green-rectangle">
+                <h5 class="card-title">@Leilao.Titulo</h5>
+            </div>
+            <div class="green-rectangle">
+                <p class="mb-0"><strong>Último Lance:</strong> $@Leilao.ValorInicial</p>
+            </div>
             <div style="height: 10px"></div>
             <div class="card-text">
-                <div class="d-flex justify-content-between">
-                    <p class="mb-0"><strong>Minimum Bid:</strong> $@Leilao.ValorMinimo</p>
-                    <p class="mb-0"><strong>Current Bid:</strong> $@Leilao.ValorInicial</p>
-                </div>
-                <p><strong>Seller:</strong> @Leilao.VendedorUsername</p>
-                <p><strong>Time Remaining:</strong> @Leilao.TempoDeLeilao</p>
+                @if (userVendedor != null)
+                {
+                    <p><strong>Vendedor:</strong> @userVendedor.nome</p>
+                }
+                <p><strong>Termina em:</strong> @Leilao.TempoDeLeilao</p>
             </div>
         </div>
     </div>
- 
 
 }
 
@@ -36,7 +45,7 @@ else
         margin: auto;
         text-align: center;
         font-family: arial;
-        height: 170%;
+        height: 100%;
         width: 100%;
         font-size: 12px;
         border-radius: 10px;
@@ -72,9 +81,29 @@ else
     .card:focus {
         outline: none;
     }
+
+    .green-rectangle {
+        background-color: #4CAF50; /* Green color */
+        padding: 10px; /* Adjust the padding as needed */
+        border-radius: 10px; /* Same as the card's border-radius */
+        margin-bottom: 10px; /* Adjust the margin as needed */
+        width: 100%; /* Occupy full width */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+    }
+
+        .green-rectangle h5,
+        .green-rectangle p {
+            margin: 0; /* Remove default margins for the title and paragraph */
+            color: white; /* Text color inside the green rectangle */
+        }
 </style>
 
 @code {
     [Parameter]
     public Leilao? Leilao { get; set; }
+
+    private void showLeilao(int id)
+    {
+        NavigationManager.NavigateTo($"/leilao/{id}");
+    }
 }

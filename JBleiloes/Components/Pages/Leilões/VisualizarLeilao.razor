@@ -1,0 +1,32 @@
+﻿@page "/leilao/{id}"
+@using JBleiloes.Components.Layout
+@using JBleiloes.data.Leiloes
+@using JBleiloes.data
+@layout LoginLayout
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<h3>Leilao Page</h3>
+
+<p>Leilao ID: @id</p>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    private Leilao leilao;
+
+    JBLeiloes jb = new JBLeiloes();
+
+    protected override void OnInitialized()
+    {
+        if (int.TryParse(id, out int ident))
+        {
+            leilao = jb.getleilaobyid(ident);
+        }
+        else
+        {
+
+        }
+    }
+}
