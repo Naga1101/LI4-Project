@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/login/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +52,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Leilões/Leiloes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xMZWlsb2VzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Leilões/MeusLotes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xNZXVzTG90ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Leilões/VisualizarLeilao.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWlsw7Vlc1xWaXN1YWxpemFyTGVpbGFvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Nuno/Desktop/Projeto-LI4-main/JBleiloes/Components/Pages/Weather.razor]

@@ -2,6 +2,8 @@
 
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
+@using JBleiloes.DB.Tabelas
+@rendermode InteractiveServer
 
 <PageTitle>Leilões a decorrer</PageTitle>
 
@@ -17,47 +19,34 @@
         @foreach (Leilao leilao in leiloes)
         {
             <div class="rectangle">
-                <Leilaocard Leilao="leilao" />
+                <Leilaocard Leilao="@leilao" />
             </div>
         }
-        /**
-        @foreach (Leilao leilao in leiloes2)
-        {
-            <div class="rectangle">
-                <Leilaocard Leilao="leilao" />
-            </div>
-        }*/
     }
 </div>
 
 <style>
 
+    .line {
+        border-block: 1px solid #2b2b27cf;
+        margin: 20px;
+    }
+
     .leilao-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        gap: 20px;
+        gap: 10px;
         margin-top: 20px;
     }
 
     .rectangle {
-        width: 200px;
-        height: 100px;
+        width: 500;
+        height: 500;
     }
-
 </style>
 
 @code {
-    private ICollection<Leilao> leiloes2 = new JBLeiloes().getLeilõesDecorrer();
-
-    private IEnumerable<Leilao> leiloes;
-
-    // Instantiate LeilaoRepository
-    private LeilaoRepository leilaoRepository = new LeilaoRepository();
-
-    // Call the GetLeiloes method during the component initialization
-    protected override void OnInitialized()
-    {
-        leiloes = leilaoRepository.GetLeiloes();
-    }
+    private List<Leilao> leiloes2 = DBLeilao.getInstance().GetLeiloesDecorrer();
+    private IEnumerable<Leilao> leiloes = DBLeilao.getInstance().GetLeiloes();
 }

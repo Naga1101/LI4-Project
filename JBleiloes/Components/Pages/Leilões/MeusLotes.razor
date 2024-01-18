@@ -1,0 +1,65 @@
+﻿@page "/meuslotes"
+
+@using JBleiloes.data.Utilizadores
+@using JBleiloes.data.Leiloes
+@using JBleiloes.data
+@rendermode InteractiveServer
+
+<PageTitle>Leilões @SessionUser.getSessionUser().getUsername()</PageTitle>
+
+<h1>Leilões @SessionUser.getSessionUser().getUsername()</h1>
+
+data @user.data_nascimento nif @user.NIF cc @user.n_cc email @user.email nome @user.nome pass @user.password username @user.username tipo @user.tipo_utilizador
+
+<div class="leilao-container">
+    @if (leiloes == null)
+    {
+        <h3>Loading . . . </h3>
+    }
+    else
+    {
+        @foreach (Leilao leilao in leiloes)
+        {
+            <p>Id: @leilao.id Titulo: @leilao.titulo Vendedor: @leilao.vendedor  Estado: @leilao.a_decorrer VeiculoId: @leilao.veiculo Minimo: @leilao.valor_minimo</p>
+            <div class="rectangle">
+                <Leilaocard Leilao="leilao" />
+            </div>
+        }
+    }
+</div>
+
+<style>
+
+    .line {
+        border-block: 1px solid #2b2b27cf;
+        margin: 20px;
+    }
+
+    .leilao-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .rectangle {
+        width: 500;
+        height: 500;
+    }
+</style>
+
+@code {
+    private IEnumerable<Leilao> leiloes;
+
+    private Utilizador? user = @SessionUser.getSessionUser();
+
+    // Instantiate LeilaoRepository
+    private LeilaoRepository leilaoRepository = new LeilaoRepository();
+
+    // Call the GetLeiloes method during the component initialization
+    protected override void OnInitialized()
+    {
+        leiloes = leilaoRepository.getLeiloesUtilizador(@SessionUser.getSessionUser().getUsername());
+    }
+}

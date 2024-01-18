@@ -34,7 +34,7 @@ namespace JBleiloes.DB
                 // You can perform additional checks here if needed
                 // For now, just check if getUser and getLeiloesDecorrer methods return non-null values
                 Utilizador user = this.DBUtilizador.getUser("sampleUsername");
-                ICollection<Leilao> leiloes = this.DBLeilao.getLeiloesDecorrer();
+                List<Leilao> leiloes = this.DBLeilao.GetLeiloesDecorrer();
 
                 return user != null && leiloes != null;
             }
@@ -43,6 +43,11 @@ namespace JBleiloes.DB
                 Console.WriteLine($"Error checking tables: {ex.Message}");
                 return false;
             }
+        }
+
+        public bool validateLoginData(string username, string password)
+        {
+            return DBUtilizador.validateLoginInfo(username, password);
         }
 
         public Utilizador getUtilizador(string username)
@@ -55,9 +60,19 @@ namespace JBleiloes.DB
             return this.DBLeilao.getLeilao(idLeilao);
         }
 
-        public ICollection<Leilao> getLeiloesDecorrer()
+        public List<Leilao> getLeiloesDecorrer()
         {
-            return this.DBLeilao.getLeiloesDecorrer();
+            return this.DBLeilao.GetLeiloesDecorrer();
         }
+
+        public IEnumerable<Leilao> GetLeiloes()
+        {
+            return DBLeilao.GetLeiloes();
+        }
+
+        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            DBUtilizador.addUtilizador(username, password, nome, email, nº_cc, NIF, data_nascimento);
+        }   
     }
 }

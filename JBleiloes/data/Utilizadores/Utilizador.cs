@@ -30,5 +30,10 @@
         {
             return password;
         }
+
+        public string getUsername()
+        {
+            return username;
+        }
     }
 }

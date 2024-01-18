@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using Dapper;
 using JBleiloes.data.Utilizadores;
+using Microsoft.AspNetCore.Http;
 
 namespace JBleiloes.DB.Tabelas
 {
@@ -19,7 +20,7 @@ namespace JBleiloes.DB.Tabelas
             return singleton;
         }
 
-        public Utilizador getUser(string username)
+        public Utilizador? getUser(string username)
         {
             Utilizador? user = null;
             string query = "SELECT * FROM dbo.Utilizador WHERE username = @Username";
@@ -30,7 +31,7 @@ namespace JBleiloes.DB.Tabelas
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
                 {
                     connection.Open();
-                    user = connection.QueryFirst<Utilizador>(query, parameters);
+                    user = connection.QueryFirstOrDefault<Utilizador>(query, parameters);
                 }
             }
             catch (SqlException ex)
@@ -46,7 +47,6 @@ namespace JBleiloes.DB.Tabelas
 
             return user;
         }
-
 
         public IEnumerable<Utilizador> getAllUsers()
         {
@@ -65,6 +65,52 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex) { throw new Exception(ex.Message); }
 
             return users;
+        }
+
+
+        public void addUtilizador(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            DateTime parsedDate = DateTime.Parse(data_nascimento);
+
+            string query = "INSERT INTO [dbo].[Utilizador] " +
+                               "([username], [password], [nome], [email], [nº_CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
+                               "VALUES " +
+                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{parsedDate}', '0');";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    connection.Query(query);
+                }
+            }
+
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+
+        public bool validateLoginInfo(string username, string password)
+        {
+            string query= $"SELECT COUNT(*) as UserCount FROM [dbo].[Utilizador] WHERE [username] = '{username}' AND [password] = '{password}'";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    int res = connection.QuerySingle<int>(query);
+
+                    if (res == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            catch (Exception ex) { throw new Exception(ex.Message); }
         }
     }
 }

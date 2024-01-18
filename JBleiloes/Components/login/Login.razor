@@ -2,6 +2,7 @@
 @inject NavigationManager NavigationManager
 @using JBleiloes.Components.Layout
 @using JBleiloes.data
+@using JBleiloes.data.Utilizadores
 @layout LoginLayout
 @rendermode InteractiveServer
 
@@ -24,7 +25,8 @@
     </div>
 
     <div>
-        <button class="list-group-item-danger" onclick=@handleLogin> CLICK ME </button>
+        <button class="list-group-item-danger" onclick=@handleLogin> Login </button>
+        <button class="mx-md-auto" onclick="@registerUser"> Register </button>
     </div>
 </div>
 
@@ -37,7 +39,15 @@
         JBLeiloes jb = new JBLeiloes();
         if(jb.validarLogin(username, password))
         {
-            NavigationManager.NavigateTo("/home");
+            //jb.validarLogin(username, password);
+            Utilizador u = jb.getUtilizador(username);
+            SessionUser.setSessionUser(u);
+            NavigationManager.NavigateTo("/lotes");
         }
+    }
+
+    private void registerUser()
+    {
+        NavigationManager.NavigateTo("/register");
     }
 }

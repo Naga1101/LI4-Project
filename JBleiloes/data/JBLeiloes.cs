@@ -1,6 +1,7 @@
 ﻿using JBleiloes.data.Leiloes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.DB;
+using JBleiloes.DB.Tabelas;
 
 
 namespace JBleiloes.data
@@ -21,18 +22,27 @@ namespace JBleiloes.data
 
         public bool validarLogin(string username, string password)
         {
-            Utilizador user = db.getUtilizador(username);
-            if (user == null) { return false; }
-            else
-            {
-                if(user.getPassword().Equals(password)) { return true; };
-            }
-            return false;
+            return db.validateLoginData(username, password);   
         }
 
         public ICollection<Leilao> getLeilõesDecorrer()
         {
             return db.getLeiloesDecorrer();
+        }
+
+        public IEnumerable<Leilao> GetLeiloes()
+        {
+            return db.GetLeiloes();
+        }
+
+        public Leilao getLeilaoId(int id)
+        {
+            return db.getLeilao(id);
+        }
+
+        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
     }
 }
