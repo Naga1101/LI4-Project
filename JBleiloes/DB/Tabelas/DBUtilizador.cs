@@ -111,5 +111,22 @@ namespace JBleiloes.DB.Tabelas
 
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
+
+        public byte getUserTypeLeilao(string username)
+        {
+            string query = $"SELECT [tipo_utilizador] FROM [JBLeiloes].[dbo].[Utilizador] WHERE [username] = '{username}'";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    byte res = connection.QuerySingle<byte>(query);
+
+                    return res;
+                }
+            }
+            catch   (Exception ex) { throw new Exception(ex.Message); }
+        }
     }
 }

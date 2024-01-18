@@ -69,5 +69,10 @@ namespace JBleiloes.DB
         {
             DBUtilizador.addUtilizador(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }   
+
+        public byte getUserTypeFromLeilao(string username)
+        {
+            return DBUtilizador.getUserTypeLeilao(username);
+        }
     }
 }

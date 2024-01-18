@@ -38,5 +38,10 @@ namespace JBleiloes.data
         {
             return db.getLeilao(id);
         }
+
+        public byte getUserTypeFromLeilao(string username)
+        {
+            return db.getUserTypeFromLeilao(username);
+        }
     }
 }
