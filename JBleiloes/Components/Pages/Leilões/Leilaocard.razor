@@ -2,8 +2,10 @@
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.DB.Tabelas
-@using JBleiloes.Components.Pages
+@rendermode InteractiveServer
 @inject NavigationManager NavigationManager
+
+@*<p>Id: @Leilao.id Titulo: @Leilao.titulo Vendedor: @Leilao.vendedor  Estado: @Leilao.a_decorrer VeiculoId: @Leilao.veiculo Minimo: @Leilao.valor_minimo</p> *@
 
 @if (Leilao == null)
 {
@@ -11,6 +13,9 @@
 }
 else
 {
+    @*
+ <p>Aqui Id: @Leilao.id Titulo: @Leilao.titulo Vendedor: @Leilao.vendedor Estado: @Leilao.a_decorrer VeiculoId: @Leilao.veiculo Minimo: @Leilao.valor_minimo</p>
+    *@
     var dbUtilizador = DBUtilizador.getInstance();
     var userVendedor = dbUtilizador.getUser(Leilao.vendedor);
     <div class="card leilao-card" @onclick="() => showLeilao(Leilao.id)">
@@ -86,6 +91,20 @@ else
         outline: none;
     }
 
+    .green-rectangle {
+        background-color: #4CAF50; /* Green color */
+        padding: 10px; /* Adjust the padding as needed */
+        border-radius: 10px; /* Same as the card's border-radius */
+        margin-bottom: 10px; /* Adjust the margin as needed */
+        width: 100%; /* Occupy full width */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+    }
+
+        .green-rectangle h5,
+        .green-rectangle p {
+            margin: 0; /* Remove default margins for the title and paragraph */
+            color: white; /* Text color inside the green rectangle */
+        }
 
 </style>
 

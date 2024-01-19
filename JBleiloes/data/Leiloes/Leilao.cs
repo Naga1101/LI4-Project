@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using JBleiloes.data.Utilizadores;
 
 namespace JBleiloes.data.Leiloes
 {
@@ -42,7 +41,6 @@ namespace JBleiloes.data.Leiloes
             }
         }
 
-        public Leilao() { }
-
+        public Leilao() { } 
     }
 }

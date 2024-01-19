@@ -1,9 +1,7 @@
 ﻿using JBleiloes.data.Leiloes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.DB;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Reflection;
-using System.Text.RegularExpressions;
+using JBleiloes.DB.Tabelas;
 
 
 namespace JBleiloes.data
@@ -32,24 +30,48 @@ namespace JBleiloes.data
             return db.getLeiloesDecorrer();
         }
 
+        public IEnumerable<Leilao> GetLeiloes()
+        {
+            return db.GetLeiloes();
+        }
+        
+        public IEnumerable<Leilao> getLeiloesUtilizador(string username)
+        {
+            return db.getLeiloesUtilizador(username);
+        }
+
+        public IEnumerable<Leilao> GetLeiloesUtilizadorWatchList(string username)
+        {
+            return db.GetLeiloesUtilizadorWatchList(username);
+        }
+        public byte getUserTypeLeilao(string username)
+        {
+            return db.getUserTypeLeilao(username);
+        }
+        public Leilao getLeilaoId(int id)
+        {
+            return db.getLeilao(id);
+        }
+        public void AdicionarWatchlist(string username, int idLeilao)
+        {
+            db.AdicionarWatchlist(username, idLeilao);
+        }
+        public void removerWatchlist(string username, int idLeilao)
+        {
+            db.removerWatchlist(username, idLeilao);
+        }
+        public bool podeAdicionarWatchList(string username, int idLeilao)
+        {
+            return db.podeAdicionarWatchList(username, idLeilao); ;
+        }
+
         public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
         {
             db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
-
-        public Leilao getleilaobyid(int id)
-        {
-            return db.getLeilao(id);
-        }
-
-        public byte getUserTypeFromLeilao(string username)
-        {
-            return db.getUserTypeFromLeilao(username);
-        }
         public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, TimeSpan tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
         {
-            db.registaLeilaoEVeiculo(titulo, valor_inicial,vendedor,valor_minimo,tempo_de_leilao, Marca, Modelo, Ano, Quilometragem);
-            
+            db.registaLeilaoEVeiculo(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, Marca, Modelo, Ano, Quilometragem);
         }
     }
 }

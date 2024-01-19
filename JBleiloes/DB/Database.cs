@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using JBleiloes.data.Leiloes;
@@ -17,11 +16,37 @@ namespace JBleiloes.DB
 
         public Database()
         {
-            DBUtilizador = DBUtilizador.getInstance();
-            DBLeilao = DBLeilao.getInstance();
-            DBVeiculo = DBVeiculo.getInstance();
+            this.DBUtilizador = DBUtilizador.getInstance();
+            this.DBLeilao = DBLeilao.getInstance();
+
+            // Check if tables were loaded successfully
+            if (CheckTablesLoaded())
+            {
+                Console.WriteLine("Tables loaded successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Error loading tables.");
+            }
         }
 
+        private bool CheckTablesLoaded()
+        {
+            try
+            {
+                // You can perform additional checks here if needed
+                // For now, just check if getUser and getLeiloesDecorrer methods return non-null values
+                Utilizador user = this.DBUtilizador.getUser("sampleUsername");
+                List<Leilao> leiloes = this.DBLeilao.GetLeiloesDecorrer();
+
+                return user != null && leiloes != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error checking tables: {ex.Message}");
+                return false;
+            }
+        }
 
         public bool validateLoginData(string username, string password)
         {
@@ -38,19 +63,43 @@ namespace JBleiloes.DB
             return this.DBLeilao.getLeilao(idLeilao);
         }
 
-        public ICollection<Leilao> getLeiloesDecorrer()
+        public List<Leilao> getLeiloesDecorrer()
         {
-            return this.DBLeilao.getLeiloesDecorrer();
+            return this.DBLeilao.GetLeiloesDecorrer();
+        }
+        public IEnumerable<Leilao> getLeiloesUtilizador(string username)
+        {
+            return this.DBLeilao.getLeiloesUtilizador(username);
+        }
+        public IEnumerable<Leilao> GetLeiloesUtilizadorWatchList(string username)
+        {
+            return DBLeilao.GetLeiloesUtilizadorWatchList(username);
+        }
+        public byte getUserTypeLeilao(string username)
+        {
+            return this.DBLeilao.getUserTypeLeilao(username);
         }
 
+        public IEnumerable<Leilao> GetLeiloes()
+        {
+            return DBLeilao.GetLeiloes();
+        }
+
+        public void AdicionarWatchlist(string username, int idLeilao)
+        {
+            DBUtilizador.AdicionarWatchlist(username, idLeilao);
+        }
+        public void removerWatchlist(string username, int idLeilao)
+        {
+            DBUtilizador.removerWatchlist(username, idLeilao);
+        }
+        public bool podeAdicionarWatchList(string username, int idLeilao)
+        {
+            return DBUtilizador.podeAdicionarWatchList(username, idLeilao);
+        }
         public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
         {
             DBUtilizador.addUtilizador(username, password, nome, email, nº_cc, NIF, data_nascimento);
-        }   
-
-        public byte getUserTypeFromLeilao(string username)
-        {
-            return DBUtilizador.getUserTypeLeilao(username);
         }
 
         public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, TimeSpan tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)

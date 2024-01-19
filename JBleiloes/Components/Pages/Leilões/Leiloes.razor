@@ -1,6 +1,9 @@
 ﻿@page "/lotes"
+
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
+@using JBleiloes.DB.Tabelas
+@rendermode InteractiveServer
 
 <PageTitle>Leilões a decorrer</PageTitle>
 
@@ -15,7 +18,7 @@
     {
         @foreach (Leilao leilao in leiloes)
         {
-            byte user_type = jb.getUserTypeFromLeilao(leilao.vendedor);
+            byte user_type = jb.getUserTypeLeilao(leilao.vendedor);
             @if (user_type == 0)
             {
                 <div class="rectangle">
@@ -30,7 +33,7 @@
 
         @foreach (Leilao leilao in leiloes)
         {
-            byte user_type = jb.getUserTypeFromLeilao(leilao.vendedor);
+            byte user_type = jb.getUserTypeLeilao(leilao.vendedor);
             @if (user_type == 1)
             {
                 <div class="rectangle">
@@ -73,14 +76,5 @@
 
     private ICollection<Leilao> leiloes2 = new JBLeiloes().getLeilõesDecorrer();
 
-    private IEnumerable<Leilao> leiloes;
-
-    // Instantiate LeilaoRepository
-    private LeilaoRepository leilaoRepository = new LeilaoRepository();
-
-    // Call the GetLeiloes method during the component initialization
-    protected override void OnInitialized()
-    {
-        leiloes = leilaoRepository.GetLeiloes();
-    }
+    private IEnumerable<Leilao> leiloes = DBLeilao.getInstance().GetLeiloes();
 }
