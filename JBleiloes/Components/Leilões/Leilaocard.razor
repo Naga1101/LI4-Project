@@ -1,0 +1,119 @@
+﻿@using System
+@using JBleiloes.data.Leiloes
+@using JBleiloes.data.Utilizadores
+@using JBleiloes.DB.Tabelas
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+@*<p>Id: @Leilao.id Titulo: @Leilao.titulo Vendedor: @Leilao.vendedor  Estado: @Leilao.a_decorrer VeiculoId: @Leilao.veiculo Minimo: @Leilao.valor_minimo</p> *@
+
+@if (Leilao == null)
+{
+    <h3>Loading. . . </h3>
+}
+else
+{
+    @*
+ <p>Aqui Id: @Leilao.id Titulo: @Leilao.titulo Vendedor: @Leilao.vendedor Estado: @Leilao.a_decorrer VeiculoId: @Leilao.veiculo Minimo: @Leilao.valor_minimo</p>
+    *@
+    var dbUtilizador = DBUtilizador.getInstance();
+    var userVendedor = dbUtilizador.getUser(Leilao.vendedor);
+    <div class="card leilao-card" @onclick="() => showLeilao(Leilao.id)">
+        <div class="card-body">
+            <h5 class="card-title">@Leilao.titulo</h5>
+            <img class="ilustr" src="https://via.placeholder.com/300" alt="Placeholder Image">
+            <div class="bottom-info">
+                <p><strong>Ultimo Lance:</strong> $@Leilao.valor_inicial</p>
+                <p><strong>Data Conclusão:</strong> @Leilao.tempo_de_leilao</p>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+
+    .card-title {
+        margin-top: 0;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        height: 100%;
+        width: 100%;
+        font-size: 12px;
+        border-radius: 10px;
+        transition: transform 0.4s, filter 0.4s;
+        filter: blur(0);
+        display: flex;
+        flex-direction: column;
+    }
+
+        .card:hover {
+            transform: scale(1.3);
+            cursor: pointer;
+            filter: blur(5%);
+        }
+
+    .card-body {
+        flex: 1;
+        padding: 2px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .ilustr {
+        width: 300px;
+        height: 200px;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .bottom-info {
+        text-align: left;
+        flex-shrink: 0;
+    }
+
+    .card:not(:hover) {
+        outline: none;
+    }
+
+    .card:focus {
+        outline: none;
+    }
+
+    .green-rectangle {
+        background-color: #4CAF50; /* Green color */
+        padding: 10px; /* Adjust the padding as needed */
+        border-radius: 10px; /* Same as the card's border-radius */
+        margin-bottom: 10px; /* Adjust the margin as needed */
+        width: 100%; /* Occupy full width */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+    }
+
+        .green-rectangle h5,
+        .green-rectangle p {
+            margin: 0; /* Remove default margins for the title and paragraph */
+            color: white; /* Text color inside the green rectangle */
+        }
+
+</style>
+
+@code {
+    [Parameter]
+    public Leilao? Leilao { get; set; }
+
+    private void showLeilao(int id)
+    {
+        NavigationManager.NavigateTo($"/leilao/{id}");
+    }
+}

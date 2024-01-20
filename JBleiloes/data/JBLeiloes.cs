@@ -1,4 +1,5 @@
 ﻿using JBleiloes.data.Leiloes;
+using JBleiloes.data.Licitacoes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.DB;
 using JBleiloes.DB.Tabelas;
@@ -22,7 +23,7 @@ namespace JBleiloes.data
 
         public bool validarLogin(string username, string password)
         {
-            return db.validateLoginData(username, password);   
+            return db.validateLoginData(username, password);
         }
 
         public ICollection<Leilao> getLeilõesDecorrer()
@@ -34,7 +35,7 @@ namespace JBleiloes.data
         {
             return db.GetLeiloes();
         }
-        
+
         public IEnumerable<Leilao> getLeiloesUtilizador(string username)
         {
             return db.getLeiloesUtilizador(username);
@@ -69,9 +70,48 @@ namespace JBleiloes.data
         {
             db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
-        public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, TimeSpan tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
+        public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
         {
             db.registaLeilaoEVeiculo(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, Marca, Modelo, Ano, Quilometragem);
+        }
+
+        public void aprovaLeilao (int idLeilao)
+        {
+            db.aprovarLeilao(idLeilao);
+        }
+
+        public IEnumerable<Leilao> getAllUserLeiloes()
+        {
+            return db.getAllUserLeiloes();
+        }
+        public void registarLicitação(string licitador, decimal valor_licitacao, int id_leilao)
+        {
+            db.registarLicitação(licitador, valor_licitacao, id_leilao);
+        }
+
+        public void atualizarValorAtualLeilao(int id_leilao, decimal licitação)
+        {
+            db.atualizarValorAtualLeilao(id_leilao, licitação);
+        }
+
+        public void addHistoricoVendas(string cliente, int id_leilao)
+        {
+            db.addHistoricoVendas(cliente, id_leilao);
+        }
+
+        public void addHistoricoCompras(string cliente, int id_leilao)
+        {
+            db.addHistoricoCompras(cliente, id_leilao); 
+        }
+
+        public void updateDonoVeiculo(int id_veiculo, string new_owner)
+        {
+            db.updateDonoVeiculo(id_veiculo, new_owner);
+        }
+
+        public void defineComprador(int id_leilao, string comprador)
+        {
+            db.defineComprador(id_leilao,comprador);
         }
     }
 }

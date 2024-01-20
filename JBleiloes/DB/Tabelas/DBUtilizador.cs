@@ -75,7 +75,7 @@ namespace JBleiloes.DB.Tabelas
                 {
                     connection.Open();
 
-                    string insertQuery = "INSERT INTO [dbo].[Watchlist] (id_cliente, id_leilão) VALUES (@IdCliente, @IdLeilao)";
+                    string insertQuery = "INSERT INTO [dbo].[Watchlist] (id_cliente, id_leilao) VALUES (@IdCliente, @IdLeilao)";
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@IdCliente", username);
@@ -92,7 +92,7 @@ namespace JBleiloes.DB.Tabelas
             {
                 connection.Open();
 
-                string deleteQuery = "DELETE FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilão = @IdLeilao";
+                string deleteQuery = "DELETE FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilao = @IdLeilao";
 
                 using (SqlCommand command = new SqlCommand(deleteQuery, connection))
                 {
@@ -109,7 +109,7 @@ namespace JBleiloes.DB.Tabelas
             {
                 connection.Open();
 
-                string selectQuery = "SELECT COUNT(*) FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilão = @IdLeilao";
+                string selectQuery = "SELECT COUNT(*) FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilao = @IdLeilao";
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
                     command.Parameters.AddWithValue("@IdCliente", username);

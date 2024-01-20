@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Components",
+    "\\Components\\Layout",
+    "\\Components\\Leil\u00F5es",
     "\\Components\\Pages",
-    "\\Components\\Pages\\Leil\u00F5es",
     "\\data",
     "\\data\\Leiloes",
     "\\data\\Utilizadores",
     "\\DB",
     "\\DB\\Tabelas"
   ],
-  "SelectedNode": "\\JBleiloes.sln",
+  "SelectedNode": "\\Components\\Leil\u00F5es\\VisualizarLeilao.razor",
   "PreviewInSolutionExplorer": false
 }

@@ -505,24 +505,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Nuno\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Rui\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nuno\\Desktop\\Projeto-LI4-main\\JBleiloes\\JBleiloes.csproj",
+      "projectUniqueName": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
       "projectName": "JBleiloes",
-      "projectPath": "C:\\Users\\Nuno\\Desktop\\Projeto-LI4-main\\JBleiloes\\JBleiloes.csproj",
-      "packagesPath": "C:\\Users\\Nuno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nuno\\Desktop\\Projeto-LI4-main\\JBleiloes\\obj\\",
+      "projectPath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
+      "packagesPath": "C:\\Users\\Rui\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Nuno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Rui\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -530,7 +525,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

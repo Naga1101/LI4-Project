@@ -1,0 +1,108 @@
+﻿@page "/meuslotes"
+
+@using JBleiloes.data.Utilizadores
+@using JBleiloes.data.Leiloes
+@using JBleiloes.data
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<PageTitle>Seus leilões</PageTitle>
+
+<h1>Leilões do @SessionUser.getSessionUser().nome</h1>
+
+<div class="redirect-link" @onclick="registarLeilao">
+    <p class="link-text">Criar Leilao</p>
+</div>
+
+@*data @user.data_nascimento nif @user.NIF cc @user.n_cc email @user.email nome @user.nome pass @user.password username @user.username tipo @user.tipo_utilizador
+*@
+<h2>Leilões Pendentes de Aprovação </h2>
+<div class="leilao-container">
+    @if (leiloes == null)
+    {
+        <h3>Loading . . . </h3>
+    }
+    else
+    {
+
+        @foreach (Leilao leilao in leiloes)
+        {
+            @if(leilao.aprovado == false){
+            @*<p>Id: @leilao.id Titulo: @leilao.titulo Vendedor: @leilao.vendedor  Estado: @leilao.a_decorrer VeiculoId: @leilao.veiculo Minimo: @leilao.valor_minimo</p>
+    *@
+                <div class="rectangle">
+                    <Leilaocard Leilao="leilao" />
+                </div>
+            }
+        }
+    }
+</div>
+
+
+<h2>Leilões ativos </h2>
+<div class="leilao-container">
+    @if (leiloes == null)
+    {
+        <h3>Loading . . . </h3>
+    }
+    else
+    {
+        
+        @foreach (Leilao leilao in leiloes)
+        {
+            @if(leilao.aprovado == true){
+            @*<p>Id: @leilao.id Titulo: @leilao.titulo Vendedor: @leilao.vendedor  Estado: @leilao.a_decorrer VeiculoId: @leilao.veiculo Minimo: @leilao.valor_minimo</p>
+            *@
+            <div class="rectangle">
+                <Leilaocard Leilao="leilao" />
+            </div>
+            }
+        }
+    }
+</div>
+
+<style>
+    .leilao-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .rectangle {
+        width: 500;
+        height: 500;
+    }
+
+    .redirect-link {
+        cursor: pointer;
+    }
+
+    .link-text {
+        font-size: 40px; /* Adjust as needed */
+        color: gray;
+        text-decoration: none;
+    }
+
+</style>
+
+@code {
+    private IEnumerable<Leilao> leiloes;
+
+    private Utilizador? user = @SessionUser.getSessionUser();
+
+    // Instantiate LeilaoRepository
+    private JBLeiloes jb = new JBLeiloes();
+
+    // Call the GetLeiloes method during the component initialization
+    protected override void OnInitialized()
+    {
+        leiloes = jb.getLeiloesUtilizador(@SessionUser.getSessionUser().getUsername());
+    }
+
+    private void registarLeilao()
+    {
+        NavigationManager.NavigateTo("/criarleilao");
+    }
+}

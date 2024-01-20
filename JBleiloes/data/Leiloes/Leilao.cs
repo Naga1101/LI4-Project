@@ -9,12 +9,12 @@ namespace JBleiloes.data.Leiloes
         public decimal valor_inicial { get; private set; }
         public string? vendedor { get; private set; }
         public decimal valor_minimo { get; private set; }
-        public decimal valor_atual { get; private set; }
+        public decimal valor_atual { get; set; }
         public int veiculo { get; private set; }
         public bool aprovado { get; private set; }
         public bool a_decorrer { get; private set; }
         public string? comprador { get; private set; }
-        public TimeSpan tempo_de_leilao { get; private set; }
+        public DateTime tempo_de_leilao { get; set; }
         public string? imagem { get; private set; }
 
         public Leilao(SqlMapper.GridReader reader)
@@ -35,7 +35,7 @@ namespace JBleiloes.data.Leiloes
                 comprador = (string)result.comprador;
                 if (result.tempo_de_leilao != null && result.tempo_de_leilao != DBNull.Value)
                 {
-                    tempo_de_leilao = (TimeSpan)result.tempo_de_leilao;
+                    tempo_de_leilao = (DateTime)result.tempo_de_leilao;
                 }
                 imagem = (string)result.imagem;
             }

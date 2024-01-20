@@ -1,0 +1,158 @@
+﻿@page "/criarleilao"
+@using JBleiloes.data
+@using JBleiloes.data.Utilizadores
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<PageTitle>Criar Leilão</PageTitle>
+
+<div class="container">
+    <div class="column">
+        <h3>Dados do Veículo</h3>
+        <div class="input-group">
+            <input type="text" @bind="titulo" placeholder="Titulo" @oninput="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="text" @bind="Marca" placeholder="Marca" @oninput="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="text" @bind="Modelo" placeholder="Modelo" @oninput="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="text" @bind="Ano" placeholder="Ano" @oninput="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="Descrição" @oninput="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="text" @bind="Quilometragem" placeholder="Quilometragem" @oninput="UpdateButton" />
+        </div>
+    </div>
+
+    <div class="column">
+        <h3>Informações de Leilão</h3>
+        <div class="input-group">
+            <input type="text" @bind="valor_inicial" placeholder="Valor Inicial" @oninput="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="text" @bind="valor_minimo" placeholder="Valor Mínimo de Licitação" @oninput="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="text" @bind=tempo_de_leilao placeholder="Final do Leilão ex:2000-10-10 00:00:00" @oninput="UpdateButton" />
+        </div>
+    </div>
+
+    <div class="column">
+        <h3>Imagens</h3>
+        <div class="input-group">
+            <input type="file" accept="image/*" multiple @onchange="UpdateButton" />
+        </div>
+        <div class="input-group">
+            <input type="file" accept="image/*" multiple @onchange="UpdateButton" />
+        </div>
+        <div class="input-group">
+            @if (!@ativar)
+            {
+                <button type="button" class="finalize-button enabled" @onclick="registo" @onmouseover="UpdateButton" @onmouseout="UpdateButton">Finalizar Lista</button>
+            }
+            else
+            {
+                <button type="button" class="finalize-button disabled" @onmouseover="UpdateButton" @onmouseout="UpdateButton">Finalizar Lista</button>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+    }
+
+    .column {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 0 10px;
+    }
+
+    .input-group {
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+    }
+
+    .finalize-button {
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .finalize-button.enabled {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .finalize-button.disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+</style>
+
+
+
+@code {
+
+    public int id { get; private set; }
+    public string titulo { get; private set; }
+    public decimal valor_inicial { get; private set; }
+    public string vendedor { get; private set; }
+    public decimal valor_minimo { get; private set; }
+    public decimal valor_atual { get; private set; }
+    public string tempo_de_leilao { get; private set; }
+    public string? imagem { get; private set; }
+    public string Marca { get; private set; }
+    public string Modelo { get; private set; }
+    public string Descricao { get; private set; }
+    public int Ano { get; private set; }
+    public decimal Quilometragem { get; private set; }
+
+    private bool ativar = false;
+
+    private bool CanFinalizeListing()
+    {
+        // Check if all required fields (except images) are filled
+        return !string.IsNullOrEmpty(titulo)
+               && valor_inicial > 0
+               && valor_minimo > 0
+               && !string.IsNullOrEmpty(tempo_de_leilao)
+               && !string.IsNullOrEmpty(Marca)
+               && !string.IsNullOrEmpty(Modelo)
+               && Ano > 0
+               && Quilometragem > 0;
+    }
+
+    private void UpdateButton()
+    {
+        ativar = CanFinalizeListing(); // Trigger a re-render to update the button style
+        StateHasChanged();
+    }
+
+    private void registo()
+    {
+        if (CanFinalizeListing())
+        {
+            DateTime tempo = DateTime.Parse(tempo_de_leilao);
+            JBLeiloes jb = new JBLeiloes();
+            jb.registaLeilaoEveiculo(titulo, valor_inicial, SessionUser.getSessionUser().username, valor_minimo, tempo, Marca, Modelo, Ano, Quilometragem);
+            NavigationManager.NavigateTo("/meuslotes");
+        }
+    }
+}

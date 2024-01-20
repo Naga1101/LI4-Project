@@ -42,7 +42,11 @@
             //jb.validarLogin(username, password);
             Utilizador u = jb.getUtilizador(username);
             SessionUser.setSessionUser(u);
-            NavigationManager.NavigateTo("/lotes");
+
+            if (u.tipo_utilizador == 1)
+                NavigationManager.NavigateTo("/lotes");
+            else if (u.tipo_utilizador == 0)
+                NavigationManager.NavigateTo("/aprovar");
         }
     }
 

@@ -13,11 +13,19 @@ namespace JBleiloes.DB
         private DBUtilizador DBUtilizador;
         private DBLeilao DBLeilao;
         private DBVeiculo DBVeiculo;
+        private DBLicitacao DBLicitacao;
+        private DBHistorico_de_compras DBHistorico_de_compras;
+        private DBHistorico_de_vendas DBHistorico_de_vendas;
+
 
         public Database()
         {
-            this.DBUtilizador = DBUtilizador.getInstance();
-            this.DBLeilao = DBLeilao.getInstance();
+            DBUtilizador = DBUtilizador.getInstance();
+            DBLeilao = DBLeilao.getInstance();
+            DBVeiculo = DBVeiculo.getInstance();
+            DBLicitacao = DBLicitacao.getInstance();
+            DBHistorico_de_compras = DBHistorico_de_compras.getInstance();
+            DBHistorico_de_vendas = DBHistorico_de_vendas.getInstance();
 
             // Check if tables were loaded successfully
             if (CheckTablesLoaded())
@@ -37,7 +45,7 @@ namespace JBleiloes.DB
                 // You can perform additional checks here if needed
                 // For now, just check if getUser and getLeiloesDecorrer methods return non-null values
                 Utilizador user = this.DBUtilizador.getUser("sampleUsername");
-                List<Leilao> leiloes = this.DBLeilao.GetLeiloesDecorrer();
+                List<Leilao> leiloes = this.DBLeilao.GetLeiloesDecorrerEAprovados();
 
                 return user != null && leiloes != null;
             }
@@ -65,7 +73,7 @@ namespace JBleiloes.DB
 
         public List<Leilao> getLeiloesDecorrer()
         {
-            return this.DBLeilao.GetLeiloesDecorrer();
+            return this.DBLeilao.GetLeiloesDecorrerEAprovados();
         }
         public IEnumerable<Leilao> getLeiloesUtilizador(string username)
         {
@@ -102,10 +110,51 @@ namespace JBleiloes.DB
             DBUtilizador.addUtilizador(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
 
-        public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, TimeSpan tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
+        public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
         {
-            DBVeiculo.registaVeiculo(Marca, Modelo, Ano, Quilometragem, vendedor);
-            DBLeilao.registaLeilao(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao);
+            int id_veiculo = DBVeiculo.RegistaVeiculo(Marca, Modelo, Ano, Quilometragem, vendedor);
+            DBLeilao.registaLeilao(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo);
         }
+
+        public void aprovarLeilao(int id_leilao)
+        {
+            DBLeilao.aprovarLeilao(id_leilao);
+        }
+
+        public IEnumerable<Leilao> getAllUserLeiloes()
+        {
+            return DBLeilao.getAllUserLeiloes();
+        }
+
+        public void registarLicitação(string licitador, decimal valor_licitacao, int id_leilao)
+        {
+            DBLicitacao.registarLicitação(licitador, valor_licitacao, id_leilao);    
+        }
+
+        public void atualizarValorAtualLeilao(int id_leilao, decimal licitação)
+        {
+            DBLeilao.atualizarValorAtualLeilao(id_leilao, licitação);
+        }
+
+        public void addHistoricoVendas(string cliente, int id_leilao)
+        {
+            DBHistorico_de_vendas.addHistoricoVendas(cliente, id_leilao);
+        }  
+
+        public void addHistoricoCompras(string cliente, int id_leilao)
+        {
+            DBHistorico_de_compras.addHistoricoCompras(cliente, id_leilao);
+        }
+
+        public void updateDonoVeiculo(int id_veiculo, string new_owner)
+        {
+            DBVeiculo.updateDonoVeiculo(id_veiculo, new_owner);
+        }
+
+        public void defineComprador(int id_leilao, string comprador)
+        {
+            DBLeilao.defineComprador(id_leilao, comprador);
+        }
+
     }
 }

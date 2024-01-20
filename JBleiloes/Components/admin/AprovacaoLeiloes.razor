@@ -1,0 +1,62 @@
+﻿@page "/aprovar"
+
+@using JBleiloes.Components.Leilões
+@using JBleiloes.data.Leiloes
+@using JBleiloes.data
+@using JBleiloes.DB.Tabelas
+@rendermode InteractiveServer
+
+<h3>AprovacaoLeiloes</h3>
+
+<div class="leilao-container">
+    @if (leiloes == null)
+    {
+        <h3>Loading . . . </h3>
+    }
+    else
+    {
+        @foreach (Leilao leilao in leiloes)
+        {
+            bool aprovado = leilao.aprovado;
+            @if (aprovado == false)
+            {
+                <div class="rectangle">
+                    <Leilaocard Leilao="leilao" />
+                </div>
+            }
+        }
+    }
+</div>
+
+<style>
+    .line {
+        border-bottom: 1px solid #2b2b27cf;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .leilao-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+        margin-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .rectangle {
+        width: 500;
+        height: 500;
+    }
+
+    h2 {
+        width: 100%;
+        margin-top: 20px;
+    }
+</style>
+
+@code {
+    JBLeiloes jb = new JBLeiloes();
+
+    private IEnumerable<Leilao> leiloes = DBLeilao.getInstance().GetLeiloes();
+}
