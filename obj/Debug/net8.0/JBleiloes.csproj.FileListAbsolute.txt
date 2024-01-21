@@ -1,0 +1,220 @@
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\appsettings.json
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\JBleiloes.staticwebassets.runtime.json
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\JBleiloes.exe
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\JBleiloes.deps.json
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\JBleiloes.runtimeconfig.json
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\JBleiloes.dll
+C:\Users\Rui\Desktop\JBleiloes\bin\Debug\net8.0\JBleiloes.pdb
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfoInputs.cache
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfo.cs
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CoreCompileInputs.cache
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.build.JBleiloes.props
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JBleiloes.props
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JBleiloes.props
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\scopedcss\bundle\JBleiloes.styles.css
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\scopedcss\projectbundle\JBleiloes.bundle.scp.css
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.dll
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\refint\JBleiloes.dll
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.pdb
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\JBleiloes.genruntimeconfig.cache
+C:\Users\Rui\Desktop\JBleiloes\obj\Debug\net8.0\ref\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\appsettings.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.staticwebassets.runtime.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.exe
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.deps.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.runtimeconfig.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\Dapper.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.AssemblyReference.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfoInputs.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfo.cs
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CoreCompileInputs.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.build.JBleiloes.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JBleiloes.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JBleiloes.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\bundle\JBleiloes.styles.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\projectbundle\JBleiloes.bundle.scp.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CopyComplete
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\refint\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.genruntimeconfig.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\ref\JBleiloes.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.AssemblyReference.cache
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfoInputs.cache
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfo.cs
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CoreCompileInputs.cache
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.sourcelink.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\appsettings.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\JBleiloes.staticwebassets.runtime.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\JBleiloes.exe
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\JBleiloes.deps.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\JBleiloes.runtimeconfig.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\JBleiloes.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\JBleiloes.pdb
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\Dapper.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.build.JBleiloes.props
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JBleiloes.props
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JBleiloes.props
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\scopedcss\bundle\JBleiloes.styles.css
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\scopedcss\projectbundle\JBleiloes.bundle.scp.css
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CopyComplete
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\refint\JBleiloes.dll
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.pdb
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\JBleiloes.genruntimeconfig.cache
+C:\Users\ruipe\Desktop\Git\Projeto-LI4\JBleiloes\obj\Debug\net8.0\ref\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\appsettings.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.staticwebassets.runtime.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.exe
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.deps.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.runtimeconfig.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\Dapper.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.AssemblyReference.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfoInputs.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfo.cs
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CoreCompileInputs.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.build.JBleiloes.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JBleiloes.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JBleiloes.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\bundle\JBleiloes.styles.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\scopedcss\projectbundle\JBleiloes.bundle.scp.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CopyComplete
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\refint\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\JBleiloes.genruntimeconfig.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main\JBleiloes\obj\Debug\net8.0\ref\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\appsettings.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.staticwebassets.runtime.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.exe
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.deps.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.runtimeconfig.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\Dapper.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.AssemblyReference.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfoInputs.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfo.cs
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CoreCompileInputs.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.build.JBleiloes.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JBleiloes.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JBleiloes.props
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\bundle\JBleiloes.styles.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\projectbundle\JBleiloes.bundle.scp.css
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CopyComplete
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\refint\JBleiloes.dll
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.genruntimeconfig.cache
+C:\Users\Nuno\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\ref\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\appsettings.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.staticwebassets.runtime.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.exe
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.deps.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.runtimeconfig.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\Dapper.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.AssemblyReference.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfoInputs.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.AssemblyInfo.cs
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CoreCompileInputs.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.build.JBleiloes.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JBleiloes.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JBleiloes.props
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\bundle\JBleiloes.styles.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\scopedcss\projectbundle\JBleiloes.bundle.scp.css
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.csproj.CopyComplete
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\refint\JBleiloes.dll
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.pdb
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\JBleiloes.genruntimeconfig.cache
+C:\Users\Nuno Aguiar\Desktop\Projeto-LI4-main-nuno\JBleiloes\obj\Debug\net8.0\ref\JBleiloes.dll
