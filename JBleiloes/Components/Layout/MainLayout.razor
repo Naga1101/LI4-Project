@@ -5,60 +5,145 @@
 <PageTitle>JBLeilões</PageTitle>
 
 <div class="toolbar">
-        @if(@SessionUser.getSessionUser() != null){
-        <div class="butoes">
-            <div class="esq">
-                <div>
-                    <a href="/">
-                        <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;"/>
-                    </a>
-                </div>
-            </div>
-            <div class="mid">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item">
-                                <a class="btn btn-link" href="/">Lotes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-link" href="/">Pesquisa</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
-                            </li>
-                            @if(@SessionUser.getSessionUser().tipo_utilizador != 0)
-                            {
-                                <li class="nav-item">
-                                    <a class="btn btn-link" href="/mywacthlist">WatchList</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item">
-                                    <a class="btn btn-link" href="/aprovar">Aprovações</a>
-                                </li>
-                            }
-                            <li class="nav-item">
-                                <a class="btn btn-link" href="/transacoes">Transações</a>
-                            </li>
-                        </ul>
+    @if (@SessionUser.getSessionUser() != null)
+    { 
+        @if (@SessionUser.getSessionUser().tipo_utilizador == 0) // admin
+            {
+            <div class="butoes">
+                <div class="esq">
+                    <div>
+                        <a href="/">
+                            <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;"/>
+                        </a>
                     </div>
-                </nav>
-            </div>
-            <div class="dir">
-                <div class="user">
-                    @SessionUser.getSessionUser().nome
                 </div>
-                <div class="logout">
-                    <a href="/login" class="dir">
-                        Log out
-                    </a>
+                <div class="mid">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/">Lotes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/">Pesquisa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link disabled-text" href="/meuslotes">Meus Lotes</a>
+                                </li>
+                                <li class="nav-item">
+                                     <a class="btn btn-link" href="/aprovar">Aprovações</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/registar">Registar Funcionários</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="dir">
+                    <div class="user">
+                        @SessionUser.getSessionUser().nome
+                    </div>
+                    <div class="logout">
+                        <a href="/login" class="dir">
+                            Log out
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
         }
-        else{
+        else if (@SessionUser.getSessionUser().tipo_utilizador == 1)  // user
+        {
+            <div class="butoes">
+                <div class="esq">
+                    <div>
+                        <a href="/">
+                            <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;" />
+                        </a>
+                    </div>
+                </div>
+                <div class="mid">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/">Lotes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/">Pesquisa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
+                                </li>
+                                <li class="nav-item">
+                                     <a class="btn btn-link" href="/mywacthlist">WatchList</a>
+                                </li>
+                                <li class="nav-item">
+                                     <a class="btn btn-link" href="/">Transações</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="dir">
+                    <div class="user">
+                        @SessionUser.getSessionUser().nome
+                    </div>
+                    <div class="logout">
+                        <a href="/login" class="dir">
+                            Log out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (@SessionUser.getSessionUser().tipo_utilizador == 2)  // funcionário
+        {
+            <div class="butoes">
+                <div class="esq">
+                    <div>
+                        <a href="/">
+                            <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;" />
+                        </a>
+                    </div>
+                </div>
+                <div class="mid">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/">Lotes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/">Pesquisa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link disabled-text" href="/mywacthlist">WatchList</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-link disabled-text" href="/">Transações</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="dir">
+                    <div class="user">
+                        @SessionUser.getSessionUser().nome
+                    </div>
+                    <div class="logout">
+                        <a href="/login" class="dir">
+                            Log out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else{
         <div class="butoes">
             <div class="esq">
                 <div>
@@ -148,14 +233,6 @@
         justify-content: flex-end;
         align-items: center;
         padding: 10px;
-    }
-
-    .user {
-        margin-right: 26px;
-    }
-
-    .logout {
-        margin-top: 5px;
     }
 
     .navbar {
