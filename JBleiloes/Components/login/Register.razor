@@ -2,6 +2,7 @@
 @using JBleiloes.Components.Layout
 @using JBleiloes.data
 @using System.Globalization
+@using JBleiloes.data.Utilizadores
 @layout LoginLayout
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
@@ -94,8 +95,16 @@
             //falta cond de validar se nao existe ninguem com mesmos dadso
             JBLeiloes jb = new JBLeiloes();
             Console.WriteLine(nome);
-            jb.registerUser(username, password, nome, email, n_cc, NIF, data_nascimento);
-            NavigationManager.NavigateTo("/login");
+            if (@SessionUser.getSessionUser().tipo_utilizador == 0)
+            {
+                jb.registerFuncionario(username, password, nome, email, n_cc, NIF, data_nascimento);
+                NavigationManager.NavigateTo("/");
+            }
+            else
+            {
+                jb.registerUser(username, password, nome, email, n_cc, NIF, data_nascimento);
+                NavigationManager.NavigateTo("/login");
+            }
         }
     }
 
