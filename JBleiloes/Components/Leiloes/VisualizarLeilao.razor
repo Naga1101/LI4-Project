@@ -1,10 +1,10 @@
 ﻿@page "/leilao/{id}"
+
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.Components.Layout
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
 @using JBleiloes.data.Utilizadores
-
 @layout MainLayout
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
@@ -25,12 +25,27 @@
         <form>
             <h3>Valor inicial @leilao.valor_inicial</h3>
             <p>Lance atual: @leilao.valor_atual</p>
-            <p>Termina em: @DaysLeft d @HoursLeft h @MinutesLeft m @SecondsLeft s</p>
+            @if (DaysLeft > 0)
+            {
+                <p>Termina em: @DaysLeft d @HoursLeft h</p>
+            }
+            else if (HoursLeft > 0)
+            {
+                <p>Termina em: @HoursLeft h @MinutesLeft m</p>
+            }
+            else if (MinutesLeft > 0)
+            {
+                <p>Termina em: @MinutesLeft m @SecondsLeft s</p>
+            }
+            else
+            {
+                <p>Termina em: @SecondsLeft s</p>
+            }
 
-            @if (jb.getUtilizador(leilao.vendedor).username != SessionUser.getSessionUser().username && SessionUser.getSessionUser().tipo_utilizador != 0)
+            @if (user != null && jb.getUtilizador(leilao.vendedor).username != user.username && user.tipo_utilizador != 0)
             {
                 <label for="inputField" onclick="">Sua Licitação:</label>
-                <input type="text" id="inputField" name="inputField" @bind="licitação"/>
+                <input type="text" id="inputField" name="inputField" @bind="licitação" placeholder="Licitação mínima de @(getLicitacaoMinima(leilao))" />
 
                 <button type="button" @onclick="efetuarLicitação">Confirmar Licitação</button>
                 <div class="bottom-left">
@@ -44,16 +59,19 @@
                     }
                 </div>
             }
-            @if (SessionUser.getSessionUser().tipo_utilizador == 0 && leilao.aprovado == false)
+            @if(user != null)
             {
-                <div class="bottom-left">
-                    <button type="button" @onclick="() => aprovar(leilao.id)">Aprovar Leilão</button>
-                </div>
+                @if (SessionUser.getSessionUser().tipo_utilizador == 0 && leilao.aprovado == false)
+                {
+                    <div class="bottom-left">
+                        <button type="button" @onclick="() => aprovar(leilao.id)">Aprovar Leilão</button>
+                    </div>
+                }
             }
-
             <div class="bottom-right">
-                <p>Sold by: @vendedor_name</p>
+                <p>Sold by: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.vendedor)">@vendedor_name</span></p>
             </div>
+
         </form>
     </div>
 </div>
@@ -118,7 +136,7 @@
 
     private string? vendedor_name = null;
     private bool addedToWatchlist = false;
-    private decimal licitação { get; set; }
+    private string licitação { get; set; }
 
     private Utilizador? user = @SessionUser.getSessionUser();
 
@@ -140,7 +158,10 @@
         {
             leilao = jb.getLeilaoId(ident);
             vendedor_name = jb.getUtilizador(leilao.vendedor).nome;
-            addedToWatchlist = jb.podeAdicionarWatchList(SessionUser.getSessionUser().username, leilao.id);
+            if (user != null)
+            {
+                addedToWatchlist = jb.podeAdicionarWatchList(SessionUser.getSessionUser().username, leilao.id);
+            }
 
             countDown = (int)(leilao.tempo_de_leilao - DateTime.Now).TotalSeconds;
 
@@ -172,21 +193,29 @@
         else
         {
             timer.Dispose();
-            jb.addHistoricoCompras(SessionUser.getSessionUser().username, leilao.id);
-            jb.addHistoricoVendas(leilao.vendedor, leilao.id);
-            jb.defineComprador(leilao.id, SessionUser.getSessionUser().username);
-            jb.updateDonoVeiculo(leilao.veiculo, SessionUser.getSessionUser().username);
+            string winner = jb.getVencedorLeilao(leilao.id);
+            jb.removerA_Decorrer(leilao.id);
+            if (winner != "null")
+            {
+                jb.addHistoricoCompras(winner, leilao.id);
+                jb.defineComprador(leilao.id, winner);
+                jb.updateDonoVeiculo(leilao.veiculo, winner);
+                jb.addHistoricoVendas(leilao.vendedor, leilao.id);
+            }
         }
     }
 
 
     private void efetuarLicitação()
     {
-        if(licitação > leilao.valor_atual && licitação >= (leilao.valor_atual + leilao.valor_minimo)){
+        decimal valor_licitação = decimal.Parse(licitação);
 
-            jb.atualizarValorAtualLeilao(leilao.id, licitação);
-            leilao.valor_atual = licitação;
-            jb.registarLicitação(SessionUser.getSessionUser().username, licitação, leilao.id);
+        if (valor_licitação > leilao.valor_atual && valor_licitação >= (leilao.valor_atual + leilao.valor_minimo))
+        {
+
+            jb.atualizarValorAtualLeilao(leilao.id, valor_licitação);
+            leilao.valor_atual = valor_licitação;
+            jb.registarLicitação(SessionUser.getSessionUser().username, valor_licitação, leilao.id);
 
             if (MinutesLeft <= 5)
             {
@@ -218,5 +247,19 @@
     {
         jb.removerWatchlist(username, idLeilao);
         addedToWatchlist = !addedToWatchlist;
+    }
+
+    private void profile(string vendedor)
+    {
+        NavigationManager.NavigateTo($"/perfil/{vendedor}");
+    }
+
+    private decimal getLicitacaoMinima(Leilao leilao)
+    {
+        if (leilao.valor_atual < leilao.valor_inicial)
+        {
+            return leilao.valor_inicial;
+        }
+        return leilao.valor_atual + leilao.valor_minimo;
     }
 }

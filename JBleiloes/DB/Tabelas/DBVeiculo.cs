@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using JBleiloes.data.Licitacoes;
 using System.Data.SqlClient;
 
 namespace JBleiloes.DB.Tabelas
@@ -21,18 +20,16 @@ namespace JBleiloes.DB.Tabelas
 
         public int RegistaVeiculo(string Marca, string Modelo, int Ano, decimal Quilometragem, string dono)
         {
-            string query = "INSERT INTO [dbo].[Veiculo]" +
-                           "([Marca], [Modelo], [Ano], [Quilometragem], [DUA], [Seguro], [Dono])" +
-                           $"VALUES ('{Marca}', '{Modelo}', {Ano}, {Quilometragem}, 'ASEXX4', 'SEGUROS LDA', '{dono}')";
+            string insertQuery = "INSERT INTO [dbo].[Veiculo] ([Marca], [Modelo], [Ano], [Quilometragem], [DUA], [Seguro], [Dono]) VALUES (@Marca, @Modelo, @Ano, @Quilometragem, 'ASEXX4', 'SEGUROS LDA', @Dono)";
+            string selectQuery = "SELECT MAX(id) FROM [dbo].[Veiculo]";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
                 {
                     connection.Open();
                     Console.WriteLine("Before Execute");
-                    connection.Query(query);
-                    query = "SELECT MAX(id) FROM [dbo].[Veiculo]";
-                    int maxID = connection.QueryFirst<int>(query);
+                    connection.Execute(insertQuery, new { Marca, Modelo, Ano, Quilometragem, Dono = dono });
+                    int maxID = connection.QueryFirst<int>(selectQuery);
                     Console.WriteLine("After Execute");
                     return maxID;
                 }
@@ -45,7 +42,7 @@ namespace JBleiloes.DB.Tabelas
 
         public void updateDonoVeiculo(int id_veiculo, string new_owner)
         {
-            string query = $"UPDATE [dbo].[Veiculo] SET [dono] = {new_owner} WHERE id = {id_veiculo}";
+            string query = $"UPDATE [dbo].[Veiculo] SET [dono] = '{new_owner}' WHERE id = {id_veiculo}";
 
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
@@ -53,6 +50,5 @@ namespace JBleiloes.DB.Tabelas
                 connection.Query(query);
             }
         }
-
     }
 }

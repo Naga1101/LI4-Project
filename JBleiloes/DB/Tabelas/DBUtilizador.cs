@@ -67,67 +67,12 @@ namespace JBleiloes.DB.Tabelas
             return users;
         }
 
-        public void AdicionarWatchlist(string username, int idLeilao)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-                {
-                    connection.Open();
-
-                    string insertQuery = "INSERT INTO [dbo].[Watchlist] (id_cliente, id_leilao) VALUES (@IdCliente, @IdLeilao)";
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@IdCliente", username);
-                        command.Parameters.AddWithValue("@IdLeilao", idLeilao);
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-            } catch (Exception ex) { throw new Exception(ex.Message);  }
-        }
-        public void removerWatchlist(string username, int idLeilao)
-        {
-            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-            {
-                connection.Open();
-
-                string deleteQuery = "DELETE FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilao = @IdLeilao";
-
-                using (SqlCommand command = new SqlCommand(deleteQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@IdCliente", username);
-                    command.Parameters.AddWithValue("@IdLeilao", idLeilao);
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-        public bool podeAdicionarWatchList(string username, int idLeilao)
-        {
-            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-            {
-                connection.Open();
-
-                string selectQuery = "SELECT COUNT(*) FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilao = @IdLeilao";
-                using (SqlCommand command = new SqlCommand(selectQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@IdCliente", username);
-                    command.Parameters.AddWithValue("@IdLeilao", idLeilao);
-
-                    int count = (int)command.ExecuteScalar();
-
-                    return count > 0;
-                }
-            }
-        }
-
         public void addUtilizador(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
         {
             DateTime parsedDate = DateTime.Parse(data_nascimento);
 
             string query = "INSERT INTO [dbo].[Utilizador] " +
-                               "([username], [password], [nome], [email], [nº_CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
+                               "([username], [password], [nome], [email], [CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
                                "VALUES " +
                                $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{parsedDate}', '0');";
             try
@@ -164,6 +109,63 @@ namespace JBleiloes.DB.Tabelas
                 }
             }
 
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+
+        public bool podeAdicionarWatchList(string username, int idLeilao)
+        {
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT COUNT(*) FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilao = @IdLeilao";
+                using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@IdCliente", username);
+                    command.Parameters.AddWithValue("@IdLeilao", idLeilao);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
+        }
+
+        public void removerWatchlist(string username, int idLeilao)
+        {
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM [dbo].[Watchlist] WHERE id_cliente = @IdCliente AND id_leilao = @IdLeilao";
+
+                using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@IdCliente", username);
+                    command.Parameters.AddWithValue("@IdLeilao", idLeilao);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void AdicionarWatchlist(string username, int idLeilao)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+
+                    string insertQuery = "INSERT INTO [dbo].[Watchlist] (id_cliente, id_leilao) VALUES (@IdCliente, @IdLeilao)";
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@IdCliente", username);
+                        command.Parameters.AddWithValue("@IdLeilao", idLeilao);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
     }

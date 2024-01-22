@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/login"
 @inject NavigationManager NavigationManager
 @using JBleiloes.Components.Layout
 @using JBleiloes.data
@@ -8,50 +8,119 @@
 
 <PageTitle>Login</PageTitle>
 
-<div align="center">
-    <div class="form-group row">
-        <div class="one">
-            <div class="col-sm-1">
-                <InputText placeholder="Inserir Username" @bind-Value="username" />
+<div class="bg-white d-flex justify-content-center align-items-start vh-100 mt-5">
+    <div class="col-md-4 bg-white p-4 rounded">
+        <div class="form-group row">
+            <div class="col-md-12 mb-3">
+                <InputText placeholder="Inserir Username" @bind-Value="username" class="form-control" />
             </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <div class="one">
-            <div class="col-sm-1">
-                <InputText placeholder="Inserir Password" @bind-Value="password" />
+        <div class="form-group row">
+            <div class="password-input col-md-12 mb-3">
+                <InputText placeholder="Inserir Password" type="@passwordType" @bind-Value="password" @oninput="ShowMessage" class="form-control" />
+                <button class="toggle-button" @onclick="TogglePasswordVisibility">@toggleButtonText</button>
             </div>
+            <div class="password-message col-md-12">@passwordMessage</div>
         </div>
-    </div>
 
-    <div>
-        <button class="list-group-item-danger" onclick=@handleLogin> Login </button>
-        <button class="mx-md-auto" onclick="@registerUser"> Register </button>
+        <div class="form-group row">
+            <button class="btn btn-success btn-block" onclick=@handleLogin> Login </button>
+        </div>
+        <div class="registar d-flex align-items-start">
+            <p class="register-text mb-0">Não tem conta?</p>
+            <a href="/register" class="dir">
+                Registar
+            </a>
+        </div>
+
     </div>
 </div>
+
+<style>
+    .bg-grey {
+        background-color: #f0f0f0;
+    }
+
+    .bg-white {
+        background-color: #ffffff;
+    }
+
+    .password-input {
+        position: relative;
+    }
+
+    .toggle-button {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .password-message {
+        margin-top: 5px;
+        color: #888;
+        font-size: 12px;
+    }
+
+    .registar {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 10px;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .register-text {
+        margin-right: 5px; /* Adjust the margin as needed */
+        display: flex;
+        align-items: flex-end; /* Align the text vertically in the middle */
+    }
+</style>
 
 @code {
     private string username = "";
     private string password = "";
+    private string passwordType = "password";
+    private string toggleButtonText = "Mostrar";
+    private string passwordMessage = "";
+
+    private void TogglePasswordVisibility()
+    {
+        passwordType = passwordType == "password" ? "text" : "password";
+        toggleButtonText = passwordType == "password" ? "Mostrar" : "Ocultar";
+    }
+
+    private void ShowMessage(ChangeEventArgs args)
+    {
+        if (!string.IsNullOrWhiteSpace(password))
+        {
+            passwordMessage = "Password will be shown in the right corner.";
+        }
+        else
+        {
+            passwordMessage = "";
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        SessionUser.setSessionUser(null);
+    }
 
     private void handleLogin()
     {
         JBLeiloes jb = new JBLeiloes();
-        if(jb.validarLogin(username, password))
+        if (jb.validarLogin(username, password))
         {
-            //jb.validarLogin(username, password);
             Utilizador u = jb.getUtilizador(username);
             SessionUser.setSessionUser(u);
-
-            if (u.tipo_utilizador == 1)
-                NavigationManager.NavigateTo("/lotes");
-            else if (u.tipo_utilizador == 0)
-                NavigationManager.NavigateTo("/aprovar");
+            NavigationManager.NavigateTo("/");
         }
-    }
-
-    private void registerUser()
-    {
-        NavigationManager.NavigateTo("/register");
     }
 }

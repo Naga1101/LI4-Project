@@ -9,95 +9,107 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = JBleiloes
 build_property.RootNamespace = JBleiloes
-build_property.ProjectDir = C:\Users\Rui\Desktop\Projeto-LI4\JBleiloes\
+build_property.ProjectDir = C:\Users\Rui\Desktop\Projeto-LI4-main-nuno\Projeto-LI4-main-nuno\JBleiloes\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Rui\Desktop\Projeto-LI4\JBleiloes
+build_property.MSBuildProjectDirectory = C:\Users\Rui\Desktop\Projeto-LI4-main-nuno\Projeto-LI4-main-nuno\JBleiloes
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/admin/AprovacaoLeiloes.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/admin/AprovacaoLeiloes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xhZG1pblxBcHJvdmFjYW9MZWlsb2VzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/App.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Layout/LoginLayout.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Layout/LoginLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTG9naW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/CriarLeilao.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xDcmlhckxlaWxhby5yYXpvcg==
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/CriarLeilao.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXENyaWFyTGVpbGFvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/Leilaocard.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xMZWlsYW9jYXJkLnJhem9y
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/Leilaocard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXExlaWxhb2NhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/Leiloes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xMZWlsb2VzLnJhem9y
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/Leiloes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXExlaWxvZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/LeiloesStand.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xMZWlsb2VzU3RhbmQucmF6b3I=
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/LeiloesStand.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXExlaWxvZXNTdGFuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/LeiloesUsers.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xMZWlsb2VzVXNlcnMucmF6b3I=
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/LeiloesUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXExlaWxvZXNVc2Vycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/MeusLotes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xNZXVzTG90ZXMucmF6b3I=
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/MeusLotes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXE1ldXNMb3Rlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/VisualizarLeilao.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xWaXN1YWxpemFyTGVpbGFvLnJhem9y
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/VisualizarLeilao.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXFZpc3VhbGl6YXJMZWlsYW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Leilões/WacthListLeiloes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsw7Vlc1xXYWN0aExpc3RMZWlsb2VzLnJhem9y
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Leiloes/WacthListLeiloes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMZWlsb2VzXFdhY3RoTGlzdExlaWxvZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/login/Login.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/login/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/login/Register.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/login/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xsb2dpblxSZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Pages/Counter.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Pages/Error.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Pages/Home.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Pages/Weather.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Routes.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/_Imports.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Utilizador/Perfil.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVdGlsaXphZG9yXFBlcmZpbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Utilizador/Transacoes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVdGlsaXphZG9yXFRyYW5zYWNvZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Utilizador/TransaçãoCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVdGlsaXphZG9yXFRyYW5zYcOnw6NvQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Layout/MainLayout.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-oyj5ymxggc
 
-[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Layout/NavMenu.razor]
+[C:/Users/Rui/Desktop/Projeto-LI4-main-nuno/Projeto-LI4-main-nuno/JBleiloes/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-flnu0b2y2f

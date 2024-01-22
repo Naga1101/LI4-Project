@@ -1,0 +1,64 @@
+﻿@page "/leiloesUsers"
+
+@using JBleiloes.data.Utilizadores
+@using JBleiloes.data.Leiloes
+@using JBleiloes.data
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<PageTitle>Leilões de Users</PageTitle>
+
+<h1>Leilões de Users</h1>
+
+<div class="leilao-container">
+    @if (leiloes == null)
+    {
+        <h3>Loading . . . </h3>
+    }
+    else
+    {
+        @foreach (Leilao leilao in leiloesUsers)
+        {
+            <div class="rectangle">
+                <Leilaocard Leilao="leilao" />
+            </div>
+        }
+    }
+</div>
+
+<style>
+    .leilao-container {
+        display: flex;
+        gap: 5px; /* Add gap between cards */
+        padding: 10px;
+        align-items: flex-start; /* Allow cards to expand above container limits */
+        margin-right: 30px; /* Add right margin */
+        margin-left: 30px; /* Add left margin */
+        flex-wrap: wrap; /* Allow wrapping to the next row */
+    }
+
+    .rectangle {
+        width: 354px;
+        height: 400px;
+        padding: 10px; /* Add some padding for better spacing */
+        position: relative; /* Add relative positioning for pseudo-element */
+    }
+
+    .redirect-link {
+        cursor: pointer;
+    }
+
+    .link-text {
+        font-size: 40px; /* Adjust as needed */
+        color: gray;
+        text-decoration: none;
+    }
+</style>
+
+
+@code {
+    private static JBLeiloes jb = new JBLeiloes();
+    private static ICollection<Leilao> leiloes = new JBLeiloes().getLeilõesDecorrer();
+
+    private ICollection<Leilao> leiloesUsers = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 1).ToList();
+}

@@ -1,15 +1,16 @@
-﻿@page "/leiloesStand"
+@page "/mywacthlist"
 
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
 @rendermode InteractiveServer
-@inject NavigationManager NavigationManager
 
-<PageTitle>Leilões do Stand</PageTitle>
+<PageTitle> Visualizando watchList</PageTitle>
 
-<h1>Leilões do Stand José Bonifácio</h1>
+    <h1>WatchList do  @SessionUser.getSessionUser().nome</h1>
 
+@*data @user.data_nascimento nif @user.NIF cc @user.n_cc email @user.email nome @user.nome pass @user.password username @user.username tipo @user.tipo_utilizador
+*@
 <div class="leilao-container">
     @if (leiloes == null)
     {
@@ -17,8 +18,10 @@
     }
     else
     {
-        @foreach (Leilao leilao in leiloesAdmins)
+        @foreach (Leilao leilao in leiloes)
         {
+            @*<p>Id: @leilao.id Titulo: @leilao.titulo Vendedor: @leilao.vendedor  Estado: @leilao.a_decorrer VeiculoId: @leilao.veiculo Minimo: @leilao.valor_minimo</p>
+    *@
             <div class="rectangle">
                 <Leilaocard Leilao="leilao" />
             </div>
@@ -56,10 +59,16 @@
 </style>
 
 @code {
-    private static JBLeiloes jb = new JBLeiloes();
-    private static ICollection<Leilao> leiloes = new JBLeiloes().getLeilõesDecorrer();
+    private IEnumerable<Leilao> leiloes;
 
-    private ICollection<Leilao> leiloesUsers = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 1).ToList();
+    private Utilizador? user = @SessionUser.getSessionUser();
 
-    private ICollection<Leilao> leiloesAdmins = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 0).ToList();
+    // Instantiate LeilaoRepository
+    private JBLeiloes jb = new JBLeiloes();
+
+    // Call the GetLeiloes method during the component initialization
+    protected override void OnInitialized()
+    {
+        leiloes = jb.GetLeiloesUtilizadorWatchList(@SessionUser.getSessionUser().getUsername());
+    }
 }

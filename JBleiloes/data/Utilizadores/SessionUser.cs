@@ -14,7 +14,7 @@
             SessionUser.sessionUser = sessionUser;
         }
 
-        public static Utilizador getSessionUser()
+        public static Utilizador? getSessionUser()
         {
             return sessionUser;
         }

@@ -1,10 +1,10 @@
-﻿@page "/register"
+﻿@page "/registar"
 @using JBleiloes.Components.Layout
 @using JBleiloes.data
 @using System.Globalization
 @layout LoginLayout
-@inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+@inject NavigationManager NavigationManager
 
 <h3>Register</h3>
 
@@ -95,7 +95,7 @@
             JBLeiloes jb = new JBLeiloes();
             Console.WriteLine(nome);
             jb.registerUser(username, password, nome, email, n_cc, NIF, data_nascimento);
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/login");
         }
     }
 

@@ -44,5 +44,33 @@ namespace JBleiloes.DB.Tabelas
                 throw new Exception(ex.Message);
             }
         }
+
+        public string GetVencedorLeilao(int id_leilao)
+        {
+            string query = $"SELECT id_licitador FROM Licitacao WHERE id_leilao = {id_leilao} AND id_licitacao = " +
+                $"(SELECT MAX(id_licitacao) FROM Licitacao WHERE id_leilao = {id_leilao})";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    string winner = connection.QueryFirst<string>(query);
+
+                    if (winner != null)
+                    {
+                        return winner;
+                    }
+                    else
+                    {
+                        return "null";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return "null";
+            }
+        }
     }
 }

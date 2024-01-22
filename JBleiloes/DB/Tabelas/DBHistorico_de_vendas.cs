@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using JBleiloes.data.Leiloes;
+using JBleiloes.data;
 using System.Data.SqlClient;
 
 namespace JBleiloes.DB.Tabelas
@@ -36,5 +38,28 @@ namespace JBleiloes.DB.Tabelas
                 throw new Exception(ex.Message);
             }
         }
+
+        public Leilao[] GetHistoricoVendas(string cliente, JBLeiloes jb)
+        {
+            string query = $"SELECT id_leilao FROM [dbo].[Historico de vendas] WHERE cliente = '{cliente}'";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    var leilaoIds = connection.Query<int>(query);
+
+                    var leiloes = leilaoIds.Select(id => jb.getLeilaoId(id)).ToArray();
+
+                    return leiloes;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

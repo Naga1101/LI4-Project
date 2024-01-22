@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using JBleiloes.Components.Leiloes;
 using JBleiloes.data.Leiloes;
 using JBleiloes.DB;
 using System.Data.SqlClient;
@@ -38,22 +39,7 @@ namespace JBleiloes.DB.Tabelas
             return leilao;
         }
 
-        public void aprovarLeilao(int idLeilao)
-        {
-            string query = $"UPDATE [dbo].[Leilao] SET [aprovado] = 1 WHERE [id] = {idLeilao}";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-                {
-                    connection.Open();
-                    connection.Query(query);
-                }
-            }
-            catch(Exception ex) { throw new Exception(ex.Message); }
-        } 
-
-        public List<Leilao> GetLeiloesDecorrerEAprovados()
+        public List<Leilao> GetLeiloesDecorrer()
         {
             List<Leilao> leiloes = new List<Leilao>();
             string query = "SELECT * FROM dbo.Leilao WHERE a_decorrer = 1 AND aprovado = 1"; // Filter auctions in progress
@@ -73,7 +59,25 @@ namespace JBleiloes.DB.Tabelas
             }
             return leiloes;
         }
-        
+        public IEnumerable<Leilao> GetLeiloesUtilizadorWatchList(string username)
+        {
+            string query = @"SELECT Leilao.* FROM Watchlist JOIN Leilao ON Watchlist.id_leilao = Leilao.id WHERE Watchlist.id_cliente = @Username";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    var leiloes = connection.Query<Leilao>(query, new { Username = username });
+                    return leiloes.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public byte getUserTypeLeilao(string username)
         {
             string query = $"SELECT [tipo_utilizador] FROM [JBLeiloes].[dbo].[Utilizador] WHERE [username] = '{username}'";
@@ -101,7 +105,40 @@ namespace JBleiloes.DB.Tabelas
                 return connection.Query<Leilao>(query);
             }
         }
+        public IEnumerable<Leilao> getAllUserLeiloes()
+        {
+            string query = "SELECT * FROM dbo.Leilao INNER JOIN dbo.Utilizador ON Leilao.vendedor = Utilizador.username WHERE Utilizador.tipo_utilizador = 1 AND a_decorrer = 1;";
 
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                return connection.Query<Leilao>(query);
+            }
+
+        }
+
+        public void atualizarValorAtualLeilao(int id_leilao, decimal licitação)
+        {
+            string query = $"UPDATE [dbo].[Leilao] SET [valor_atual] = {licitação} WHERE id = {id_leilao}";
+
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                connection.Query(query);
+            }
+        }
+
+        public IEnumerable<Leilao> getAllAdminLeiloes()
+        {
+            string query = "SELECT * FROM dbo.Leilao INNER JOIN dbo.Utilizador ON Leilao.vendedor = Utilizador.username WHERE Utilizador.tipo_utilizador = 0 AND a_decorrer = 1;";
+
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                return connection.Query<Leilao>(query);
+            }
+
+        }
         public void registaLeilao(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, int id_veiculo)
         {
             byte aprovado = (vendedor == "admin") ? (byte)1 : (byte)0;
@@ -123,6 +160,45 @@ namespace JBleiloes.DB.Tabelas
             }
         }
 
+        public void aprovarLeilao(int idLeilao)
+        {
+            string query = $"UPDATE [dbo].[Leilao] SET [aprovado] = 1 WHERE [id] = {idLeilao}";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    connection.Query(query);
+
+                    query = $"UPDATE [dbo].[Leilao] SET [a_decorrer] = 1 WHERE [id] = {idLeilao}";
+                    connection.Query(query);
+                }
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+
+        public List<Leilao> GetLeiloesDecorrerEAprovados()
+        {
+            List<Leilao> leiloes = new List<Leilao>();
+            string query = "SELECT * FROM dbo.Leilao WHERE a_decorrer = 1 AND aprovado = 1"; // Filter auctions in progress
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    IEnumerable<Leilao> result = connection.Query<Leilao>(query);
+                    leiloes.AddRange(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return leiloes;
+        }
+
         public IEnumerable<Leilao> getLeiloesUtilizador(string username)
         {
             string query = $"SELECT * FROM [dbo].[Leilao] where vendedor = '{username}'";
@@ -139,52 +215,9 @@ namespace JBleiloes.DB.Tabelas
             }
         }
 
-        public IEnumerable<Leilao> GetLeiloesUtilizadorWatchList(string username)
+        public void defineComprador(int id_leilao, string comprador)
         {
-            string query = @"SELECT Leilao.* FROM Watchlist JOIN Leilao ON Watchlist.id_leilao = Leilao.id WHERE Watchlist.id_cliente = @Username";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-                {
-                    connection.Open();
-                    var leiloes = connection.Query<Leilao>(query, new { Username = username });
-                    return leiloes.ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public IEnumerable<Leilao> getAllUserLeiloes()
-        {
-            string query = "SELECT * FROM dbo.Leilao INNER JOIN dbo.Utilizador ON Leilao.vendedor = Utilizador.username WHERE Utilizador.tipo_utilizador = 1;";
-
-            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-            {
-                connection.Open();
-                return connection.Query<Leilao>(query);
-            }
-
-        }
-
-        public IEnumerable<Leilao> getAllAdminLeiloes()
-        {
-            string query = "SELECT * FROM dbo.Leilao INNER JOIN dbo.Utilizador ON Leilao.vendedor = Utilizador.username WHERE Utilizador.tipo_utilizador = 0;";
-
-            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-            {
-                connection.Open();
-                return connection.Query<Leilao>(query);
-            }
-
-        }
-
-        public void atualizarValorAtualLeilao(int id_leilao, decimal licitação)
-        {
-            string query = $"UPDATE [dbo].[Leilao] SET [valor_atual] = {licitação} WHERE id = {id_leilao}";
+            string query = $"UPDATE [dbo].[Leilao] SET [comprador] = '{comprador}' WHERE id = {id_leilao}";
 
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
@@ -193,9 +226,9 @@ namespace JBleiloes.DB.Tabelas
             }
         }
 
-        public void defineComprador(int id_leilao, string comprador)
+        public void removerA_Decorrer(int id_leilao)
         {
-            string query = $"UPDATE [dbo].[Leilao] SET [comprador] = {comprador} WHERE id = {id_leilao}";
+            string query = $"UPDATE [dbo].[Leilao] SET [a_decorrer] = 0 WHERE id = {id_leilao}";
 
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
@@ -204,18 +237,4 @@ namespace JBleiloes.DB.Tabelas
             }
         }
     }      
-}
-
-public class LeilaoRepository
-{
-    public IEnumerable<Leilao> GetAllLeiloes()
-    {
-        string query = "SELECT * FROM [dbo].[Leilao]";
-
-        using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
-        {
-            connection.Open();
-            return connection.Query<Leilao>(query);
-        }
-    }
 }

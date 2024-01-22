@@ -1,4 +1,4 @@
-﻿@page "/lotes"
+﻿@page "/"
 
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
@@ -23,29 +23,38 @@
                 <div class="titulo-class">
                     <h2 style="font-size: 24px;">Lotes do Stand José Bonifácio</h2>
                 </div>
-
                 <div class="butao-leilao-class">
                     <button class="btn btn-link" style="font-size: 16px;" @onclick="() => pagLeiloesStand()">Ver todos os @leiloesAdmins.Count() leilões do Stand ></button>
                 </div>
+            </div>
+            <div class="leiloescards-proxant-section">
+                <div class="ant-cards">
+                    @if (adminCurrentPageIndex > 0)
+                    {
+                        <a @onclick="PreviousAdminLeiloes" style="cursor: pointer;">
+                            <img src="setaEsquerdaTPP.png" alt="Previous Admin Leiloes" class="arrow-img" />
+                        </a>
+                    }
+                </div>
 
-            </div>
-            <div class="admin-container">
-                @foreach (Leilao leilao in GetAdminLeiloesForCurrentPage())
-                {
-                    <div class="admin-rectangle">
-                        <Leilaocard Leilao="leilao" />
-                    </div>
-                }
-            </div>
-            <div class="prox-cards">
-                <!-- For testing purposes, add a button that triggers NextUserLeiloes -->
-                <button class="btn btn-primary" @onclick="NextAdminLeiloes">Next User Leiloes</button>
+                <div class="admin-container">
+                    @foreach (Leilao leilao in GetAdminLeiloesForCurrentPage())
+                    {
+                        <div class="admin-rectangle">
+                            <Leilaocard Leilao="leilao" />
+                        </div>
+                    }
+                </div>
+                <div class="prox-cards">
+                    @if (adminCurrentPageIndex < getMaxPageIndexA() && (adminCurrentPageIndex + 1) * 4 < leiloesAdmins.Count())
+                    {
+                        <a @onclick="NextAdminLeiloes" style="cursor: pointer;">
+                            <img src="setaDireitaTPP.png" alt="Next Admin Leiloes" class="arrow-img" />
+                        </a>
+                    }
+                </div>
             </div>
 
-            <div class="ant-cards">
-                <!-- For testing purposes, add a button that triggers PreviousUserLeiloes -->
-                <button class="btn btn-primary" @onclick="PreviousAdminLeiloes">Previous User Leiloes</button>
-            </div>
         </div>
 
         <div class="line"></div>
@@ -61,26 +70,35 @@
                     <button class="btn btn-link" style="font-size: 16px;" @onclick="() => pagLeiloesUsers()">Ver todos os @leiloesUsers.Count(leilao => leilao.aprovado && leilao.a_decorrer) leilões dos Utilizadores ></button>
                 </div>
             </div>
-            <div class="user-container">
-                @foreach (Leilao leilao in GetUserLeiloesForCurrentPage())
-                {
-                    byte user_type = jb.getUserTypeLeilao(leilao.vendedor);
-                    @if (user_type == 1 && leilao.aprovado == true && leilao.a_decorrer == true)
+            <div class="leiloescards-proxant-section">
+                <div class="ant-cards">
+                    @if (userCurrentPageIndex > 0)
                     {
-                        <div class="rectangle">
-                            <Leilaocard Leilao="leilao" />
-                        </div>
+                        <a @onclick="PreviousUserLeiloes" style="cursor: pointer;">
+                            <img src="setaEsquerdaTPP.png" alt="Previous User Leiloes" class="arrow-img" />
+                        </a>
                     }
-                }
-            </div>
-            <div class="prox-cards">
-                <!-- For testing purposes, add a button that triggers NextUserLeiloes -->
-                <button class="btn btn-primary" @onclick="NextUserLeiloes">Next User Leiloes</button>
-            </div>
-
-            <div class="ant-cards">
-                <!-- For testing purposes, add a button that triggers PreviousUserLeiloes -->
-                <button class="btn btn-primary" @onclick="PreviousUserLeiloes">Previous User Leiloes</button>
+                </div>
+                <div class="user-container">
+                    @foreach (Leilao leilao in GetUserLeiloesForCurrentPage())
+                    {
+                        byte user_type = jb.getUserTypeLeilao(leilao.vendedor);
+                        @if (user_type == 1 && leilao.aprovado == true && leilao.a_decorrer == true)
+                        {
+                            <div class="rectangle">
+                                <Leilaocard Leilao="leilao" />
+                            </div>
+                        }
+                    }
+                </div>
+                 <div class="prox-cards">
+                     @if (userCurrentPageIndex < getMaxPageIndexU() && (userCurrentPageIndex + 1) * 4 < leiloesUsers.Count())
+                     {
+                        <a @onclick="NextUserLeiloes" style="cursor: pointer;">
+                            <img src="setaDireitaTPP.png" alt="Next User Leiloes" class="arrow-img" />
+                        </a>
+                     }
+                 </div>
             </div>
 
         </div>
@@ -106,7 +124,7 @@
     .admin-container,
     .user-container {
         display: flex;
-        gap: 5px; /* Add gap between cards */
+        gap: 15px; /* Add gap between cards */
         padding: 10px;
         align-items: flex-start; /* Allow cards to expand above container limits */
         margin-right: 30px; /* Add right margin */
@@ -131,7 +149,7 @@
         margin-left: auto; /* Push the button to the right */
     }
 
-        .butao-class button {
+        .butao-leilao-class button {
             color: #007bff; /* Blue color for the button text */
             text-decoration: none;
             background: none;
@@ -154,10 +172,6 @@
         margin: 10px;
     }
 
-        .arrow:hover {
-            color: #555;
-        }
-
     .line {
         width: 100%;
         height: 1px;
@@ -168,21 +182,67 @@
     h2 {
         margin-top: 20px;
     }
-</style>
 
+    .leiloescards-proxant-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Align items at the beginning, between, and at the end */
+        align-items: center; /* Vertically center items */
+        gap: 5px; /* Add gap between cards */
+        padding: 10px;
+        margin-right: 30px; /* Add right margin */
+        margin-left: 30px; /* Add left margin */
+    }
+
+    .arrow-img {
+        max-height: 400px;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+    }
+
+    .no-background {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .prox-cards{
+        margin-left: auto;
+    }
+
+</style>
 
 
 @code {
     private static JBLeiloes jb = new JBLeiloes();
 
     private IEnumerable<Leilao> leiloes = DBLeilao.getInstance().GetLeiloes();
-
     private IEnumerable<Leilao> leiloesUsers = DBLeilao.getInstance().getAllUserLeiloes();
     private IEnumerable<Leilao> leiloesAdmins = DBLeilao.getInstance().getAllAdminLeiloes();
 
     // Variable to keep track of the current page index for both admin and user leiloes
     private int adminCurrentPageIndex = 0;
     private int userCurrentPageIndex = 0;
+
+    private int getMaxPageIndexA()
+    {
+        int pageSize = 4;
+        int totalAdminLeiloes = leiloesAdmins.Count();
+        int maxLeiloesToShow = 12;
+
+        return (int)Math.Ceiling((double)maxLeiloesToShow / pageSize) - 1;
+    }
+
+    private int getMaxPageIndexU()
+    {
+        int pageSize = 4;
+        int totalAdminLeiloes = leiloesUsers.Count();
+        int maxLeiloesToShow = 12;
+
+        return (int)Math.Ceiling((double)maxLeiloesToShow / pageSize) - 1;
+    }
 
     // Method to get the leiloes for the current page index for admins
     private ICollection<Leilao> GetAdminLeiloesForCurrentPage()

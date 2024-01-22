@@ -1,8 +1,10 @@
 ﻿@inherits LayoutComponentBase
 
-<div>
-    <div>
-        <img class="logo" src="/JBlogo.png" />
+<div class="center-content">
+    <div class="logo-container">
+        <a href="/">
+            <img class="logo" src="/JBlogo.png" alt="JB Logo" />
+        </a>
     </div>
     <div class="content">
         @Body
@@ -10,10 +12,14 @@
 </div>
 
 <style>
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .logo {
         width: 300px;
-        margin-left: 2%;
+        cursor: pointer;
     }
-
 </style>

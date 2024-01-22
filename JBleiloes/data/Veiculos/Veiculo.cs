@@ -14,9 +14,8 @@
 
         public Veiculo() { }
 
-        public Veiculo(int id,  string marca, string modelo, int ano, decimal quilometragem, string dUA, string seguro, string dono)
+        public Veiculo(string marca, string modelo, int ano, decimal quilometragem, string dUA, string seguro, string dono, int id)
         {
-            this.id = id;
             Marca = marca;
             Modelo = modelo;
             Ano = ano;
@@ -24,6 +23,7 @@
             DUA = dUA;
             Seguro = seguro;
             this.dono = dono;
+            this.id = id;
         }
     }
 }

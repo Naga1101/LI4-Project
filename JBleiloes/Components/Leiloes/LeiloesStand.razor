@@ -1,4 +1,4 @@
-﻿@page "/leiloesUsers"
+﻿@page "/leiloesStand"
 
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.data.Leiloes
@@ -6,9 +6,9 @@
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
-<PageTitle>Leilões de Users</PageTitle>
+<PageTitle>Leilões do Stand</PageTitle>
 
-<h1>Leilões de Users</h1>
+<h1>Leilões do Stand José Bonifácio</h1>
 
 <div class="leilao-container">
     @if (leiloes == null)
@@ -17,7 +17,7 @@
     }
     else
     {
-        @foreach (Leilao leilao in leiloesUsers)
+        @foreach (Leilao leilao in leiloesAdmins)
         {
             <div class="rectangle">
                 <Leilaocard Leilao="leilao" />
@@ -33,8 +33,7 @@
         padding: 10px;
         align-items: flex-start; /* Allow cards to expand above container limits */
         margin-right: 30px; /* Add right margin */
-        margin-left: 30px; /* Add left margin */
-        flex-wrap: wrap; /* Allow wrapping to the next row */
+        margin-left: 30px; /* Add right margin */
     }
 
     .rectangle {
@@ -53,12 +52,14 @@
         color: gray;
         text-decoration: none;
     }
-</style>
 
+</style>
 
 @code {
     private static JBLeiloes jb = new JBLeiloes();
     private static ICollection<Leilao> leiloes = new JBLeiloes().getLeilõesDecorrer();
 
     private ICollection<Leilao> leiloesUsers = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 1).ToList();
+
+    private ICollection<Leilao> leiloesAdmins = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 0).ToList();
 }

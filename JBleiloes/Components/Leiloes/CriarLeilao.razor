@@ -1,4 +1,5 @@
 ﻿@page "/criarleilao"
+
 @using JBleiloes.data
 @using JBleiloes.data.Utilizadores
 @rendermode InteractiveServer
@@ -112,36 +113,38 @@
 
     public int id { get; private set; }
     public string titulo { get; private set; }
-    public decimal valor_inicial { get; private set; }
+    public string valor_inicial { get; private set; }
     public string vendedor { get; private set; }
-    public decimal valor_minimo { get; private set; }
-    public decimal valor_atual { get; private set; }
+    public string valor_minimo { get; private set; }
+    public string valor_atual { get; private set; }
     public string tempo_de_leilao { get; private set; }
     public string? imagem { get; private set; }
     public string Marca { get; private set; }
     public string Modelo { get; private set; }
     public string Descricao { get; private set; }
-    public int Ano { get; private set; }
-    public decimal Quilometragem { get; private set; }
+    public string Ano { get; private set; }
+    public string Quilometragem { get; private set; }
 
     private bool ativar = false;
 
     private bool CanFinalizeListing()
     {
-        // Check if all required fields (except images) are filled
+        bool isValidDecimal(string value) => decimal.TryParse(value, out var result) && result > 0;
+        bool isValidInt(string value) => int.TryParse(value, out var result) && result > 0;
+
         return !string.IsNullOrEmpty(titulo)
-               && valor_inicial > 0
-               && valor_minimo > 0
+               && isValidDecimal(valor_inicial)
+               && isValidDecimal(valor_minimo)
                && !string.IsNullOrEmpty(tempo_de_leilao)
                && !string.IsNullOrEmpty(Marca)
                && !string.IsNullOrEmpty(Modelo)
-               && Ano > 0
-               && Quilometragem > 0;
+               && isValidInt(Ano)
+               && isValidDecimal(Quilometragem);
     }
 
     private void UpdateButton()
     {
-        ativar = CanFinalizeListing(); // Trigger a re-render to update the button style
+        ativar = CanFinalizeListing();
         StateHasChanged();
     }
 
@@ -149,9 +152,18 @@
     {
         if (CanFinalizeListing())
         {
-            DateTime tempo = DateTime.Parse(tempo_de_leilao);
+            if (!decimal.TryParse(valor_inicial, out decimal valor_inicial_parsed) ||
+                !int.TryParse(Ano, out int ano_parsed) ||
+                !decimal.TryParse(valor_minimo, out decimal valor_minimo_parsed) ||
+                !decimal.TryParse(Quilometragem, out decimal quilometragem_parsed))
+            {
+                // Handle parsing errors (e.g., show a message to the user)
+                return;
+            }
+
+            DateTime tempo = DateTime.Parse(tempo_de_leilao); // Consider using DateTime.TryParse here as well
             JBLeiloes jb = new JBLeiloes();
-            jb.registaLeilaoEveiculo(titulo, valor_inicial, SessionUser.getSessionUser().username, valor_minimo, tempo, Marca, Modelo, Ano, Quilometragem);
+            jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, tempo, Marca, Modelo, ano_parsed, quilometragem_parsed);
             NavigationManager.NavigateTo("/meuslotes");
         }
     }

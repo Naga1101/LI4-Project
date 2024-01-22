@@ -1,28 +1,52 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css",
       "PackagePath": "staticwebassets\\JBleiloes.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\JBlogo.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\JBlogo.png",
       "PackagePath": "staticwebassets\\JBlogo.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\app.css",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaDireita.png",
+      "PackagePath": "staticwebassets\\setaDireita.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaDireitaTPP.png",
+      "PackagePath": "staticwebassets\\setaDireitaTPP.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerda.png",
+      "PackagePath": "staticwebassets\\setaEsquerda.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerdaT.png",
+      "PackagePath": "staticwebassets\\setaEsquerdaT.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerdaTP.png",
+      "PackagePath": "staticwebassets\\setaEsquerdaTP.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerdaTPP.png",
+      "PackagePath": "staticwebassets\\setaEsquerdaTPP.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props",

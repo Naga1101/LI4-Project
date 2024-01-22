@@ -5,44 +5,106 @@
 <PageTitle>JBLeilões</PageTitle>
 
 <div class="toolbar">
-    <div class="esq">
-        <div>
-            <img class="logo" src="/JBlogo.png" />
-        </div>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        <a class="btn btn-link" href="/lotes">Lotes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-link" href="/lotes">Pesquisa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
-                    </li>
-                    @if (@SessionUser.getSessionUser().tipo_utilizador != 0)
-                    {
-                        <li class="nav-item">
-                            <a class="btn btn-link" href="/mywacthlist">WatchList</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                           <a class="btn btn-link" href="/aprovar">Aprovações</a>
-                        </li>
-                    }
-                    <li class="nav-item">
-                        <a class="btn btn-link" href="/lotes">Transações</a>
-                    </li>
-                </ul>
+        @if(@SessionUser.getSessionUser() != null){
+        <div class="butoes">
+            <div class="esq">
+                <div>
+                    <a href="/">
+                        <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;"/>
+                    </a>
+                </div>
             </div>
-        </nav>
-        <div class="dir">
-            @SessionUser.getSessionUser().nome
+            <div class="mid">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a class="btn btn-link" href="/">Lotes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-link" href="/">Pesquisa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
+                            </li>
+                            @if(@SessionUser.getSessionUser().tipo_utilizador != 0)
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/mywacthlist">WatchList</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-link" href="/aprovar">Aprovações</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="btn btn-link" href="/transacoes">Transações</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="dir">
+                <div class="user">
+                    @SessionUser.getSessionUser().nome
+                </div>
+                <div class="logout">
+                    <a href="/login" class="dir">
+                        Log out
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+        }
+        else{
+        <div class="butoes">
+            <div class="esq">
+                <div>
+                    <a href="/">
+                        <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;" />
+                    </a>
+                </div>
+            </div>
+            <div class="mid">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a class="btn btn-link" href="/">Lotes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-link disabled-text">Pesquisa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-link disabled-text">Meus Lotes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-link disabled-text">WatchList</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-link disabled-text">Transações</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="dir">
+                <div class="login">
+                    <a href="/login" class="dir">
+                        Iniciar Sessão
+                    </a>
+                </div>
+                <div class="register">
+                    <a href="/registar" class="dir">
+                        Registe-se
+                    </a>
+                </div>
+            </div>
+        </div>
+        }    
 </div>
 <div class="line"></div>
 
@@ -54,24 +116,52 @@
 
 <style>
 
+    .butoes {
+        display: flex;
+        justify-content: space-between; /* Distribute space evenly between children */
+        align-items: center; /* Align items vertically in the center */
+        background-color: inherit;
+        max-height: 120px;
+        overflow: hidden; /* Hide any content that exceeds the max height */
+    }
+
     .logo {
         width: 100px;
-        margin-left: 20%;
     }
 
     .esq {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        background-color: inherit;
+        padding: 10px;
+    }
+
+    .mid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
     }
 
     .dir {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        background-color: inherit;
-        margin-right: 10px;
+        padding: 10px;
+    }
+
+    .user {
+        margin-right: 26px;
+    }
+
+    .logout {
+        margin-top: 5px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .navbar-nav {
@@ -80,6 +170,8 @@
         list-style: none;
         margin: 0;
         padding: 0;
+        justify-content: center;
+        align-items: center;
     }
 
         .navbar-nav li {
@@ -105,8 +197,14 @@
 
 </style>
 
+
+
+
+
 <div id="blazor-error-ui">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+

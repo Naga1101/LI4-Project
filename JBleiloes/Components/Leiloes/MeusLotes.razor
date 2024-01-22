@@ -3,42 +3,19 @@
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
-@inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+@inject NavigationManager NavigationManager
 
 <PageTitle>Seus leilões</PageTitle>
 
 <h1>Leilões do @SessionUser.getSessionUser().nome</h1>
 
 <div class="redirect-link" @onclick="registarLeilao">
-    <p class="link-text">Criar Leilao</p>
+    <p class="link-text">Criar Leilão</p>
 </div>
 
 @*data @user.data_nascimento nif @user.NIF cc @user.n_cc email @user.email nome @user.nome pass @user.password username @user.username tipo @user.tipo_utilizador
 *@
-<h2>Leilões Pendentes de Aprovação </h2>
-<div class="leilao-container">
-    @if (leiloes == null)
-    {
-        <h3>Loading . . . </h3>
-    }
-    else
-    {
-
-        @foreach (Leilao leilao in leiloes)
-        {
-            @if(leilao.aprovado == false){
-            @*<p>Id: @leilao.id Titulo: @leilao.titulo Vendedor: @leilao.vendedor  Estado: @leilao.a_decorrer VeiculoId: @leilao.veiculo Minimo: @leilao.valor_minimo</p>
-    *@
-                <div class="rectangle">
-                    <Leilaocard Leilao="leilao" />
-                </div>
-            }
-        }
-    }
-</div>
-
-
 <h2>Leilões ativos </h2>
 <div class="leilao-container">
     @if (leiloes == null)
@@ -47,16 +24,13 @@
     }
     else
     {
-        
         @foreach (Leilao leilao in leiloes)
         {
-            @if(leilao.aprovado == true){
             @*<p>Id: @leilao.id Titulo: @leilao.titulo Vendedor: @leilao.vendedor  Estado: @leilao.a_decorrer VeiculoId: @leilao.veiculo Minimo: @leilao.valor_minimo</p>
             *@
             <div class="rectangle">
                 <Leilaocard Leilao="leilao" />
             </div>
-            }
         }
     }
 </div>
@@ -64,15 +38,18 @@
 <style>
     .leilao-container {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 10px;
-        margin-top: 20px;
+        gap: 5px; /* Add gap between cards */
+        padding: 10px;
+        align-items: flex-start; /* Allow cards to expand above container limits */
+        margin-right: 30px; /* Add right margin */
+        margin-left: 30px; /* Add right margin */
     }
 
     .rectangle {
-        width: 500;
-        height: 500;
+        width: 354px;
+        height: 400px;
+        padding: 10px; /* Add some padding for better spacing */
+        position: relative; /* Add relative positioning for pseudo-element */
     }
 
     .redirect-link {

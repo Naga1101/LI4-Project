@@ -1,0 +1,63 @@
+﻿@page "/perfil/{username}"
+
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+@using JBleiloes.data
+@using JBleiloes.data.Utilizadores
+@using JBleiloes.data.Leiloes
+@using JBleiloes.Components.Leiloes
+
+
+
+<h1>Leilões ativos de @utilizador.nome</h1>
+
+<div class="leilao-container">
+    @if (leiloes == null)
+    {
+        <h3>Loading . . . </h3>
+    }
+    else
+    {
+        @foreach (Leilao leilao in leiloes)
+        {
+            @if (leilao.aprovado == true && leilao.a_decorrer == true)
+            {
+            <div class="rectangle">
+                <Leilaocard Leilao="leilao" />
+            </div>
+            }
+        }
+    }
+</div>
+
+<style>
+
+    .leilao-container {
+        display: flex;
+        gap: 15px; /* Add gap between cards */
+        padding: 10px;
+        align-items: flex-start; /* Allow cards to expand above container limits */
+        margin-right: 30px; /* Add right margin */
+        margin-left: 30px; /* Add right margin */
+    }
+
+
+</style>
+
+@code {
+    [Parameter]
+    public string username { get; set; }
+
+    private IEnumerable<Leilao> leiloes;
+
+    private JBLeiloes jb = new JBLeiloes();
+
+    private Utilizador? utilizador;
+
+    protected override void OnInitialized()
+    {
+        leiloes = jb.getLeiloesUtilizador(username);
+        utilizador = jb.getUtilizador(username);
+    }
+}
