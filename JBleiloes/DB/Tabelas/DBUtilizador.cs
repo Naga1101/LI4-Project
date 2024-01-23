@@ -87,6 +87,26 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
+        public void addFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            DateOnly parsedDate = DateOnly.Parse(data_nascimento);
+
+            string query = "INSERT INTO [dbo].[Utilizador] " +
+                               "([username], [password], [nome], [email], [CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
+                               "VALUES " +
+                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{parsedDate}', '2');";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    connection.Query(query);
+                }
+            }
+
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+
         public bool validateLoginInfo(string username, string password)
         {
             string query= $"SELECT COUNT(*) as UserCount FROM [dbo].[Utilizador] WHERE [username] = '{username}' AND [password] = '{password}'";
@@ -168,5 +188,7 @@ namespace JBleiloes.DB.Tabelas
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
+
+
     }
 }

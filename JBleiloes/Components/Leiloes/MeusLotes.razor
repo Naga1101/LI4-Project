@@ -1,5 +1,6 @@
 ﻿@page "/meuslotes"
 
+@using JBleiloes.DB.Tabelas
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
@@ -8,7 +9,12 @@
 
 <PageTitle>Seus leilões</PageTitle>
 
-<h1>Leilões do @SessionUser.getSessionUser().nome</h1>
+@if (@SessionUser.getSessionUser().tipo_utilizador == 2){
+    <h1>Leilões do Stand</h1>
+}
+else{
+    <h1>Leilões do @SessionUser.getSessionUser().nome</h1>
+}
 
 <div class="redirect-link" @onclick="registarLeilao">
     <p class="link-text">Criar Leilão</p>
@@ -16,6 +22,25 @@
 
 @*data @user.data_nascimento nif @user.NIF cc @user.n_cc email @user.email nome @user.nome pass @user.password username @user.username tipo @user.tipo_utilizador
 *@
+<h2>Leilões pendentes </h2>
+<div class="leilao-container">
+    @if (leiloes == null)
+    {
+        <h3>Loading . . . </h3>
+    }
+    else
+    {
+        @foreach (Leilao leilao in leiloes)
+        {
+            @if(leilao.aprovado == false){
+                <div class="rectangle">
+                    <Leilaocard Leilao="leilao" />
+                </div>
+            }
+        }
+    }
+</div>
+
 <h2>Leilões ativos </h2>
 <div class="leilao-container">
     @if (leiloes == null)
@@ -26,11 +51,12 @@
     {
         @foreach (Leilao leilao in leiloes)
         {
-            @*<p>Id: @leilao.id Titulo: @leilao.titulo Vendedor: @leilao.vendedor  Estado: @leilao.a_decorrer VeiculoId: @leilao.veiculo Minimo: @leilao.valor_minimo</p>
-            *@
-            <div class="rectangle">
-                <Leilaocard Leilao="leilao" />
-            </div>
+            @if (leilao.aprovado == true)
+            {
+                <div class="rectangle">
+                    <Leilaocard Leilao="leilao" />
+                </div>
+            }
         }
     }
 </div>
@@ -75,7 +101,14 @@
     // Call the GetLeiloes method during the component initialization
     protected override void OnInitialized()
     {
-        leiloes = jb.getLeiloesUtilizador(@SessionUser.getSessionUser().getUsername());
+        if (SessionUser.getSessionUser().tipo_utilizador == 1)
+        {
+            leiloes = jb.getLeiloesUtilizador(@SessionUser.getSessionUser().getUsername());
+        }
+        else
+        {
+            leiloes = DBLeilao.getInstance().getAllAdminLeiloes();
+        }
     }
 
     private void registarLeilao()

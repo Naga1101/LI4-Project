@@ -1,5 +1,6 @@
 ﻿using JBleiloes.data.Leiloes;
 using JBleiloes.data.Utilizadores;
+using JBleiloes.data.Veiculos;
 using JBleiloes.DB;
 using JBleiloes.DB.Tabelas;
 
@@ -131,6 +132,15 @@ namespace JBleiloes.data
         public Leilao[] GetHistoricoCompras(string cliente, JBLeiloes jb)
         {
             return db.GetHistoricoCompras (cliente, jb);    
+        }
+
+        public void registerFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            db.addFuncionario(username, password, nome, email, nº_cc, NIF, data_nascimento);
+        }
+        public Veiculo getVeiculo(int id)
+        {
+            return db.getVeiculo(id);
         }
     }
 }

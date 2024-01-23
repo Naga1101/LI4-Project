@@ -6,14 +6,14 @@
 
 <div class="toolbar">
     @if (@SessionUser.getSessionUser() != null)
-    { 
+    {
         @if (@SessionUser.getSessionUser().tipo_utilizador == 0) // admin
-            {
+        {
             <div class="butoes">
                 <div class="esq">
                     <div>
                         <a href="/">
-                            <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;"/>
+                            <img class="logo" src="/JBlogo.png" alt="JB Logo" style="cursor: pointer;" />
                         </a>
                     </div>
                 </div>
@@ -28,10 +28,10 @@
                                     <a class="btn btn-link" href="/">Pesquisa</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="btn btn-link disabled-text" href="/meuslotes">Meus Lotes</a>
+                                    <a class="btn btn-link disabled-text" href="">Meus Lotes</a>
                                 </li>
                                 <li class="nav-item">
-                                     <a class="btn btn-link" href="/aprovar">Aprovações</a>
+                                    <a class="btn btn-link" href="/aprovar">Aprovações</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="btn btn-link" href="/registar">Registar Funcionários</a>
@@ -76,10 +76,10 @@
                                     <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
                                 </li>
                                 <li class="nav-item">
-                                     <a class="btn btn-link" href="/mywacthlist">WatchList</a>
+                                    <a class="btn btn-link" href="/mywacthlist">WatchList</a>
                                 </li>
                                 <li class="nav-item">
-                                     <a class="btn btn-link" href="/">Transações</a>
+                                    <a class="btn btn-link" href="/transacoes">Transações</a>
                                 </li>
                             </ul>
                         </div>
@@ -121,7 +121,7 @@
                                     <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="btn btn-link disabled-text" href="/mywacthlist">WatchList</a>
+                                    <a class="btn btn-link disabled-text" href="/">WatchList</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="btn btn-link disabled-text" href="/">Transações</a>
@@ -143,7 +143,8 @@
             </div>
         }
     }
-    else{
+    else
+    {
         <div class="butoes">
             <div class="esq">
                 <div>
@@ -189,7 +190,7 @@
                 </div>
             </div>
         </div>
-        }    
+    }
 </div>
 <div class="line"></div>
 
@@ -283,5 +284,4 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
-
 

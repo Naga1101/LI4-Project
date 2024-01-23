@@ -3,7 +3,9 @@
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
+@using JBleiloes.DB.Tabelas
 @using JBleiloes.Components.Leiloes
+@rendermode InteractiveServer
 
 
 <PageTitle>Transações</PageTitle>
@@ -14,14 +16,14 @@
 <div class="leilao-container">
     @if (leiloesHistoricoVendas == null)
     {
-        <h3>Loading . . . </h3>
+        <h3> @*Nenhuma venda encontrada.*@ </h3>
     }
     else
     {
         @foreach (Leilao leilao in leiloesHistoricoVendas)
         {
             <div class="rectangle">
-                <Leilaocard Leilao="leilao" />
+                <TransaçãoCard Leilao="leilao" />
             </div>
         }
     }
@@ -31,14 +33,14 @@
 <div class="leilao-container">
     @if (leiloesHistoricoCompras == null)
     {
-        <h3>Loading . . . </h3>
+        <h3> @*Nenhuma compra encontrada*@ </h3>
     }
     else
     {
         @foreach (Leilao leilao in leiloesHistoricoCompras)
         {
             <div class="rectangle">
-                <Leilaocard Leilao="leilao" />
+                <TransaçãoCard Leilao="leilao"/>
             </div>
         }
     }
@@ -74,16 +76,32 @@
 </style>
 
 
-@code {
-    private Utilizador? user = @SessionUser.getSessionUser();
-    private JBLeiloes jb = new JBLeiloes();
-    private Leilao[] leiloesHistoricoVendas;
-    private Leilao[] leiloesHistoricoCompras;
 
+
+@code {
+
+    private IEnumerable<Leilao> leiloesHistoricoCompras;
+    private Leilao[] leiloesHistoricoVendas;
+
+    private JBLeiloes jb = new JBLeiloes();
+
+    private Utilizador? utilizador = SessionUser.getSessionUser();
 
     protected override void OnInitialized()
     {
-        leiloesHistoricoVendas = jb.GetHistoricoVendas(@SessionUser.getSessionUser().getUsername(), jb);
-        leiloesHistoricoVendas = jb.GetHistoricoCompras(@SessionUser.getSessionUser().getUsername(), jb);
+        leiloesHistoricoCompras = jb.GetHistoricoCompras(utilizador.username, jb);
+        leiloesHistoricoVendas = jb.GetHistoricoVendas(utilizador.username, jb);
     }
+
+    /*
+    private Utilizador? user = @SessionUser.getSessionUser();
+    private JBLeiloes jb = new JBLeiloes();
+    private Leilao[] leiloesHistoricoVendas;
+    private IEnumerable<Leilao> leiloesHistoricoCompras;
+
+    protected override void OnInitialized()
+    {
+        //leiloesHistoricoVendas = jb.GetHistoricoVendas(@SessionUser.getSessionUser().getUsername(), jb);
+       leiloesHistoricoCompras = DBHistorico_de_compras.getInstance().GetHistoricoCompras(SessionUser.getSessionUser().username, jb);
+    }*/
 }

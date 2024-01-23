@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using JBleiloes.data.Veiculos;
 using System.Data.SqlClient;
 
 namespace JBleiloes.DB.Tabelas
@@ -37,6 +38,18 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public Veiculo getVeiculo(int id)
+        {
+            string query = $"SELECT * FROM [dbo].[Veiculo] WHERE id = {id} ";
+
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                Veiculo v = connection.QueryFirst<Veiculo>(query);
+                return v;
             }
         }
 

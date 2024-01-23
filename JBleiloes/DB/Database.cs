@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using JBleiloes.data;
 using JBleiloes.data.Leiloes;
 using JBleiloes.data.Utilizadores;
+using JBleiloes.data.Veiculos;
 using JBleiloes.DB.Tabelas;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -173,7 +174,16 @@ namespace JBleiloes.DB
             return DBHistorico_de_compras.GetHistoricoCompras (cliente, jb);
         }
 
+        public void addFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        {
+            DBUtilizador.addFuncionario(username, password, nome, email, nº_cc, NIF, data_nascimento);
 
+        }
+
+        public Veiculo getVeiculo(int id)
+        {
+            return DBVeiculo.getVeiculo(id);
+        }
 
     }
 }

@@ -4,6 +4,7 @@
 @using JBleiloes.Components.Layout
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data
+@using JBleiloes.data.Veiculos
 @using JBleiloes.data.Utilizadores
 @layout MainLayout
 @rendermode InteractiveServer
@@ -23,26 +24,31 @@
     </div>
     <div class="right">
         <form>
-            <h3>Valor inicial @leilao.valor_inicial</h3>
-            <p>Lance atual: @leilao.valor_atual</p>
-            @if (DaysLeft > 0)
+            @if (leilao.a_decorrer == true)
             {
-                <p>Termina em: @DaysLeft d @HoursLeft h</p>
-            }
-            else if (HoursLeft > 0)
-            {
-                <p>Termina em: @HoursLeft h @MinutesLeft m</p>
-            }
-            else if (MinutesLeft > 0)
-            {
-                <p>Termina em: @MinutesLeft m @SecondsLeft s</p>
-            }
-            else
-            {
-                <p>Termina em: @SecondsLeft s</p>
+
+                <h3>Valor inicial @leilao.valor_inicial</h3>
+                <p>Lance atual: @leilao.valor_atual</p>
+
+                @if (DaysLeft > 0)
+                {
+                    <p>Termina em: @DaysLeft d @HoursLeft h</p>
+                }
+                else if (HoursLeft > 0)
+                {
+                    <p>Termina em: @HoursLeft h @MinutesLeft m</p>
+                }
+                else if (MinutesLeft > 0)
+                {
+                    <p>Termina em: @MinutesLeft m @SecondsLeft s</p>
+                }
+                else
+                {
+                    <p>Termina em: @SecondsLeft s</p>
+                }
             }
 
-            @if (user != null && jb.getUtilizador(leilao.vendedor).username != user.username && user.tipo_utilizador != 0)
+            @if (user != null && jb.getUtilizador(leilao.vendedor).username != user.username && user.tipo_utilizador != 0 && user.tipo_utilizador != 2 && leilao.a_decorrer == true)
             {
                 <label for="inputField" onclick="">Sua Licitação:</label>
                 <input type="text" id="inputField" name="inputField" @bind="licitação" placeholder="Licitação mínima de @(getLicitacaoMinima(leilao))" />
@@ -59,7 +65,7 @@
                     }
                 </div>
             }
-            @if(user != null)
+            @if(user != null )
             {
                 @if (SessionUser.getSessionUser().tipo_utilizador == 0 && leilao.aprovado == false)
                 {
@@ -68,9 +74,23 @@
                     </div>
                 }
             }
-            <div class="bottom-right">
-                <p>Sold by: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.vendedor)">@vendedor_name</span></p>
+            @if(leilao.a_decorrer == false)
+            {
+                <p> Licitação vencedora: @leilao.valor_atual</p>
+                <p> Comprador: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.comprador)">@leilao.comprador</span></p>
+                <p> Vendedor: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.vendedor)">@leilao.vendedor</span></p>
+                <h4> Dados Veiculo</h4>
+                <p> Marca: @veiculo.Marca</p>
+                <p> Modelo: @veiculo.Modelo</p>
+                <p> Ano: @veiculo.Ano</p>
+                <p> Quilometragem: @veiculo.Quilometragem</p>               
+                
+            }
+            @if(leilao.a_decorrer == true){
+                <div class="bottom-right">
+                    <p>Sold by: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.vendedor)">@vendedor_name</span></p>
             </div>
+            }
 
         </form>
     </div>
@@ -141,6 +161,7 @@
     private Utilizador? user = @SessionUser.getSessionUser();
 
     private Leilao leilao;
+    private Veiculo veiculo;
 
     private int countDown = 0;
     private int TotalSecondsLeft { get; set; }
@@ -158,6 +179,7 @@
         {
             leilao = jb.getLeilaoId(ident);
             vendedor_name = jb.getUtilizador(leilao.vendedor).nome;
+            veiculo = jb.getVeiculo(leilao.veiculo);
             if (user != null)
             {
                 addedToWatchlist = jb.podeAdicionarWatchList(SessionUser.getSessionUser().username, leilao.id);
@@ -194,13 +216,17 @@
         {
             timer.Dispose();
             string winner = jb.getVencedorLeilao(leilao.id);
-            jb.removerA_Decorrer(leilao.id);
-            if (winner != "null")
+            if (winner != "null" &&  leilao.a_decorrer == true)
             {
+                jb.removerA_Decorrer(leilao.id);
                 jb.addHistoricoCompras(winner, leilao.id);
                 jb.defineComprador(leilao.id, winner);
                 jb.updateDonoVeiculo(leilao.veiculo, winner);
                 jb.addHistoricoVendas(leilao.vendedor, leilao.id);
+            }
+            else
+            {
+                jb.removerA_Decorrer(leilao.id);
             }
         }
     }

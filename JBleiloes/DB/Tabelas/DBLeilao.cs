@@ -130,7 +130,7 @@ namespace JBleiloes.DB.Tabelas
 
         public IEnumerable<Leilao> getAllAdminLeiloes()
         {
-            string query = "SELECT * FROM dbo.Leilao INNER JOIN dbo.Utilizador ON Leilao.vendedor = Utilizador.username WHERE Utilizador.tipo_utilizador = 0 AND a_decorrer = 1;";
+            string query = "SELECT * FROM dbo.Leilao INNER JOIN dbo.Utilizador ON Leilao.vendedor = Utilizador.username WHERE Utilizador.tipo_utilizador = 2 AND Leilao.a_decorrer = 1;";
 
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
@@ -143,8 +143,10 @@ namespace JBleiloes.DB.Tabelas
         {
             byte aprovado = (vendedor == "admin") ? (byte)1 : (byte)0;
 
+            string formattedDate = tempo_de_leilao.ToString("yyyy-MM-dd HH:mm:ss");
+
             string query = $"INSERT INTO [dbo].[Leilao] (titulo, valor_inicial, vendedor, valor_minimo, valor_atual, veiculo, aprovado, a_decorrer, comprador, tempo_de_leilao, imagem)" +
-                           $"VALUES ('{titulo}', {valor_inicial}, '{vendedor}', {valor_minimo}, 0, {id_veiculo}, {aprovado}, 0, NULL, '{tempo_de_leilao}', 'car_image1.jpg')";
+                           $"VALUES ('{titulo}', {valor_inicial}, '{vendedor}', {valor_minimo}, 0, {id_veiculo}, {aprovado}, 0, NULL, '{formattedDate}', 'car_image1.jpg')";
 
             try
             {

@@ -2,12 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\Components",
+    "\\Components\\Leiloes",
     "\\Components\\login",
     "\\Components\\Pages",
+    "\\Components\\Utilizador",
     "\\data",
     "\\DB",
     "\\DB\\Tabelas"
   ],
-  "SelectedNode": "\\DB\\Tabelas\\DBLeilao.cs",
+  "SelectedNode": "\\Components\\Leiloes\\CriarLeilao.razor",
   "PreviewInSolutionExplorer": false
 }

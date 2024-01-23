@@ -30,7 +30,7 @@ namespace JBleiloes.DB.Tabelas
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
                 {
                     connection.Open();
-                    connection.Execute(query);
+                    connection.Query(query);
                 }
             }
             catch (Exception ex)
