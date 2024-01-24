@@ -86,7 +86,7 @@ namespace JBleiloes.data
             db.aprovarLeilao(idLeilao);
         }
 
-        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, DateOnly data_nascimento)
         {
             db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
@@ -134,7 +134,7 @@ namespace JBleiloes.data
             return db.GetHistoricoCompras (cliente, jb);    
         }
 
-        public void registerFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        public void registerFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, DateOnly data_nascimento)
         {
             db.addFuncionario(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }

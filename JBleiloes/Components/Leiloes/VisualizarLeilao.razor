@@ -27,29 +27,33 @@
             @if (leilao.a_decorrer == true)
             {
 
-                <h3>Valor inicial @leilao.valor_inicial</h3>
-                <p>Lance atual: @leilao.valor_atual</p>
+                <h3>Lance atual: <span class="green-text">@leilao.valor_atual€</span></h3>
+                <p>Valor Inicial: @leilao.valor_inicial€</p>
 
                 @if (DaysLeft > 0)
                 {
-                    <p>Termina em: @DaysLeft d @HoursLeft h</p>
+                    <p class="orange-text">Termina em: @DaysLeft d @HoursLeft h</p>
                 }
                 else if (HoursLeft > 0)
                 {
-                    <p>Termina em: @HoursLeft h @MinutesLeft m</p>
+                    <p class="orange-text">Termina em: @HoursLeft h @MinutesLeft m</p>
                 }
                 else if (MinutesLeft > 0)
                 {
-                    <p>Termina em: @MinutesLeft m @SecondsLeft s</p>
+                    <p class="orange-text">Termina em: @MinutesLeft m @SecondsLeft s</p>
                 }
                 else
                 {
-                    <p>Termina em: @SecondsLeft s</p>
+                    <p class="orange-text">Termina em: @SecondsLeft s</p>
                 }
             }
 
             @if (user != null && jb.getUtilizador(leilao.vendedor).username != user.username && user.tipo_utilizador != 0 && user.tipo_utilizador != 2 && leilao.a_decorrer == true)
             {
+                <p><span style="cursor: pointer; text-decoration: underline;">Histórico de licitações:</span></p>
+
+                <br />
+
                 <label for="inputField" onclick="">Sua Licitação:</label>
                 <input type="text" id="inputField" name="inputField" @bind="licitação" placeholder="Licitação mínima de @(getLicitacaoMinima(leilao))" />
 
@@ -88,7 +92,12 @@
             }
             @if(leilao.a_decorrer == true){
                 <div class="bottom-right">
-                    <p>Sold by: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.vendedor)">@vendedor_name</span></p>
+                    @if (SessionUser.getSessionUser() == null){
+                        <p>Sold by: @leilao.vendedor</p>
+                    }
+                    else{                   
+                        <p>Sold by: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.vendedor)">@vendedor_name</span></p>
+                    }
             </div>
             }
 
@@ -117,12 +126,22 @@
         border: 1px solid #ccc;
         margin-left: 20px;
         position: relative;
+        display: flex;
+        flex-direction: column; /* Organize content in a column */
+        justify-content: space-between; /* This will space out the main content and the footer */
+    }
+
+    .orange-text {
+        color: orange;
+    }
+
+    .green-text {
+        color: green;
     }
 
     .bottom-left {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
+        margin-top: auto; /* Pushes to the bottom */
+        padding-top: 20px; /* Adds space above the buttons */
     }
 
     .addWatchlist-button {
@@ -144,10 +163,11 @@
     }
 
     .bottom-right {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
+        position: absolute; /* Position relative to the .right container */
+        bottom: 20px; /* Distance from the bottom */
+        right: 20px; /* Distance from the right */
     }
+
 </style>
 
 @code {
@@ -170,6 +190,9 @@
     private int MinutesLeft { get; set; }
     private int SecondsLeft { get; set; }
     private Timer timer;
+
+    private string selectedImageUrl = "https://via.placeholder.com/450"; // Default image
+
 
     JBLeiloes jb = new JBLeiloes();
 
@@ -263,7 +286,7 @@
         StateHasChanged();
         NavigationManager.NavigateTo("/aprovar");
     }
-
+    
     private void adicionarWatchlist(string username, int idLeilao)
     {
         jb.AdicionarWatchlist(username, idLeilao);

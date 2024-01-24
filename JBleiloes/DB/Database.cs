@@ -78,7 +78,7 @@ namespace JBleiloes.DB
         {
             return DBUtilizador.podeAdicionarWatchList(username, idLeilao);
         }
-        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        public void registerUser(string username, string password, string nome, string email, int nº_cc, int NIF, DateOnly data_nascimento)
         {
             DBUtilizador.addUtilizador(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
@@ -174,7 +174,7 @@ namespace JBleiloes.DB
             return DBHistorico_de_compras.GetHistoricoCompras (cliente, jb);
         }
 
-        public void addFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        public void addFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, DateOnly data_nascimento)
         {
             DBUtilizador.addFuncionario(username, password, nome, email, nº_cc, NIF, data_nascimento);
 

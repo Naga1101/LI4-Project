@@ -7,45 +7,120 @@
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
-<h3>Register</h3>
 
-<div class="form-group">
-    <label for="username">Username:</label>
-    <input id="username" @bind="username" class="form-control" />
+<div class="bg-white d-flex justify-content-center align-items-start vh-100 mt-5">
+    <div class="col-md-4 bg-white p-4 rounded">
+        <h3>Registar</h3>
+        <form>
+            <div class="form-group row">
+                <label for="username" class="col-sm-4 col-form-label">Username:</label>
+                <div class="col-sm-8">
+                    <input id="username" @bind="username" class="form-control" placeholder="Username" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label for="password" class="col-sm-4 col-form-label">Password:</label>
+                <div class="col-sm-8">
+                    <input id="password" @bind="password" type="password" class="form-control" placeholder="Password" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label for="nome" class="col-sm-4 col-form-label">Nome:</label>
+                <div class="col-sm-8">
+                    <input id="nome" @bind="nome" class="form-control" placeholder="Nome" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label for="email" class="col-sm-4 col-form-label">Email:</label>
+                <div class="col-sm-8">
+                    <input id="email" @bind="email" type="email" class="form-control" placeholder="Email" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label for="nCC" class="col-sm-4 col-form-label">Nº_CC:</label>
+                <div class="col-sm-8">
+                    <input id="nCC" @bind="n_cc" class="form-control" placeholder="Nº_CC" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label for="nif" class="col-sm-4 col-form-label">NIF:</label>
+                <div class="col-sm-8">
+                    <input id="nif" @bind="NIF" class="form-control" placeholder="NIF" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label for="dataNascimento" class="col-sm-4 col-form-label">Data Nascimento:</label>
+                <div class="col-sm-8">
+                    <input id="dataNascimento" @bind="data_nascimento" class="form-control" placeholder="Data Nascimento" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <button class="btn btn-primary btn-block" @onclick="registo">Registar</button>
+            </div>
+            <div class="login d-flex align-items-start">
+                <p class="login-text mb-0">Já tem conta?</p>
+                <a href="/login" class="dir">
+                    Login
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
 
-<div class="form-group">
-    <label for="password">Password:</label>
-    <input id="password" @bind="password" type="password" class="form-control" />
-</div>
 
-<div class="form-group">
-    <label for="nome">Nome:</label>
-    <input id="nome" @bind="nome" class="form-control" />
-</div>
+<style>
+    .bg-grey {
+        background-color: #f0f0f0;
+    }
 
-<div class="form-group">
-    <label for="email">Email:</label>
-    <input id="email" @bind="email" type="email" class="form-control" />
-</div>
+    .bg-white {
+        background-color: #ffffff;
+    }
 
-<div class="form-group">
-    <label for="nCC">Nº_CC:</label>
-    <input id="nCC" @bind="n_cc" class="form-control" />
-</div>
+    .password-input {
+        position: relative;
+    }
 
-<div class="form-group">
-    <label for="nif">NIF:</label>
-    <input id="nif" @bind="NIF" class="form-control" />
-</div>
+    .toggle-button {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
 
-<div class="form-group">
-    <label for="dataNascimento">Data Nascimento:</label>
-    <input id="dataNascimento" @bind="data_nascimento" class="form-control" />
-</div>
+    .password-message {
+        margin-top: 5px;
+        color: #888;
+        font-size: 12px;
+    }
 
-<button class="btn btn-primary" @onclick="registo">Register</button>
+    .login {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 10px;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+    }
 
+    .login-text {
+        margin-right: 5px; /* Adjust the margin as needed */
+        display: flex;
+        align-items: flex-end; /* Align the text vertically in the middle */
+    }
+</style>
 
 @code {
 
@@ -53,9 +128,32 @@
     public string password { get; private set; }
     public string nome { get; private set; }
     public string email { get; private set; }
-    public int n_cc { get; private set; }
-    public int NIF { get; private set; }
+    public string n_cc { get; private set; }
+    public string NIF { get; private set; }
     public string data_nascimento { get; private set; }
+
+    private string passwordType = "password";
+    private string toggleButtonText = "Mostrar";
+    private string passwordMessage = "";
+
+    private void TogglePasswordVisibility()
+    {
+        passwordType = passwordType == "password" ? "text" : "password";
+        toggleButtonText = passwordType == "password" ? "Mostrar" : "Ocultar";
+    }
+
+    private void ShowMessage(ChangeEventArgs args)
+    {
+        if (!string.IsNullOrWhiteSpace(password))
+        {
+            passwordMessage = "Password will be shown in the right corner.";
+        }
+        else
+        {
+            passwordMessage = "";
+        }
+    }
+
 
     private bool AllFieldsFilled()
     {
@@ -64,8 +162,8 @@
             && !string.IsNullOrWhiteSpace(password)
             && !string.IsNullOrWhiteSpace(nome)
             && !string.IsNullOrWhiteSpace(email)
-            && n_cc != 0
-            && NIF != 0
+            && int.Parse(n_cc) != 0
+            && int.Parse(NIF) != 0
             && !string.IsNullOrWhiteSpace(data_nascimento);
 
         return allFilled;
@@ -73,12 +171,7 @@
 
     private bool AllFieldsValid()
     {
-        if (!DateTime.TryParseExact(data_nascimento, "yyyy-MM-dd", null, DateTimeStyles.None, out _))
-        {
-            return false;
-        }
-
-        DateTime parsedDate = DateTime.ParseExact(data_nascimento, "yyyy-MM-dd", null);
+        DateOnly parsedDate = DateOnly.ParseExact(data_nascimento, "yyyy-MM-dd", null);
 
         return parsedDate.Day <= 31 && parsedDate.Month <= 12;
     }
@@ -94,15 +187,18 @@
         {
             //falta cond de validar se nao existe ninguem com mesmos dadso
             JBLeiloes jb = new JBLeiloes();
-            Console.WriteLine(nome);
-            if (@SessionUser.getSessionUser().tipo_utilizador == 0)
+            int ncc_parsed = int.Parse(n_cc);
+            int nif_parsed = int.Parse(NIF);
+            DateOnly parsed_date = DateOnly.Parse(data_nascimento);
+
+            if (SessionUser.getSessionUser() != null && @SessionUser.getSessionUser().tipo_utilizador == 0)
             {
-                jb.registerFuncionario(username, password, nome, email, n_cc, NIF, data_nascimento);
+                jb.registerFuncionario(username, password, nome, email, ncc_parsed, nif_parsed, parsed_date);
                 NavigationManager.NavigateTo("/");
             }
             else
             {
-                jb.registerUser(username, password, nome, email, n_cc, NIF, data_nascimento);
+                jb.registerUser(username, password, nome, email, ncc_parsed, nif_parsed, parsed_date);
                 NavigationManager.NavigateTo("/login");
             }
         }

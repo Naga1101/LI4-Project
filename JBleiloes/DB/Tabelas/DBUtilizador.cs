@@ -67,14 +67,13 @@ namespace JBleiloes.DB.Tabelas
             return users;
         }
 
-        public void addUtilizador(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        public void addUtilizador(string username, string password, string nome, string email, int nº_cc, int NIF, DateOnly data_nascimento)
         {
-            DateTime parsedDate = DateTime.Parse(data_nascimento);
 
             string query = "INSERT INTO [dbo].[Utilizador] " +
                                "([username], [password], [nome], [email], [CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
                                "VALUES " +
-                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{parsedDate}', '0');";
+                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{data_nascimento}', '1');";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
@@ -87,14 +86,12 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
-        public void addFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, string data_nascimento)
+        public void addFuncionario(string username, string password, string nome, string email, int nº_cc, int NIF, DateOnly data_nascimento)
         {
-            DateOnly parsedDate = DateOnly.Parse(data_nascimento);
-
             string query = "INSERT INTO [dbo].[Utilizador] " +
                                "([username], [password], [nome], [email], [CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
                                "VALUES " +
-                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{parsedDate}', '2');";
+                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{data_nascimento}', '2');";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
@@ -106,6 +103,7 @@ namespace JBleiloes.DB.Tabelas
 
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
+
 
         public bool validateLoginInfo(string username, string password)
         {
