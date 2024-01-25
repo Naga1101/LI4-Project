@@ -1,6 +1,7 @@
 ﻿@using System
 @using JBleiloes.data.Leiloes
 @using JBleiloes.data.Utilizadores
+@using JBleiloes.data.Veiculos
 @using JBleiloes.DB.Tabelas
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
@@ -18,10 +19,25 @@ else
     <div class="card leilao-card" @onclick="() => showLeilao(Leilao.id)">
         <div class="card-body">
             <h5 class="card-title">@Leilao.titulo</h5>
-            <img class="ilustr" src="https://via.placeholder.com/300" alt="Placeholder Image">
+            <img class="ilustr" src="@Leilao.imagem" alt="Placeholder Image">
             <div class="bottom-info">
-                <p><strong>Ultimo Lance:</strong> $@Leilao.valor_inicial</p>
-                <p><strong>Time Remaining:</strong> @Leilao.tempo_de_leilao</p>
+                <p><strong>Ultimo Lance:</strong> @Leilao.valor_inicial€</p>
+                @if (DaysLeft > 0)
+                {
+                    <p class="orange-text"><strong>Termina em: @DaysLeft d @HoursLeft h</strong></p>
+                }
+                else if (HoursLeft > 0)
+                {
+                    <p class="orange-text"><strong>Termina em: @HoursLeft h @MinutesLeft m</strong></p>
+                }
+                else if (MinutesLeft > 0)
+                {
+                    <p class="orange-text"><strong>Termina em: @MinutesLeft m @SecondsLeft s</strong></p>
+                }
+                else
+                {
+                    <p class="orange-text"><strong>Termina em: @SecondsLeft s</strong></p>
+                }
             </div>
         </div>
     </div>
@@ -110,8 +126,42 @@ else
     [Parameter]
     public Leilao? Leilao { get; set; }
 
+    public Veiculo carro;
+
+    private int countDown = 0;
+    private int TotalSecondsLeft { get; set; }
+    private int DaysLeft { get; set; }
+    private int HoursLeft { get; set; }
+    private int MinutesLeft { get; set; }
+    private int SecondsLeft { get; set; }
+    private Timer timer;
+
+    protected override void OnInitialized()
+    {
+        timer = new Timer(Countdown, null, 0, 1000);
+        carro = DBVeiculo.getInstance().getVeiculo(Leilao.veiculo);
+    }
+
     private void showLeilao(int id)
     {
         NavigationManager.NavigateTo($"/leilao/{id}");
+    }
+
+    private void Countdown(Object stateInfo)
+    {
+        var span = Leilao.tempo_de_leilao - DateTime.Now;
+
+        DaysLeft = span.Days;
+        HoursLeft = span.Hours;
+        MinutesLeft = span.Minutes;
+        SecondsLeft = span.Seconds;
+
+        if (span.TotalSeconds >= 0)
+        {
+            InvokeAsync(() =>
+            {
+                StateHasChanged();
+            });
+        }
     }
 }

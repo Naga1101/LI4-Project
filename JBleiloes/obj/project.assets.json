@@ -510,11 +510,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\JBleiloes.csproj",
+      "projectUniqueName": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
       "projectName": "JBleiloes",
-      "projectPath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\JBleiloes.csproj",
+      "projectPath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
       "packagesPath": "C:\\Users\\Rui\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\obj\\",
+      "outputPath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Rui\\AppData\\Roaming\\NuGet\\NuGet.Config",

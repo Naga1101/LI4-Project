@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "57o2R9Zugto9iUnsSM2dhqOr09k3x94YgqDJuzX6oZN9LT+5eqMgFbf7ttHS/V8r+4sfMhqGpBomBkKgD/zj9w==",
+  "dgSpecHash": "p1ZgxpMmWG9J0314PMNN8VbVqw6aiReH7JZjqOW4oEKmLjDSf/8HM/Q/TTBLzlLqt76QBk0xeWm4EAhd/TYiCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\JBleiloes.csproj",
+  "projectFilePath": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\JBleiloes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rui\\.nuget\\packages\\dapper\\2.1.28\\dapper.2.1.28.nupkg.sha512",
     "C:\\Users\\Rui\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

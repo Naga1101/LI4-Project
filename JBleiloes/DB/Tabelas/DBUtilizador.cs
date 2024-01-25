@@ -187,6 +187,35 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
+        public IEnumerable<string> GetAllUsernames()
+        {
+            string query = "SELECT username FROM Utilizador";
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                return connection.Query<string>(query);
+            }
+        }
+
+        public IEnumerable<int> GetAllNIFs()
+        {
+            string query = "SELECT NIF FROM Utilizador";
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                return connection.Query<int>(query);
+            }
+        }
+
+        public IEnumerable<int> GetAllCCs()
+        {
+            string query = "SELECT CC FROM Utilizador";
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                return connection.Query<int>(query);
+            }
+        }
 
     }
 }

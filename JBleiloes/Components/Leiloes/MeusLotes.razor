@@ -51,7 +51,7 @@ else{
     {
         @foreach (Leilao leilao in leiloes)
         {
-            @if (leilao.aprovado == true)
+            @if (leilao.aprovado == true && leilao.a_decorrer == true)
             {
                 <div class="rectangle">
                     <Leilaocard Leilao="leilao" />

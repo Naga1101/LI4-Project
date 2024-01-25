@@ -15,20 +15,29 @@
 </div>
 
 <div class="container">
-    <div class="left">
-        <h2>Images</h2>
-        <!-- Placeholder content, you can add images here later -->
-        <img src="https://via.placeholder.com/150" alt="Placeholder Image 1">
-        <img src="https://via.placeholder.com/150" alt="Placeholder Image 2">
-        <img src="https://via.placeholder.com/150" alt="Placeholder Image 3">
+<div class="left">
+    <div class="large-image-container">
+        <img src="@selectedImageUrl" alt="Selected Image" class="large-image">
     </div>
+    <div class="thumbnail-container">
+            <img src="EMC1.jpg" alt="Image 1" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC1.jpg"))">
+            <img src="EMC2.jpg" alt="Image 2" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC2.jpg"))">
+            <img src="EMC3.jpg" alt="Image 3" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC3.jpg"))">
+    </div>
+</div>
+
     <div class="right">
         <form>
             @if (leilao.a_decorrer == true)
             {
-
-                <h3>Lance atual: <span class="green-text">@leilao.valor_atual€</span></h3>
-                <p>Valor Inicial: @leilao.valor_inicial€</p>
+                @if(leilao.valor_atual == 0){
+                    <h3>Lance atual: <span class="green-text">@leilao.valor_inicial€</span></h3>
+                }
+                else
+                {
+                    <h3>Lance atual: <span class="green-text">@leilao.valor_atual€</span></h3>
+                }
+               @* <p>Valor Inicial: @leilao.valor_inicial€</p>*@
 
                 @if (DaysLeft > 0)
                 {
@@ -50,15 +59,22 @@
 
             @if (user != null && jb.getUtilizador(leilao.vendedor).username != user.username && user.tipo_utilizador != 0 && user.tipo_utilizador != 2 && leilao.a_decorrer == true)
             {
-                <p><span style="cursor: pointer; text-decoration: underline;">Histórico de licitações:</span></p>
+                <p><span style="cursor: pointer; text-decoration: underline;">Histórico de licitações</span></p>
 
                 <br />
 
-                <label for="inputField" onclick="">Sua Licitação:</label>
-                <input type="text" id="inputField" name="inputField" @bind="licitação" placeholder="Licitação mínima de @(getLicitacaoMinima(leilao))" />
+                <div class="licitacao-container">
+                    <label for="inputField">Sua Licitação:</label>
+                    <input type="text" id="inputField" name="inputField" @bind="licitação" placeholder="Licitação mínima de @(getLicitacaoMinima(leilao))" />
+                    <button type="button" class="confirm-button" @onclick="efetuarLicitação">Confirmar Licitação</button>
+                </div>
 
-                <button type="button" @onclick="efetuarLicitação">Confirmar Licitação</button>
-                <div class="bottom-left">
+                <br/>
+
+                <p><span style="cursor: pointer; text-decoration: underline;">Mais informações</span></p>
+
+                <div class="bottom-left">       
+
                     @if (addedToWatchlist)
                     {
                         <button type="button" class="rmWatchlist-button" @onclick="() => removerWatchlist(SessionUser.getSessionUser().username, leilao.id)"> Remover da Watchlist </button>
@@ -73,15 +89,26 @@
             {
                 @if (SessionUser.getSessionUser().tipo_utilizador == 0 && leilao.aprovado == false)
                 {
-                    <div class="bottom-left">
-                        <button type="button" @onclick="() => aprovar(leilao.id)">Aprovar Leilão</button>
+                    <div class="button-container">
+                        <div class="bottom-left">
+                            <button type="button" @onclick="() => aprovar(leilao.id)">Aprovar Leilão</button>
+                        </div>
+                        <div class="bottom-left">
+                            <button type="button" @onclick="() => aprovar(leilao.id)">Reprovar Leilão</button>
+                        </div>
                     </div>
                 }
             }
             @if(leilao.a_decorrer == false)
             {
-                <p> Licitação vencedora: @leilao.valor_atual</p>
-                <p> Comprador: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.comprador)">@leilao.comprador</span></p>
+                @if (leilao.aprovado == true)
+                {
+                    <p> Licitação vencedora: @leilao.valor_atual€</p>
+                    <p> Comprador: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.comprador)">@leilao.comprador</span></p>
+                }
+                <p> Valor Inicial: @leilao.valor_inicial€</p>
+                <p> Incremento Mínimo: @leilao.valor_minimo€</p>
+                
                 <p> Vendedor: <span style="cursor: pointer; text-decoration: underline;" @onclick="() => profile(leilao.vendedor)">@leilao.vendedor</span></p>
                 <h4> Dados Veiculo</h4>
                 <p> Marca: @veiculo.Marca</p>
@@ -106,6 +133,13 @@
 </div>
 
 <style>
+
+    .button-container {
+        display: flex; /* Enables Flexbox */
+        gap: 10px; /* Adds space between the flex items */
+        justify-content: center; /* Centers the buttons horizontally */
+    }
+
     .title {
         text-align: center;
         margin-bottom: 20px;
@@ -130,6 +164,35 @@
         flex-direction: column; /* Organize content in a column */
         justify-content: space-between; /* This will space out the main content and the footer */
     }
+
+    .licitacao-container {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Adjust the space between elements */
+    }
+
+        .licitacao-container label {
+            margin-right: 5px; /* Adjust space after the label if needed */
+        }
+
+        .licitacao-container input {
+            flex-grow: 1;
+            padding: 3px; /* Adjust to align with the button */
+        }
+
+    .confirm-button {
+        background-color: #007bff; /* Lighter blue color */
+        color: white;
+        border: none;
+        padding: 5px 10px; /* Adjust padding to match the input field */
+        font-size: 0.9em; /* Adjust font size if necessary */
+        cursor: pointer;
+    }
+
+        /* Optional: Add some hover effect for the button */
+        .confirm-button:hover {
+            background-color: #0056b3; /* Slightly darker shade for hover */
+        }
 
     .orange-text {
         color: orange;
@@ -168,6 +231,58 @@
         right: 20px; /* Distance from the right */
     }
 
+    .gallery-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .large-image-container {
+        margin-bottom: 20px;
+        overflow: hidden; /* Add this to prevent large images from overflowing */
+    }
+
+    .large-image {
+        width: 80%; /* Adjust the width as needed */
+        height: 300px; /* Adjust the height to get the desired rectangular shape */
+        object-fit: cover; /* This ensures that the image covers the area without distorting its aspect ratio */
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+    }
+
+    .thumbnail-image {
+        width: 100px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height to get the desired rectangular shape */
+        object-fit: cover; /* This ensures that the image covers the area without distorting its aspect ratio */
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+
+    .thumbnail {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 3px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+
 </style>
 
 @code {
@@ -191,7 +306,7 @@
     private int SecondsLeft { get; set; }
     private Timer timer;
 
-    private string selectedImageUrl = "https://via.placeholder.com/450"; // Default image
+    private string selectedImageUrl = "tiagovski1.jpg";
 
 
     JBLeiloes jb = new JBLeiloes();
@@ -311,4 +426,10 @@
         }
         return leilao.valor_atual + leilao.valor_minimo;
     }
+
+    private void UpdateSelectedImage(string imageUrl)
+    {
+        selectedImageUrl = imageUrl;
+    }
+
 }

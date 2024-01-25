@@ -1,52 +1,168 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\JBleiloes.bundle.scp.css",
       "PackagePath": "staticwebassets\\JBleiloes.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\JBlogo.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\EMC1.jpg",
+      "PackagePath": "staticwebassets\\EMC1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\EMC2.jpg",
+      "PackagePath": "staticwebassets\\EMC2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\EMC3.jpg",
+      "PackagePath": "staticwebassets\\EMC3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\JBlogo.png",
       "PackagePath": "staticwebassets\\JBlogo.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\app.css",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\Volkswagen1.jpg",
+      "PackagePath": "staticwebassets\\Volkswagen1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\Volkswagen2.jpg",
+      "PackagePath": "staticwebassets\\Volkswagen2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\Volkswagen3.jpg",
+      "PackagePath": "staticwebassets\\Volkswagen3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\audir2_1.jpg",
+      "PackagePath": "staticwebassets\\audir2_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\audir3_1.jpg",
+      "PackagePath": "staticwebassets\\audir3_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaDireita.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\fordf1.jpg",
+      "PackagePath": "staticwebassets\\fordf1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\fordf2.jpg",
+      "PackagePath": "staticwebassets\\fordf2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\fordf3.jpg",
+      "PackagePath": "staticwebassets\\fordf3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\genesis1.jpg",
+      "PackagePath": "staticwebassets\\genesis1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\genesis2.jpg",
+      "PackagePath": "staticwebassets\\genesis2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\genesis3.jpg",
+      "PackagePath": "staticwebassets\\genesis3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\malibu2.jpg",
+      "PackagePath": "staticwebassets\\malibu2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\malibu3.jpg",
+      "PackagePath": "staticwebassets\\malibu3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\maliby1.jpg",
+      "PackagePath": "staticwebassets\\maliby1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\martin1.jpg",
+      "PackagePath": "staticwebassets\\martin1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\martin2.jpg",
+      "PackagePath": "staticwebassets\\martin2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\martin3.jpg",
+      "PackagePath": "staticwebassets\\martin3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\mercedes1.jpg",
+      "PackagePath": "staticwebassets\\mercedes1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\mercedes2.jpg",
+      "PackagePath": "staticwebassets\\mercedes2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\mercedes3.jpg",
+      "PackagePath": "staticwebassets\\mercedes3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaDireita.png",
       "PackagePath": "staticwebassets\\setaDireita.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaDireitaTPP.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaDireitaTPP.png",
       "PackagePath": "staticwebassets\\setaDireitaTPP.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerda.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaEsquerda.png",
       "PackagePath": "staticwebassets\\setaEsquerda.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerdaT.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaEsquerdaT.png",
       "PackagePath": "staticwebassets\\setaEsquerdaT.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerdaTP.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaEsquerdaTP.png",
       "PackagePath": "staticwebassets\\setaEsquerdaTP.png"
     },
     {
-      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4-main-nuno\\Projeto-LI4-main-nuno\\JBleiloes\\wwwroot\\setaEsquerdaTPP.png",
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaEsquerdaTPP.png",
       "PackagePath": "staticwebassets\\setaEsquerdaTPP.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\tiagovski1.jpg",
+      "PackagePath": "staticwebassets\\tiagovski1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\tiagovski2.jpg",
+      "PackagePath": "staticwebassets\\tiagovski2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\tiagovski3.jpg",
+      "PackagePath": "staticwebassets\\tiagovski3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\toyotagr1.jpg",
+      "PackagePath": "staticwebassets\\toyotagr1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\toyotagr2.jpg",
+      "PackagePath": "staticwebassets\\toyotagr2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\toyotagr3.jpg",
+      "PackagePath": "staticwebassets\\toyotagr3.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.JBleiloes.Microsoft.AspNetCore.StaticWebAssets.props",
