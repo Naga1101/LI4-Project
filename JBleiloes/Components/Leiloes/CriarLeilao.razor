@@ -23,7 +23,7 @@
             <input type="text" @bind="Ano" placeholder="Ano" @oninput="UpdateButton" />
         </div>
         <div class="input-group">
-            <input type="text" placeholder="Descrição" @oninput="UpdateButton" />
+            <input type="text" @bind="Descricao" placeholder="Descrição" @oninput="UpdateButton" />
         </div>
         <div class="input-group">
             <input type="text" @bind="Quilometragem" placeholder="Quilometragem" @oninput="UpdateButton" />
@@ -46,11 +46,14 @@
     <div class="column">
         <h3>Imagens</h3>
         <div class="input-group">
-            <input type="file" accept="image/*" multiple @onchange="UpdateButton" />
+            <p>Imagens do veículo</p>
+            <InputFile multiple accept="image/*" OnChange="HandleFileInputChange" />
         </div>
         <div class="input-group">
-            <input type="file" accept="image/*" multiple @onchange="UpdateButton" />
+            <p>Seguro e DUA</p>
+            <InputFile multiple accept="image/*" OnChange="HandleFileInputChange" />
         </div>
+
         <div class="input-group">
             @if (!@ativar)
             {
@@ -62,6 +65,7 @@
             }
         </div>
     </div>
+
 </div>
 
 <style>
@@ -118,7 +122,7 @@
     public string valor_minimo { get; private set; }
     public string valor_atual { get; private set; }
     public string tempo_de_leilao { get; private set; }
-    public string? imagem { get; private set; }
+    public string imagem { get; private set; }
     public string Marca { get; private set; }
     public string Modelo { get; private set; }
     public string Descricao { get; private set; }
@@ -142,6 +146,26 @@
                && isValidDecimal(Quilometragem);
     }
 
+    private string imageFileNames = string.Empty;
+
+    private void HandleFileInputChange(InputFileChangeEventArgs e)
+    {
+        var files = e.GetMultipleFiles();
+        var selectedFileNames = files.Select(file => file.Name).ToList();
+
+        // Append new file names to the existing string, separated by "|"
+        if (string.IsNullOrEmpty(imageFileNames))
+        {
+            imageFileNames = string.Join("|", selectedFileNames);
+        }
+        else
+        {
+            imageFileNames += "|" + string.Join("|", selectedFileNames);
+        }
+    }
+
+
+
     private void UpdateButton()
     {
         ativar = CanFinalizeListing();
@@ -161,9 +185,9 @@
                 return;
             }
 
-            DateTime tempo = DateTime.Parse(tempo_de_leilao); // Consider using DateTime.TryParse here as well
+            DateTime tempo = DateTime.Parse(tempo_de_leilao);
             JBLeiloes jb = new JBLeiloes();
-            jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, tempo, Marca, Modelo, ano_parsed, quilometragem_parsed);
+            jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, tempo, Marca, Modelo, ano_parsed, quilometragem_parsed, imageFileNames);
             NavigationManager.NavigateTo("/meuslotes");
         }
     }

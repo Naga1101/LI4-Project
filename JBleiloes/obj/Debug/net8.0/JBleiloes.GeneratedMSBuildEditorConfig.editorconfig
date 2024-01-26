@@ -86,6 +86,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/PopupHistorico.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQb3B1cEhpc3Rvcmljby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/PopupMoreInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQb3B1cE1vcmVJbmZvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Rui/Desktop/Projeto-LI4/JBleiloes/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

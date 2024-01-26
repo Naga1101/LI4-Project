@@ -16,13 +16,18 @@
 
 <div class="container">
 <div class="left">
-    <div class="large-image-container">
+        <div class="large-image-container">
         <img src="@selectedImageUrl" alt="Selected Image" class="large-image">
     </div>
     <div class="thumbnail-container">
-            <img src="EMC1.jpg" alt="Image 1" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC1.jpg"))">
+            @foreach(String image in imageNames)
+            {
+               <img src=@image alt="Image 1" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage(@image))">
+            }
+
+           @*<img src="EMC1.jpg" alt="Image 1" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC1.jpg"))">
             <img src="EMC2.jpg" alt="Image 2" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC2.jpg"))">
-            <img src="EMC3.jpg" alt="Image 3" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC3.jpg"))">
+            <img src="EMC3.jpg" alt="Image 3" class="thumbnail-image" @onclick="@(() => UpdateSelectedImage("EMC3.jpg"))">*@
     </div>
 </div>
 
@@ -59,8 +64,9 @@
 
             @if (user != null && jb.getUtilizador(leilao.vendedor).username != user.username && user.tipo_utilizador != 0 && user.tipo_utilizador != 2 && leilao.a_decorrer == true)
             {
-                <p><span style="cursor: pointer; text-decoration: underline;">Histórico de licitações</span></p>
+                <p><span class="link-style" style="text-decoration: underline;" @onclick="ShowPopupH">Histórico de Licitações</span></p>
 
+                <PopupHistorico @ref="popupH" id_leilao="@leilao.id" />
                 <br />
 
                 <div class="licitacao-container">
@@ -70,9 +76,11 @@
                 </div>
 
                 <br/>
+                <div>
+                    <p><span class="link-style" style="text-decoration: underline;" @onclick="ShowPopup">Mais informações</span></p>
 
-                <p><span style="cursor: pointer; text-decoration: underline;">Mais informações</span></p>
-
+                    <PopupMoreInfo @ref="popup" veiculo="@veiculo" />
+                </div>
                 <div class="bottom-left">       
 
                     @if (addedToWatchlist)
@@ -114,8 +122,16 @@
                 <p> Marca: @veiculo.Marca</p>
                 <p> Modelo: @veiculo.Modelo</p>
                 <p> Ano: @veiculo.Ano</p>
-                <p> Quilometragem: @veiculo.Quilometragem</p>               
-                
+                <p> Quilometragem: @veiculo.Quilometragem</p>
+
+                <p> Estado: Terminado</p>
+
+                @if (leilao.Pago == false && String.Equals(SessionUser.getSessionUser().username, leilao.comprador, StringComparison.OrdinalIgnoreCase))
+                {
+                    <button type="button" class="" @onclick="efetuarPagamento"> Efetuar Pagamento </button>
+                }
+
+               
             }
             @if(leilao.a_decorrer == true){
                 <div class="bottom-right">
@@ -306,7 +322,10 @@
     private int SecondsLeft { get; set; }
     private Timer timer;
 
-    private string selectedImageUrl = "tiagovski1.jpg";
+    private string selectedImageUrl = "";
+    IEnumerable<String> imageNames;
+    private PopupMoreInfo popup;
+    private PopupHistorico popupH;
 
 
     JBLeiloes jb = new JBLeiloes();
@@ -327,6 +346,9 @@
 
             // Start the timer
             timer = new Timer(Countdown, null, 0, 1000);
+
+            selectedImageUrl = GetFirstImageName(leilao.imagem);
+            imageNames = GetImageNames(leilao.imagem);
         }
         else
         {
@@ -357,16 +379,24 @@
             if (winner != "null" &&  leilao.a_decorrer == true)
             {
                 jb.removerA_Decorrer(leilao.id);
-                jb.addHistoricoCompras(winner, leilao.id);
                 jb.defineComprador(leilao.id, winner);
-                jb.updateDonoVeiculo(leilao.veiculo, winner);
-                jb.addHistoricoVendas(leilao.vendedor, leilao.id);
             }
             else
             {
                 jb.removerA_Decorrer(leilao.id);
             }
         }
+    }
+
+    private void efetuarPagamento()
+    {
+        string winner = jb.getVencedorLeilao(leilao.id);
+        jb.addHistoricoCompras(winner, leilao.id);
+        jb.updateDonoVeiculo(leilao.veiculo, winner);
+        jb.addHistoricoVendas(leilao.vendedor, leilao.id);
+        jb.leilaoPago(leilao.id);
+
+        NavigationManager.NavigateTo("/transacoes");
     }
 
 
@@ -401,7 +431,7 @@
         StateHasChanged();
         NavigationManager.NavigateTo("/aprovar");
     }
-    
+
     private void adicionarWatchlist(string username, int idLeilao)
     {
         jb.AdicionarWatchlist(username, idLeilao);
@@ -430,6 +460,37 @@
     private void UpdateSelectedImage(string imageUrl)
     {
         selectedImageUrl = imageUrl;
+    }
+
+    private string GetFirstImageName(string imageFileNames)
+    {
+        if (string.IsNullOrEmpty(imageFileNames))
+        {
+            return null;
+        }
+
+        var imageNames = imageFileNames.Split('|');
+        return imageNames[0];
+    }
+
+    private IEnumerable<string> GetImageNames(string imageFileNames)
+    {
+        if (string.IsNullOrEmpty(imageFileNames))
+        {
+            return Enumerable.Empty<string>();
+        }
+
+        return imageFileNames.Split('|');
+    }
+
+    private void ShowPopup()
+    {
+        popup.Show();
+    }
+
+    private void ShowPopupH()
+    {
+        popupH.Show();
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using JBleiloes.data.Leiloes;
+using JBleiloes.data.Licitacoes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.data.Veiculos;
 using JBleiloes.DB;
@@ -90,9 +91,9 @@ namespace JBleiloes.data
         {
             db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
-        public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
+        public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem, string imagens)
         {
-            db.registaLeilaoEVeiculo(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, Marca, Modelo, Ano, Quilometragem);
+            db.registaLeilaoEVeiculo(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, Marca, Modelo, Ano, Quilometragem, imagens);
         }
         public void addHistoricoVendas(string cliente, int id_leilao)
         {
@@ -141,6 +142,21 @@ namespace JBleiloes.data
         public Veiculo getVeiculo(int id)
         {
             return db.getVeiculo(id);
+        }
+
+        public IEnumerable<Leilao> getLeiloesPorPagarFromUser(string comprador)
+        {
+            return db.getLeiloesPorPagarFromUser(comprador);
+        }
+
+        public void leilaoPago(int id_leilao)
+        {
+            db.leilaoPago(id_leilao);
+        }
+
+        public IEnumerable<Licitacao> getAllLicitacoesFromLeilao(int id_leilao)
+        {
+            return db.getAllLicitacoesFromLeilao(id_leilao);
         }
     }
 }

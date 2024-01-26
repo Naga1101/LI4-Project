@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using JBleiloes.data;
 using JBleiloes.data.Leiloes;
+using JBleiloes.data.Licitacoes;
 using JBleiloes.data.Utilizadores;
 using JBleiloes.data.Veiculos;
 using JBleiloes.DB.Tabelas;
@@ -148,10 +149,10 @@ namespace JBleiloes.DB
             DBVeiculo.updateDonoVeiculo(id_veiculo, new_owner);
         }
 
-        public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem)
+        public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem, string imagens)
         {
             int id_veiculo = DBVeiculo.RegistaVeiculo(Marca, Modelo, Ano, Quilometragem, vendedor);
-            DBLeilao.registaLeilao(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo);
+            DBLeilao.registaLeilao(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo, imagens);
         }
 
         public string getVencedorLeilao(int id_leilao)
@@ -183,6 +184,21 @@ namespace JBleiloes.DB
         public Veiculo getVeiculo(int id)
         {
             return DBVeiculo.getVeiculo(id);
+        }
+
+        public IEnumerable<Leilao> getLeiloesPorPagarFromUser(string comprador)
+        {
+            return DBLeilao.getLeiloesPorPagarFromUser(comprador);
+        }
+
+        public void leilaoPago(int id_leilao)
+        {
+            DBLeilao.leilaoPago(id_leilao);
+        }
+
+        public IEnumerable<Licitacao> getAllLicitacoesFromLeilao(int id_leilao)
+        {
+            return DBLicitacao.getAllLicitacoesFromLeilao(id_leilao);
         }
 
     }

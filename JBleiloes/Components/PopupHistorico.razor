@@ -1,0 +1,95 @@
+﻿@using JBleiloes.data
+@using JBleiloes.data.Licitacoes
+
+@if (IsVisible)
+{
+    <div class="popup">
+        <div class="popup-content">
+            <button @onclick="Close" class="close-button">
+                <img class="image-button" src="close-x.jpg" alt="Close" />
+            </button>
+
+            @foreach (Licitacao licitacao in licitacoes)
+            {
+                <p>Utilizador @licitacao.id_licitador fez uma licitação de @licitacao.valor_licitacao€</p>
+            }
+
+            @*<p>DUA: @veiculo.DUA</p>
+        <p>Seguro: @veiculo.Seguro</p>*@
+        </div>
+    </div>
+}
+
+<style>
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .popup-content {
+        position: relative;
+        background: white;
+        padding: 40px; /* Increased padding */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+        width: 70%; /* Adjusted width */
+        max-width: 800px; /* Max width, adjust as needed */
+        height: auto; /* Height will adjust based on content */
+        max-height: 90%; /* Max height, adjust as needed */
+        overflow: auto; /* Add scrollbar if content overflows */
+    }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    .image-button {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+
+
+@code {
+
+    [Parameter]
+    public int id_leilao { get; set; }
+
+    public bool IsVisible { get; set; }
+
+    private JBLeiloes jb = new JBLeiloes();
+
+    private IEnumerable<Licitacao> licitacoes;
+
+    protected override void OnInitialized()
+    {
+        licitacoes = jb.getAllLicitacoesFromLeilao(id_leilao);
+    }
+
+
+    public void Show()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        IsVisible = false;
+        StateHasChanged();
+    }
+
+}

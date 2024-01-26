@@ -9,39 +9,47 @@
 
 
 <PageTitle>Transações</PageTitle>
-<h2>Historico de vendas </h2>
-<div class="leilao-container">
-    @if (leiloesHistoricoVendas == null)
+
+@if(leiloesPorPagar != null)
+{
+    <h2>Pagamento pendente</h2>
+    @foreach (Leilao leilao in leiloesPorPagar)
     {
-        <h3> @*Nenhuma venda encontrada.*@ </h3>
-    }
-    else
-    {
+        <div class="rectangle">
+            <TransaçãoCard Leilao="leilao" />
+        </div>
+    }   
+}
+
+@if (leiloesHistoricoVendas != null)
+{
+    <h2>Historico de vendas </h2>
+    <div class="leilao-container">
+
         @foreach (Leilao leilao in leiloesHistoricoVendas)
         {
             <div class="rectangle">
                 <TransaçãoCard Leilao="leilao" />
             </div>
         }
-    }
-</div>
+      
+    </div>
+}
 
-<h2>Historico de compras </h2>
-<div class="leilao-container">
-    @if (leiloesHistoricoCompras == null)
-    {
-        <h3> @*Nenhuma compra encontrada*@ </h3>
-    }
-    else
-    {
+@if (leiloesHistoricoCompras != null)
+{
+    <h2>Historico de compras </h2>
+    <div class="leilao-container">
+
         @foreach (Leilao leilao in leiloesHistoricoCompras)
         {
             <div class="rectangle">
                 <TransaçãoCard Leilao="leilao"/>
             </div>
         }
-    }
-</div>
+ 
+    </div>
+}
 
 <style>
     .leilao-container {
@@ -77,8 +85,9 @@
 
 @code {
 
-    private IEnumerable<Leilao> leiloesHistoricoCompras;
-    private Leilao[] leiloesHistoricoVendas;
+    private IEnumerable<Leilao> leiloesHistoricoCompras = null;
+    private Leilao[] leiloesHistoricoVendas = null;
+    private IEnumerable<Leilao> leiloesPorPagar = null;
 
     private JBLeiloes jb = new JBLeiloes();
 
@@ -88,17 +97,6 @@
     {
         leiloesHistoricoCompras = jb.GetHistoricoCompras(utilizador.username, jb);
         leiloesHistoricoVendas = jb.GetHistoricoVendas(utilizador.username, jb);
+        leiloesPorPagar = jb.getLeiloesPorPagarFromUser(utilizador.username);
     }
-
-    /*
-    private Utilizador? user = @SessionUser.getSessionUser();
-    private JBLeiloes jb = new JBLeiloes();
-    private Leilao[] leiloesHistoricoVendas;
-    private IEnumerable<Leilao> leiloesHistoricoCompras;
-
-    protected override void OnInitialized()
-    {
-        //leiloesHistoricoVendas = jb.GetHistoricoVendas(@SessionUser.getSessionUser().getUsername(), jb);
-       leiloesHistoricoCompras = DBHistorico_de_compras.getInstance().GetHistoricoCompras(SessionUser.getSessionUser().username, jb);
-    }*/
 }

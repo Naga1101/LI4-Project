@@ -16,6 +16,7 @@ namespace JBleiloes.data.Leiloes
         public string? comprador { get; private set; }
         public DateTime tempo_de_leilao { get; set; }
         public string? imagem { get; private set; }
+        public bool Pago { get; private set; }
 
         public Leilao(SqlMapper.GridReader reader)
         {
@@ -38,6 +39,7 @@ namespace JBleiloes.data.Leiloes
                     tempo_de_leilao = (DateTime)result.tempo_de_leilao;
                 }
                 imagem = (string)result.imagem;
+                Pago = (bool)result.pago;
             }
         }
 

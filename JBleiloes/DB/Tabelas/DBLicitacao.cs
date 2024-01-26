@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using JBleiloes.data.Licitacoes;
 using System.Data.SqlClient;
 
 namespace JBleiloes.DB.Tabelas
@@ -71,6 +72,21 @@ namespace JBleiloes.DB.Tabelas
             {
                 return "null";
             }
+        }
+
+        public IEnumerable<Licitacao> getAllLicitacoesFromLeilao(int id_leilao)
+        {
+            string query = $"SELECT * FROM [dbo].[licitacao] WHERE id_leilao = {id_leilao}";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    return connection.Query<Licitacao>(query);
+                }
+            }
+            catch(Exception ex) { return null; }
         }
     }
 }

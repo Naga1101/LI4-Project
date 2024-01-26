@@ -15,14 +15,22 @@ else
         <div class="card-body">
             <h5 class="card-title">@Leilao.titulo</h5>
             <div class="bottom-info">
-                <p><strong>Lance Vencedor:</strong> $@Leilao.valor_atual</p>
+                @if (Leilao.Pago == true)
+                {
+                    <p><strong>Lance Vencedor:</strong> $@Leilao.valor_atual</p>
+                }
+                else
+                {
+                    <p><strong>Valor a pagar:</strong> $@Leilao.valor_atual</p>
+                }
                 @if (SessionUser.getSessionUser().username == Leilao.vendedor)
                 {
-                    <p><strong>Comprador:</strong> @Leilao.comprador</p>
+                     <p><strong>Comprador:</strong> @Leilao.comprador</p>
                 }
                 else
                 {
                     <p><strong>Vendedor:</strong> @Leilao.vendedor</p>
+                    <p><strong>Pagamento até:</strong> @dataPagamento(Leilao.tempo_de_leilao)</p>
                 }
             </div>
         </div>
@@ -76,5 +84,12 @@ else
     private void showLeilao(int id)
     {
         NavigationManager.NavigateTo($"/leilao/{id}");
+    }
+
+    private DateTime dataPagamento(DateTime dataPagemento)
+    {
+        DateTime pagamentoate =dataPagemento.AddDays(5);
+
+        return pagamentoate;
     }
 }

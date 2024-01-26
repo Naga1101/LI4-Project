@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\JBleiloes.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\Civic1.jpg",
+      "PackagePath": "staticwebassets\\Civic1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\Civic2.jpg",
+      "PackagePath": "staticwebassets\\Civic2.jpg"
+    },
+    {
       "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\EMC1.jpg",
       "PackagePath": "staticwebassets\\EMC1.jpg"
     },
@@ -33,6 +41,18 @@
       "PackagePath": "staticwebassets\\Volkswagen3.jpg"
     },
     {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\altima1.jpg",
+      "PackagePath": "staticwebassets\\altima1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\altima2.jpg",
+      "PackagePath": "staticwebassets\\altima2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\altima3.jpg",
+      "PackagePath": "staticwebassets\\altima3.jpg"
+    },
+    {
       "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
@@ -53,8 +73,52 @@
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\camry1.jpg",
+      "PackagePath": "staticwebassets\\camry1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\camry2.jpg",
+      "PackagePath": "staticwebassets\\camry2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\camry3.jpg",
+      "PackagePath": "staticwebassets\\camry3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\civic3.jpg",
+      "PackagePath": "staticwebassets\\civic3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\close-x.jpg",
+      "PackagePath": "staticwebassets\\close-x.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\elantra1.jpg",
+      "PackagePath": "staticwebassets\\elantra1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\elantra2.jpg",
+      "PackagePath": "staticwebassets\\elantra2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\elantra3.jpg",
+      "PackagePath": "staticwebassets\\elantra3.jpg"
+    },
+    {
       "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\focus1.jpg",
+      "PackagePath": "staticwebassets\\focus1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\focus2.jpg",
+      "PackagePath": "staticwebassets\\focus2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\focus3.jpg",
+      "PackagePath": "staticwebassets\\focus3.jpg"
     },
     {
       "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\fordf1.jpg",

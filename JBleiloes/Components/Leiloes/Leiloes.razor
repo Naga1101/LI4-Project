@@ -39,7 +39,10 @@
                     @foreach (Leilao leilao in GetAdminLeiloesForCurrentPage())
                     {
                         <div class="admin-rectangle">
-                            <Leilaocard Leilao="leilao" />
+                            @if (aindaDentroTempo(leilao.tempo_de_leilao) == true)
+                            {
+                                <Leilaocard Leilao="leilao" />
+                            }
                         </div>
                     }
                 </div>
@@ -83,9 +86,10 @@
                         byte user_type = jb.getUserTypeLeilao(leilao.vendedor);
                         @if (user_type == 1 && leilao.aprovado == true && leilao.a_decorrer == true)
                         {
-                            <div class="rectangle">
+                            @if (aindaDentroTempo(leilao.tempo_de_leilao) == true)
+                            {
                                 <Leilaocard Leilao="leilao" />
-                            </div>
+                            }
                         }
                     }
                 </div>
@@ -100,24 +104,6 @@
             </div>
 
         </div>
-        
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
-        <p>FILL</p>
     }
 </div>
 
@@ -342,5 +328,11 @@
     private void pagLeiloesStand()
     {
         NavigationManager.NavigateTo($"/leiloesStand");
+    }
+
+    private bool aindaDentroTempo(DateTime data)
+    {
+        if (data.CompareTo(DateTime.Now) < 0) return false;
+        else return true;
     }
 }
