@@ -11,30 +11,48 @@
 <h1>Leilões de Users</h1>
 
 <div class="leilao-container">
-    @if (leiloes == null)
+    @if (leiloesUsers == null)
     {
         <h3>Loading . . . </h3>
     }
     else
     {
-        @foreach (Leilao leilao in leiloesUsers)
-        {
-            <div class="rectangle">
-                <Leilaocard Leilao="leilao" />
-            </div>
-        }
+        <div class="order-word" @onclick="OrderClicked">
+            <img src="/ordenar.png" alt="Ord Image" width="25" height="25" />
+            <span style="color: black;">Ordenar por: </span>
+            <select name="number" @bind="ordem">
+                <option value="rel">Relevância</option>
+                <option value="cresc">Preço mais baixo</option>
+                <option value="decr">Preço mais alto</option>
+                <option value="inic">Mais recente</option>
+                <option value="fim">Mais antigo</option>
+            </select>
+        </div>
+
+        <div class="leiloes-users">
+            @foreach (Leilao leilao in leiloesUsers)
+            {
+                <div class="rectangle">
+                    <Leilaocard Leilao="leilao" />
+                </div>
+            }
+        </div>
     }
 </div>
 
 <style>
-    .leilao-container {
+    .leiloes-users {
         display: flex;
-        gap: 5px; /* Add gap between cards */
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
         padding: 10px;
-        align-items: flex-start; /* Allow cards to expand above container limits */
-        margin-right: 30px; /* Add right margin */
-        margin-left: 30px; /* Add left margin */
-        flex-wrap: wrap; /* Allow wrapping to the next row */
+        margin-right: 30px;
+        margin-left: 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
     }
 
     .rectangle {
@@ -57,8 +75,42 @@
 
 
 @code {
+    public string ordem { get; private set; }
     private static JBLeiloes jb = new JBLeiloes();
     private static ICollection<Leilao> leiloes = new JBLeiloes().getLeilõesDecorrer();
 
-    private ICollection<Leilao> leiloesUsers = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 1).ToList();
+    private ICollection<Leilao> leiloesUsers;
+
+    protected override void OnInitialized()
+    {
+        leiloesUsers = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 1).ToList();
+        leiloes = leiloesUsers;
+    }
+
+    private void OrderClicked()
+    {
+        // Ensure leiloes is initialized
+        leiloes ??= new List<Leilao>();
+
+        if (ordem == "cresc")
+        {
+            leiloesUsers = leiloesUsers.OrderBy(l => l.valor_atual == 0 ? l.valor_inicial : l.valor_atual).ToList();
+        }
+        else if (ordem == "decr")
+        {
+            leiloesUsers = leiloesUsers.OrderByDescending(l => l.valor_atual == 0 ? l.valor_inicial : l.valor_atual).ToList();
+        }
+        else if (ordem == "fim")
+        {
+            leiloesUsers = leiloesUsers.OrderBy(l => Math.Abs((l.tempo_de_leilao - DateTime.Now).TotalSeconds)).ToList();
+        }
+        else if (ordem == "inic")
+        {
+            leiloesUsers = leiloesUsers.OrderByDescending(l => Math.Abs((l.tempo_de_leilao - DateTime.Now).TotalSeconds)).ToList();
+        }
+        else
+        {
+            leiloesUsers = leiloes;
+        }
+    }
 }

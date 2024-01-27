@@ -11,29 +11,48 @@
 <h1>Leilões do Stand José Bonifácio</h1>
 
 <div class="leilao-container">
-    @if (leiloes == null)
+    @if (leiloesStand == null)
     {
         <h3>Loading . . . </h3>
     }
     else
     {
-        @foreach (Leilao leilao in leiloesAdmins)
-        {
-            <div class="rectangle">
-                <Leilaocard Leilao="leilao" />
-            </div>
-        }
+        <div class="order-word" @onclick="OrderClicked">
+            <img src="/ordenar.png" alt="Ord Image" width="25" height="25" />
+            <span style="color: black;">Ordenar por: </span>
+            <select name="number" @bind="ordem">
+                <option value="rel">Relevância</option>
+                <option value="cresc">Preço mais baixo</option>
+                <option value="decr">Preço mais alto</option>
+                <option value="inic">Mais recente</option>
+                <option value="fim">Mais antigo</option>
+            </select>
+        </div>
+
+        <div class="leiloes-stand">
+            @foreach (Leilao leilao in leiloesStand)
+            {
+                <div class="rectangle">
+                    <Leilaocard Leilao="leilao" />
+                </div>
+            }
+        </div>
     }
 </div>
 
 <style>
-    .leilao-container {
+    .leiloes-stand {
         display: flex;
-        gap: 5px; /* Add gap between cards */
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
         padding: 10px;
-        align-items: flex-start; /* Allow cards to expand above container limits */
-        margin-right: 30px; /* Add right margin */
-        margin-left: 30px; /* Add right margin */
+        margin-right: 30px;
+        margin-left: 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
     }
 
     .rectangle {
@@ -56,10 +75,42 @@
 </style>
 
 @code {
+    public string ordem { get; private set; }
     private static JBLeiloes jb = new JBLeiloes();
     private static ICollection<Leilao> leiloes = new JBLeiloes().getLeilõesDecorrer();
 
-    private ICollection<Leilao> leiloesUsers = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 1).ToList();
+    private ICollection<Leilao> leiloesStand;
 
-    private ICollection<Leilao> leiloesAdmins = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 2).ToList();
+    protected override void OnInitialized()
+    {
+        leiloesStand = leiloes.Where(l => jb.getUserTypeLeilao(l.vendedor) == 2).ToList();
+        leiloes = leiloesStand;
+    }
+
+    private void OrderClicked()
+    {
+        // Ensure leiloes is initialized
+        leiloes ??= new List<Leilao>();
+
+        if (ordem == "cresc")
+        {
+            leiloesStand = leiloesStand.OrderBy(l => l.valor_atual == 0 ? l.valor_inicial : l.valor_atual).ToList();
+        }
+        else if (ordem == "decr")
+        {
+            leiloesStand = leiloesStand.OrderByDescending(l => l.valor_atual == 0 ? l.valor_inicial : l.valor_atual).ToList();
+        }
+        else if (ordem == "fim")
+        {
+            leiloesStand = leiloesStand.OrderBy(l => Math.Abs((l.tempo_de_leilao - DateTime.Now).TotalSeconds)).ToList();
+        }
+        else if (ordem == "inic")
+        {
+            leiloesStand = leiloesStand.OrderByDescending(l => Math.Abs((l.tempo_de_leilao - DateTime.Now).TotalSeconds)).ToList();
+        }
+        else
+        {
+            leiloesStand = leiloes;
+        }
+    }
 }

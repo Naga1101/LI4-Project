@@ -200,6 +200,5 @@ namespace JBleiloes.DB
         {
             return DBLicitacao.getAllLicitacoesFromLeilao(id_leilao);
         }
-
     }
 }

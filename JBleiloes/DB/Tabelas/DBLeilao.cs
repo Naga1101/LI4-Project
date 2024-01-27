@@ -97,7 +97,7 @@ namespace JBleiloes.DB.Tabelas
 
         public IEnumerable<Leilao> GetLeiloes()
         {
-            string query = "SELECT * FROM [dbo].[Leilao]";
+            string query = "SELECT * FROM [dbo].[Leilao] WHERE aprovado = 1 AND a_decorrer = 1";
 
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
@@ -105,6 +105,7 @@ namespace JBleiloes.DB.Tabelas
                 return connection.Query<Leilao>(query);
             }
         }
+
         public IEnumerable<Leilao> getAllUserLeiloes()
         {
             string query = "SELECT * FROM dbo.Leilao INNER JOIN dbo.Utilizador ON Leilao.vendedor = Utilizador.username WHERE Utilizador.tipo_utilizador = 1 AND a_decorrer = 1;";

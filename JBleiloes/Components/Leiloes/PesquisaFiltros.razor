@@ -1,0 +1,428 @@
+﻿@page "/pesquisar"
+
+@using JBleiloes.data.Leiloes
+@using JBleiloes.data
+@using JBleiloes.DB.Tabelas
+@using JBleiloes.data.Veiculos;
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<PageTitle>Leilões a decorrer</PageTitle>
+
+<div class="section-container">
+    <div class="leiloes-users-header">
+        <div class="filter-order-section">
+            <div class="filter-word" @onclick="ToggleFilterSection">
+                <img src="/filtro.png" alt="Filter Image" width="20" height="20" />
+                <span style="color: black;">Filtrar: </span>
+            </div>
+
+            <div class="order-word" @onclick="OrderClicked">
+                <img src="/ordenar.png" alt="Ord Image" width="25" height="25" />
+                <span style="color: black;">Ordenar por: </span>
+                <select name="number" @bind="ordem">
+                    <option value="rel">Relevância</option>
+                    <option value="cresc">Preço mais baixo</option>
+                    <option value="decr">Preço mais alto</option>
+                    <option value="inic">Mais recente</option>
+                    <option value="fim">Mais antigo</option>
+                </select>
+            </div>
+        </div>
+        @if (showFilterSection)
+        {
+            <div class="Filtros">
+                <div class="filter-marca">
+                    <label for="marcaFilter">Marca:</label>
+                    @foreach (var marcaGroup in getMarcasDistintas())
+                    {
+                        <div>
+                            <input type="checkbox" id="@($"marca_{marcaGroup.Marca}")" @onchange="() => ToggleMarca(marcaGroup.Marca)" />
+                            <label for="@($"marca_{marcaGroup.Marca}")">@($"{marcaGroup.Marca} ({marcaGroup.Count})")</label>
+                        </div>
+                    }
+                </div>
+                <div class="vl"></div>
+                <div class="filter-ano">
+                    <label for="yearFilter">Ano:</label>
+                    @foreach (var anoGroup in getAnosDistintos())
+                    {
+                        <div>
+                            <input type="checkbox" id="@($"ano_{anoGroup.Ano}")" @onchange="() => ToggleAno(anoGroup.Ano)" />
+                            <label for="@($"ano_{anoGroup.Ano}")">@($"{anoGroup.Ano} ({anoGroup.Count})")</label>
+                        </div>
+                    }
+                </div>
+                <div class="vl"></div>
+                <div class="filter-section">
+                    <label for="precoFilter">Preço:</label>
+                    <label for="priceRangeMin">De:</label>
+                    <input type="number" id="priceRangeMin" @bind="minPrice" step="1000" />
+                    <label for="priceRangeMax">Até:</label>
+                    <input type="number" id="priceRangeMax" @bind="maxPrice" step="1000" />
+                </div>
+                <div class="vl"></div>
+                <div class="filter-section">
+                    <label for="quilometragemFilter">Quilometragem:</label>
+                    <label for="quilometragemMin">No mínimo:</label>
+                    <input type="number" id="quilometragemMin" @bind="minQuilometragem" step="1000" />
+                    <label for="quilometragemMax">Máximo de:</label>
+                    <input type="number" id="quilometragemMax" @bind="maxQuilometragem" step="1000" />
+                </div>
+
+            </div>
+            <div class="line"></div>
+        }
+    </div>
+    <div class="leiloescards-proxant-section">
+        <div class="user-container">
+            @foreach (Leilao leilao in GetFilteredLeiloes())
+            {
+                @if (leilao.aprovado == true && leilao.a_decorrer == true && IsWithinPriceRange(leilao.valor_atual == 0 ? leilao.valor_inicial : leilao.valor_atual))
+                {
+                    @if (aindaDentroTempo(leilao.tempo_de_leilao) == true)
+                    {
+                        <Leilaocard Leilao="leilao" />
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .filter-ano {
+        display: grid;
+        grid-template-columns: max-content;
+        align-content: center;
+        justify-items: start;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .filter-marca{
+        display: grid;
+        grid-template-columns: max-content;
+        align-content: center;
+        justify-items: start;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .vl {
+        width: 0px;
+        height: 240px;
+        float: left;
+        border: 1px inset;
+    }
+    .line {
+        border-block: 1px solid #2b2b27cf;
+        margin: 20px;
+    }
+
+    .filter-order-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 10px;
+        top: 0;
+        z-index: 1;
+        background-color: white;
+        flex-direction: row;
+        align-content: center;
+    }
+
+    .order-word {
+        margin-left: 10px;
+        cursor: default;
+    }
+
+    .filter-word {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+        .filter-word span,
+        .order-word span {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            .filter-word span:hover,
+            .order-word span:hover {
+                text-decoration: none;
+            }
+
+    .filter-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
+        align-content: stretch;
+        justify-content: normal;
+        align-items: start;
+    }
+
+        .filter-section label {
+            margin-top: 5px; /* Adjust as needed */
+        }
+
+    .Filtros {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-content: center;
+        justify-content: space-around;
+    }
+
+    .leiloes-users-header {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .titulo-class {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .leiloescards-proxant-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 10px;
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+
+    .user-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .arrow-img {
+        max-height: 400px;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+    }
+
+    .no-background {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .prox-cards {
+        margin-left: auto;
+    }
+
+    .price-range-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .price-range-slider {
+        width: 100%;
+        height: 10px;
+        background-color: #ddd;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .price-range-fill {
+        height: 100%;
+        border-radius: 5px;
+        background-color: #007bff;
+        position: absolute;
+        left: 0;
+        width: calc((@maxPrice - @minPrice) / @maxPossibleValue * 100%);
+    }
+
+    .price-range-thumb {
+        width: 20px;
+        height: 20px;
+        background-color: #007bff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: calc((@price - @minPrice) / @maxPossibleValue * 100%);
+    }
+
+    .price-inputs {
+        display: flex;
+        gap: 10px;
+    }
+
+    .PriceFilter-input {
+        padding: 5px;
+        width: 80px;
+    }
+</style>
+
+
+
+@code {
+    public string ordem { get; private set; }
+    private bool showFilterSection = false;
+    private decimal minQuilometragem = 0;
+    private decimal maxQuilometragem = 1000000;
+    private decimal minPrice = 0;
+    private decimal maxPrice = 1000000000;
+    private decimal price = 0;
+    private decimal maxPossibleValue = 1000000000;
+    private List<string> selectedMarcas = new List<string>();
+    private List<int> selectedAnos = new List<int>();
+    private static JBLeiloes jb = new JBLeiloes();
+
+    private IEnumerable<Leilao> leiloes = DBLeilao.getInstance().GetLeiloes();
+    private IEnumerable<Leilao> leiloesRev = DBLeilao.getInstance().GetLeiloes();
+
+    private bool IsWithinPriceRange(decimal price)
+    {
+        return price >= minPrice && price <= maxPrice;
+    }
+
+    private bool aindaDentroTempo(DateTime data)
+    {
+        return data.CompareTo(DateTime.Now) >= 0;
+    }
+
+    private void ToggleMarca(string marca)
+    {
+        if (selectedMarcas.Contains(marca))
+        {
+            selectedMarcas.Remove(marca);
+        }
+        else
+        {
+            selectedMarcas.Add(marca);
+        }
+    }
+
+    private IEnumerable<Leilao> GetFilteredLeiloes()
+    {
+        if (selectedMarcas.Count == 0 && selectedAnos.Count == 0)
+        {
+            return leiloes;
+        }
+
+        return leiloes.Where(leilao =>
+            leilao.aprovado &&
+            leilao.a_decorrer &&
+            aindaDentroTempo(leilao.tempo_de_leilao) &&
+            (selectedMarcas.Count == 0 || selectedMarcas.Contains(GetMarcaForLeilao(leilao))) &&
+            (selectedAnos.Count == 0 || selectedAnos.Contains(GetAnoForVeiculo(leilao))) &&
+            IsWithinPriceRange(leilao.valor_atual == 0 ? leilao.valor_inicial : leilao.valor_atual) &&
+            IsWithinQuilometragem(GetQuilometragemForVeiculo(leilao)));
+    }
+
+
+
+    private string GetMarcaForLeilao(Leilao leilao)
+    {
+        Veiculo veiculo = DBVeiculo.getInstance().getVeiculo(leilao.veiculo);
+        return veiculo?.Marca ?? string.Empty;
+    }
+
+    private void ToggleFilterSection()
+    {
+        showFilterSection = !showFilterSection;
+    }
+
+    private void OrderClicked()
+    {
+        if (ordem == "cresc")
+        {
+            leiloes = leiloes.OrderBy(l => l.valor_atual == 0 ? l.valor_inicial : l.valor_atual);
+        }
+        else if (ordem == "decr")
+        {
+            leiloes = leiloes.OrderByDescending(l => l.valor_atual == 0 ? l.valor_inicial : l.valor_atual);
+        }
+        else if (ordem == "fim")
+        {
+            leiloes = leiloes.OrderBy(l => Math.Abs((l.tempo_de_leilao - DateTime.Now).TotalSeconds));
+        }
+        else if (ordem == "inic")
+        {
+            leiloes = leiloes.OrderByDescending(l => Math.Abs((l.tempo_de_leilao - DateTime.Now).TotalSeconds));
+        }
+        else
+        {
+            leiloes = leiloesRev;
+        }
+    }
+
+    private IEnumerable<MarcaCount> getMarcasDistintas()
+    {
+        var distinctMarcas = leiloes
+            .Where(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao))
+            .Select(leilao => GetMarcaForLeilao(leilao))
+            .Distinct();
+
+        return distinctMarcas
+            .OrderBy(marca => marca) // Order marcas alphabetically
+            .Select(marca => new MarcaCount
+                {
+                    Marca = marca,
+                    Count = leiloes.Count(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao) && GetMarcaForLeilao(leilao) == marca)
+                });
+    }
+
+
+    private IEnumerable<AnoCount> getAnosDistintos()
+    {
+        var distinctAnos = leiloes
+            .Where(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao))
+            .Select(leilao => GetAnoForVeiculo(leilao))
+            .Distinct();
+
+        return distinctAnos.OrderByDescending(ano => ano).Select(ano => new AnoCount
+            {
+                Ano = ano,
+                Count = leiloes.Count(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao) && GetAnoForVeiculo(leilao) == ano)
+            });
+    }
+
+
+    private void ToggleAno(int ano)
+    {
+        if (selectedAnos.Contains(ano))
+        {
+            selectedAnos.Remove(ano);
+        }
+        else
+        {
+            selectedAnos.Add(ano);
+        }
+    }
+
+    private int GetAnoForVeiculo(Leilao leilao)
+    {
+        Veiculo veiculo = DBVeiculo.getInstance().getVeiculo(leilao.veiculo);
+        return veiculo?.Ano ?? 0;
+    }
+
+    private decimal GetQuilometragemForVeiculo(Leilao leilao)
+    {
+        Veiculo veiculo = DBVeiculo.getInstance().getVeiculo(leilao.veiculo);
+        decimal quilometragem = veiculo?.Quilometragem ?? 0;
+
+        return quilometragem;
+    }
+
+    private bool IsWithinQuilometragem(decimal quilometragem)
+    {
+        Console.WriteLine($"Quilometragem: {quilometragem}, Min: {minQuilometragem}, Max: {maxQuilometragem}");
+        bool withinRange = quilometragem >= minQuilometragem && quilometragem <= maxQuilometragem;
+
+        return withinRange;
+    }
+}

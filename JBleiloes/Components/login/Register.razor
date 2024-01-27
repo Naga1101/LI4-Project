@@ -3,10 +3,10 @@
 @using JBleiloes.data
 @using System.Globalization
 @using JBleiloes.data.Utilizadores
+@using JBleiloes.DB.Tabelas;
 @layout LoginLayout
-@rendermode InteractiveServer
 @inject NavigationManager NavigationManager
-
+@rendermode InteractiveServer
 
 <div class="bg-white d-flex justify-content-center align-items-start vh-100 mt-5">
     <div class="col-md-4 bg-white p-4 rounded">
@@ -60,16 +60,23 @@
                     <input id="dataNascimento" @bind="data_nascimento" class="form-control" placeholder="Data Nascimento" />
                 </div>
             </div>
+            @if (!string.IsNullOrEmpty(validationMessage))
+            {
+                <p style="color: red; margin-top: 10px;">@validationMessage</p>
+            }
             <br />
             <div class="form-group row">
-                <button class="btn btn-primary btn-block" @onclick="registo">Registar</button>
+                <button class="btn btn-success btn-block" @onclick="registo">Registar</button>
             </div>
-            <div class="login d-flex align-items-start">
-                <p class="login-text mb-0">Já tem conta?</p>
-                <a href="/login" class="dir">
-                    Login
-                </a>
-            </div>
+            @if (SessionUser.getSessionUser() == null || SessionUser.getSessionUser().tipo_utilizador != 0)
+            {
+                <div class="login d-flex align-items-start">
+                    <p class="login-text mb-0">Já tem conta?</p>
+                    <a href="/login" class="dir">
+                        Login
+                    </a>
+                </div>
+            }
         </form>
     </div>
 </div>
@@ -135,6 +142,7 @@
     private string passwordType = "password";
     private string toggleButtonText = "Mostrar";
     private string passwordMessage = "";
+    private string validationMessage = "";
 
     private void TogglePasswordVisibility()
     {
@@ -171,37 +179,98 @@
 
     private bool AllFieldsValid()
     {
-        DateOnly parsedDate = DateOnly.ParseExact(data_nascimento, "yyyy-MM-dd", null);
+        DBUtilizador dbUtilizador = DBUtilizador.getInstance();
 
-        return parsedDate.Day <= 31 && parsedDate.Month <= 12;
+        DateTime parsedDate = DateTime.ParseExact(data_nascimento, "dd-MM-yyyy", null);
+
+        DateTime eighteenYearsAgo = DateTime.Now.AddYears(-18);
+        bool isEighteenOrOlder = parsedDate <= eighteenYearsAgo;
+
+        bool isDateValid = parsedDate.Day <= DateTime.DaysInMonth(parsedDate.Year, parsedDate.Month) && parsedDate.Month <= 12;
+
+        bool usernameExists = dbUtilizador.UsernameExists(username);
+        bool emailExists = dbUtilizador.EmailExists(email);
+        bool nifExists = dbUtilizador.NIFExists(int.Parse(NIF));
+        bool ccExists = dbUtilizador.CCExists(int.Parse(n_cc));
+
+        return isEighteenOrOlder && isDateValid && !usernameExists && !nifExists && !ccExists && !emailExists;
     }
 
+    private void mensagemErro()
+    {
+        DBUtilizador dbUtilizador = DBUtilizador.getInstance();
+
+        DateTime parsedDate = DateTime.ParseExact(data_nascimento, "dd-MM-yyyy", null);
+
+        DateTime eighteenYearsAgo = DateTime.Now.AddYears(-18);
+        bool isEighteenOrOlder = parsedDate <= eighteenYearsAgo;
+
+        bool isDateValid = parsedDate.Day <= DateTime.DaysInMonth(parsedDate.Year, parsedDate.Month) && parsedDate.Month <= 12;
+
+        bool usernameExists = dbUtilizador.UsernameExists(username);
+        bool emailExists = dbUtilizador.EmailExists(email);
+        bool nifExists = dbUtilizador.NIFExists(int.Parse(NIF));
+        bool ccExists = dbUtilizador.CCExists(int.Parse(n_cc));
+
+        if (usernameExists)
+        {
+            validationMessage = "Nome de utilizador inválido. ";
+        }
+
+        else if (emailExists)
+        {
+            validationMessage = "Email já está em uso. ";
+        }
+
+        else if (ccExists)
+        {
+            validationMessage = "CC já em uso. ";
+        }
+
+        else if (nifExists)
+        {
+            validationMessage = "NIF já em uso. ";
+        }
+
+        else if (!isEighteenOrOlder)
+        {
+            validationMessage = "O utilizador deve ter pelo menos 18 anos. ";
+        }
+    }
 
     private void registo()
     {
-        if (!AllFieldsFilled() && !AllFieldsValid())
+        if (!AllFieldsFilled() || !AllFieldsValid())
         {
-
+            if (!AllFieldsFilled())
+            {
+                validationMessage = "Por favor, preencha todos os campos.";
+            }
+            else
+            {
+                mensagemErro();
+            }
         }
         else
         {
-            //falta cond de validar se nao existe ninguem com mesmos dadso
             JBLeiloes jb = new JBLeiloes();
             int ncc_parsed = int.Parse(n_cc);
             int nif_parsed = int.Parse(NIF);
-            DateOnly parsed_date = DateOnly.Parse(data_nascimento);
+            DateTime originalDate = DateTime.ParseExact(data_nascimento, "dd-MM-yyyy", null);
+            string switchedDateString = originalDate.ToString("yyyy-MM-dd");
+            DateOnly switchedDate = DateOnly.Parse(switchedDateString);
+
 
             if (SessionUser.getSessionUser() != null && @SessionUser.getSessionUser().tipo_utilizador == 0)
             {
-                jb.registerFuncionario(username, password, nome, email, ncc_parsed, nif_parsed, parsed_date);
+                jb.registerFuncionario(username, password, nome, email, ncc_parsed, nif_parsed, switchedDate);
                 NavigationManager.NavigateTo("/");
             }
             else
             {
-                jb.registerUser(username, password, nome, email, ncc_parsed, nif_parsed, parsed_date);
+                jb.registerUser(username, password, nome, email, ncc_parsed, nif_parsed, switchedDate);
                 NavigationManager.NavigateTo("/login");
             }
         }
     }
-
 }

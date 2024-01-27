@@ -95,7 +95,7 @@
             }
             @if(user != null )
             {
-                @if (SessionUser.getSessionUser().tipo_utilizador == 0 && leilao.aprovado == false)
+                @if (user != null  && SessionUser.getSessionUser().tipo_utilizador == 0 && leilao.aprovado == false)
                 {
                     <div class="button-container">
                         <div class="bottom-left">

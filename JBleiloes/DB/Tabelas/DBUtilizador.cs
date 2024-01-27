@@ -73,7 +73,7 @@ namespace JBleiloes.DB.Tabelas
             string query = "INSERT INTO [dbo].[Utilizador] " +
                                "([username], [password], [nome], [email], [CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
                                "VALUES " +
-                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{data_nascimento}', '1');";
+                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, CONVERT(date, '{data_nascimento}', 105), '1');";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
@@ -91,7 +91,7 @@ namespace JBleiloes.DB.Tabelas
             string query = "INSERT INTO [dbo].[Utilizador] " +
                                "([username], [password], [nome], [email], [CC], [NIF], [data_nascimento], [tipo_utilizador]) " +
                                "VALUES " +
-                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, '{data_nascimento}', '2');";
+                               $"('{username}', '{password}', '{nome}', '{email}', {nº_cc}, {NIF}, CONVERT(date, '{data_nascimento}', 105), '2');";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
@@ -187,35 +187,56 @@ namespace JBleiloes.DB.Tabelas
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
-        public IEnumerable<string> GetAllUsernames()
+        public bool UsernameExists(string username)
         {
-            string query = "SELECT username FROM Utilizador";
+            string query = "SELECT COUNT(*) FROM dbo.Utilizador WHERE username = @Username";
+            var parameters = new { Username = username };
+
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
                 connection.Open();
-                return connection.Query<string>(query);
+                int count = connection.QuerySingle<int>(query, parameters);
+                return count > 0;
             }
         }
 
-        public IEnumerable<int> GetAllNIFs()
+        public bool NIFExists(int nif)
         {
-            string query = "SELECT NIF FROM Utilizador";
+            string query = "SELECT COUNT(*) FROM dbo.Utilizador WHERE NIF = @NIF";
+            var parameters = new { NIF = nif };
+
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
                 connection.Open();
-                return connection.Query<int>(query);
+                int count = connection.QuerySingle<int>(query, parameters);
+                return count > 0;
             }
         }
 
-        public IEnumerable<int> GetAllCCs()
+        public bool CCExists(int cc)
         {
-            string query = "SELECT CC FROM Utilizador";
+            string query = "SELECT COUNT(*) FROM dbo.Utilizador WHERE CC = @CC";
+            var parameters = new { CC = cc };
+
             using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
             {
                 connection.Open();
-                return connection.Query<int>(query);
+                int count = connection.QuerySingle<int>(query, parameters);
+                return count > 0;
             }
         }
 
+        public bool EmailExists(string email)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.Utilizador WHERE email = @Email";
+            var parameters = new { Email = email };
+
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                int count = connection.QuerySingle<int>(query, parameters);
+                return count > 0;
+            }
+        }
     }
 }

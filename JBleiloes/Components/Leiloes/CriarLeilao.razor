@@ -39,7 +39,15 @@
             <input type="text" @bind="valor_minimo" placeholder="Valor Mínimo de Licitação" @oninput="UpdateButton" />
         </div>
         <div class="input-group">
-            <input type="text" @bind=tempo_de_leilao placeholder="Final do Leilão ex:2000-10-10 00:00:00" @oninput="UpdateButton" />
+            <div class="label">Nº de dias ativo:</div>
+            <select name="number" @bind="tempo_de_leilao">
+                <option value="3">3</option>
+                <option value="7">7</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
         </div>
     </div>
 
@@ -121,13 +129,14 @@
     public string vendedor { get; private set; }
     public string valor_minimo { get; private set; }
     public string valor_atual { get; private set; }
-    public string tempo_de_leilao { get; private set; }
+    public int tempo_de_leilao { get; private set; }
     public string imagem { get; private set; }
     public string Marca { get; private set; }
     public string Modelo { get; private set; }
     public string Descricao { get; private set; }
     public string Ano { get; private set; }
     public string Quilometragem { get; private set; }
+    private DateTime dataFinal { get; set; }
 
     private bool ativar = false;
 
@@ -139,7 +148,7 @@
         return !string.IsNullOrEmpty(titulo)
                && isValidDecimal(valor_inicial)
                && isValidDecimal(valor_minimo)
-               && !string.IsNullOrEmpty(tempo_de_leilao)
+               && tempo_de_leilao > 0
                && !string.IsNullOrEmpty(Marca)
                && !string.IsNullOrEmpty(Modelo)
                && isValidInt(Ano)
@@ -164,7 +173,17 @@
         }
     }
 
-
+    private void UpdateEndTime()
+    {
+        if (tempo_de_leilao > 0)
+        {
+            dataFinal = DateTime.Now.AddDays(tempo_de_leilao);
+        }
+        else
+        {
+            dataFinal = DateTime.MinValue;
+        }
+    }
 
     private void UpdateButton()
     {
@@ -185,9 +204,9 @@
                 return;
             }
 
-            DateTime tempo = DateTime.Parse(tempo_de_leilao);
+            UpdateEndTime();
             JBLeiloes jb = new JBLeiloes();
-            jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, tempo, Marca, Modelo, ano_parsed, quilometragem_parsed, imageFileNames);
+            jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, dataFinal, Marca, Modelo, ano_parsed, quilometragem_parsed, imageFileNames);
             NavigationManager.NavigateTo("/meuslotes");
         }
     }

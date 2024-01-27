@@ -25,7 +25,7 @@
                                     <a class="btn btn-link" href="/">Lotes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="btn btn-link" href="/">Pesquisa</a>
+                                    <a class="btn btn-link" href="/pesquisar">Pesquisa</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="btn btn-link" href="/aprovar">Aprovações</a>
@@ -70,7 +70,7 @@
                                     <a class="btn btn-link" href="/">Lotes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="btn btn-link" href="/">Pesquisa</a>
+                                    <a class="btn btn-link" href="/pesquisar">Pesquisa</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
@@ -87,7 +87,9 @@
                 </div>
                 <div class="dir">
                     <div class="user">
-                        @SessionUser.getSessionUser().nome
+                        <a href="/meuslotes">
+                            @SessionUser.getSessionUser().nome
+                        </a>
                     </div>
                     <div class="logout">
                         <a href="/login" class="dir">
@@ -115,7 +117,7 @@
                                     <a class="btn btn-link" href="/">Lotes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="btn btn-link" href="/">Pesquisa</a>
+                                    <a class="btn btn-link disabled-text">Pesquisa</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="btn btn-link" href="/meuslotes">Meus Lotes</a>
@@ -201,6 +203,10 @@
 
 
 <style>
+    .user a {
+        text-decoration: none;
+        color: black;
+    }
 
     .butoes {
         display: flex;
