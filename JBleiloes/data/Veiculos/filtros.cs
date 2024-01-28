@@ -11,4 +11,10 @@ namespace JBleiloes.data.Veiculos
         public int Ano { get; set; }
         public int Count { get; set; }
     }
+
+    public class ModeloCount
+    {
+        public string Modelo { get; set; }
+        public int Count { get; set; }
+    }
 }

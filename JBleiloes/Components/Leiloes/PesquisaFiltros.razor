@@ -42,6 +42,19 @@
                         </div>
                     }
                 </div>
+
+                <div class="vl"></div>
+                <div class="filter-marca">
+                    <label for="modeloFilter">Modelo:</label>
+                    @foreach (var modeloGroup in getModelosDistintos())
+                    {
+                        <div>
+                            <input type="checkbox" id="@($"modelo_{modeloGroup.Modelo}")" @onchange="() => ToggleModelo(modeloGroup.Modelo)" />
+                            <label for="@($"modelo_{modeloGroup.Modelo}")">@($"{modeloGroup.Modelo} ({modeloGroup.Count})")</label>
+                        </div>
+                    }
+                </div>
+
                 <div class="vl"></div>
                 <div class="filter-ano">
                     <label for="yearFilter">Ano:</label>
@@ -279,6 +292,7 @@
     private decimal price = 0;
     private decimal maxPossibleValue = 1000000000;
     private List<string> selectedMarcas = new List<string>();
+    private List<string> selectedModelos = new List<string>();
     private List<int> selectedAnos = new List<int>();
     private static JBLeiloes jb = new JBLeiloes();
 
@@ -308,9 +322,21 @@
         }
     }
 
+    private void ToggleModelo(string modelo)
+    {
+        if (selectedModelos.Contains(modelo))
+        {
+            selectedModelos.Remove(modelo);
+        }
+        else
+        {
+            selectedModelos.Add(modelo);
+        }
+    }
+
     private IEnumerable<Leilao> GetFilteredLeiloes()
     {
-        if (selectedMarcas.Count == 0 && selectedAnos.Count == 0)
+        if (selectedMarcas.Count == 0 && selectedAnos.Count == 0 && selectedModelos.Count == 0)
         {
             return leiloes;
         }
@@ -320,6 +346,7 @@
             leilao.a_decorrer &&
             aindaDentroTempo(leilao.tempo_de_leilao) &&
             (selectedMarcas.Count == 0 || selectedMarcas.Contains(GetMarcaForLeilao(leilao))) &&
+            (selectedModelos.Count == 0 || selectedModelos.Contains(GetModeloForLeilao(leilao))) &&
             (selectedAnos.Count == 0 || selectedAnos.Contains(GetAnoForVeiculo(leilao))) &&
             IsWithinPriceRange(leilao.valor_atual == 0 ? leilao.valor_inicial : leilao.valor_atual) &&
             IsWithinQuilometragem(GetQuilometragemForVeiculo(leilao)));
@@ -331,6 +358,12 @@
     {
         Veiculo veiculo = DBVeiculo.getInstance().getVeiculo(leilao.veiculo);
         return veiculo?.Marca ?? string.Empty;
+    }
+
+    private string GetModeloForLeilao(Leilao leilao)
+    {
+        Veiculo veiculo = DBVeiculo.getInstance().getVeiculo(leilao.veiculo);
+        return veiculo?.Modelo ?? string.Empty;
     }
 
     private void ToggleFilterSection()
@@ -375,6 +408,22 @@
                 {
                     Marca = marca,
                     Count = leiloes.Count(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao) && GetMarcaForLeilao(leilao) == marca)
+                });
+    }
+
+    private IEnumerable<ModeloCount> getModelosDistintos()
+    {
+        var distincModelos = leiloes
+            .Where(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao))
+            .Select(leilao => GetModeloForLeilao(leilao))
+            .Distinct();
+
+        return distincModelos
+            .OrderBy(modelo => modelo)
+            .Select(modelo => new ModeloCount
+                {
+                    Modelo = modelo,
+                    Count = leiloes.Count(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao) && GetModeloForLeilao(leilao) == modelo)
                 });
     }
 
