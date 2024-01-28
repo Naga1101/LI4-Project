@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Components",
-    "\\Components\\Leiloes",
+    "\\Components\\admin",
+    "\\Components\\Layout",
     "\\Components\\login",
     "\\Components\\Pages",
     "\\Components\\Utilizador",
@@ -10,6 +11,6 @@
     "\\DB",
     "\\DB\\Tabelas"
   ],
-  "SelectedNode": "\\JBleiloes.sln",
+  "SelectedNode": "\\DB\\Tabelas\\DBLeilao.cs",
   "PreviewInSolutionExplorer": false
 }
