@@ -10,6 +10,6 @@
     "\\DB",
     "\\DB\\Tabelas"
   ],
-  "SelectedNode": "\\Components\\Leiloes\\VisualizarLeilao.razor",
+  "SelectedNode": "\\DB\\Tabelas\\DBLeilao.cs",
   "PreviewInSolutionExplorer": false
 }

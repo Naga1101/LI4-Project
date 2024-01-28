@@ -263,5 +263,26 @@ namespace JBleiloes.DB.Tabelas
                 }
             }
         }
+        public IEnumerable<Leilao> getLeiloesAcabados()
+        {
+            string query = $"SELECT * FROM [dbo].[Leilao] WHERE [aprovado] = 1 AND [a_decorrer] = 0";
+
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                return connection.Query<Leilao>(query);
+            }
+        }
+
+        public void removeLeilaoNaoPago(int id_leilao)
+        {
+            string query = $"DELETE FROM [dbo].[Leilao] WHERE id = {id_leilao}";
+
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                connection.Query(query);
+            }
+        }
     }      
 }

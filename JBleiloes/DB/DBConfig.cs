@@ -9,8 +9,8 @@ namespace JBleiloes.DB
     {
         public static string Connection()
         {
-            return "Data Source=.;Initial Catalog=JBLeiloes;Integrated Security=True;Encrypt=False";
-            //return "Data Source=DESKTOP-47F6BAO\\SQLEXPRESS;Initial Catalog=JBLeiloes;Integrated Security=True;Encrypt=False";
+            //return "Data Source=.;Initial Catalog=JBLeiloes;Integrated Security=True;Encrypt=False";
+           return "Data Source=DESKTOP-47F6BAO\\SQLEXPRESS;Initial Catalog=JBLeiloes;Integrated Security=True;Encrypt=False";
         }
     }
 }

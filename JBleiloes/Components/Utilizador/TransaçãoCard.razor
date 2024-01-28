@@ -15,22 +15,40 @@ else
         <div class="card-body">
             <h5 class="card-title">@Leilao.titulo</h5>
             <div class="bottom-info">
-                @if (Leilao.Pago == true)
+                @if (SessionUser.getSessionUser().username != Leilao.vendedor && SessionUser.getSessionUser().username != Leilao.comprador)
                 {
-                    <p><strong>Lance Vencedor:</strong> $@Leilao.valor_atual</p>
-                }
-                else
-                {
-                    <p><strong>Valor a pagar:</strong> $@Leilao.valor_atual</p>
-                }
-                @if (SessionUser.getSessionUser().username == Leilao.vendedor)
-                {
-                     <p><strong>Comprador:</strong> @Leilao.comprador</p>
-                }
-                else
-                {
+                    @if (Leilao.Pago == true)
+                    {
+                        <p><strong>Estado:</strong> Pago</p>
+                    }
+                    else
+                    {
+                        <p><strong>Estado:</strong> Pendente Pagamento</p>
+                        <p><strong>Pagamento até:</strong> @dataPagamento(Leilao.tempo_de_leilao)</p>
+                    }
+                    <p><strong>Lance vencedor:</strong> @Leilao.valor_atual€</p>
                     <p><strong>Vendedor:</strong> @Leilao.vendedor</p>
-                    <p><strong>Pagamento até:</strong> @dataPagamento(Leilao.tempo_de_leilao)</p>
+                    <p><strong>Comprador:</strong> @Leilao.comprador</p>
+                }
+                else{
+
+                    @if (Leilao.Pago == true)
+                    {
+                        <p><strong>Lance Vencedor:</strong> @Leilao.valor_atual</p>
+                    }
+                    else
+                    {
+                        <p><strong>Valor a pagar:</strong> $@Leilao.valor_atual</p>
+                    }
+                    @if (SessionUser.getSessionUser().username == Leilao.vendedor)
+                    {
+                         <p><strong>Comprador:</strong> @Leilao.comprador</p>
+                    }
+                    else
+                    {
+                        <p><strong>Vendedor:</strong> @Leilao.vendedor</p>
+                        <p><strong>Pagamento até:</strong> @dataPagamento(Leilao.tempo_de_leilao)</p>
+                    }
                 }
             </div>
         </div>

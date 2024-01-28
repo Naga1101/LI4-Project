@@ -200,5 +200,16 @@ namespace JBleiloes.DB
         {
             return DBLicitacao.getAllLicitacoesFromLeilao(id_leilao);
         }
+
+        public IEnumerable<Leilao> getLeiloesAcabados()
+        {
+            return DBLeilao.getLeiloesAcabados();
+        }
+
+        public void removeLeilaoNaoPago(int id_leilao)
+        {
+            DBLeilao.removeLeilaoNaoPago(id_leilao);
+        }
+
     }
 }

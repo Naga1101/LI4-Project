@@ -109,6 +109,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\filtro.png",
+      "PackagePath": "staticwebassets\\filtro.png"
+    },
+    {
       "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\focus1.jpg",
       "PackagePath": "staticwebassets\\focus1.jpg"
     },
@@ -179,6 +183,10 @@
     {
       "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\mercedes3.jpg",
       "PackagePath": "staticwebassets\\mercedes3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\ordenar.png",
+      "PackagePath": "staticwebassets\\ordenar.png"
     },
     {
       "Id": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaDireita.png",

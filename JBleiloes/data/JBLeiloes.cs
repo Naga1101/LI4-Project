@@ -158,5 +158,15 @@ namespace JBleiloes.data
         {
             return db.getAllLicitacoesFromLeilao(id_leilao);
         }
+
+        public IEnumerable<Leilao> getLeiloesAcabados()
+        {
+            return db.getLeiloesAcabados();
+        }
+
+        public void removeLeilaoNaoPago(int id_leilao)
+        {
+            db.removeLeilaoNaoPago(id_leilao);
+        }
     }
 }

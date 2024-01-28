@@ -10,44 +10,63 @@
 
 <PageTitle>Transações</PageTitle>
 
-@if(leiloesPorPagar != null)
+@if (utilizador.tipo_utilizador != 0)
 {
-    <h2>Pagamento pendente</h2>
-    @foreach (Leilao leilao in leiloesPorPagar)
+
+    @if (leiloesPorPagar != null)
     {
-        <div class="rectangle">
-            <TransaçãoCard Leilao="leilao" />
-        </div>
-    }   
-}
-
-@if (leiloesHistoricoVendas != null)
-{
-    <h2>Historico de vendas </h2>
-    <div class="leilao-container">
-
-        @foreach (Leilao leilao in leiloesHistoricoVendas)
+        <h2>Pagamento pendente</h2>
+        @foreach (Leilao leilao in leiloesPorPagar)
         {
             <div class="rectangle">
                 <TransaçãoCard Leilao="leilao" />
             </div>
         }
-      
-    </div>
+
+    }
+
+    @if (leiloesHistoricoVendas != null)
+    {
+        <h2>Historico de vendas </h2>
+        <div class="leilao-container">
+
+            @foreach (Leilao leilao in leiloesHistoricoVendas)
+            {
+                <div class="rectangle">
+                    <TransaçãoCard Leilao="leilao" />
+                </div>
+            }
+
+        </div>
+    }
+
+    @if (leiloesHistoricoCompras != null)
+    {
+        <h2>Historico de compras </h2>
+        <div class="leilao-container">
+
+            @foreach (Leilao leilao in leiloesHistoricoCompras)
+            {
+                <div class="rectangle">
+                    <TransaçãoCard Leilao="leilao"/>
+                </div>
+            }
+
+        </div>
+    }
 }
 
-@if (leiloesHistoricoCompras != null)
+else
 {
-    <h2>Historico de compras </h2>
-    <div class="leilao-container">
+    <h2>Transações</h2>
 
-        @foreach (Leilao leilao in leiloesHistoricoCompras)
+    <div class="leilao-container">
+        @foreach(Leilao leilao in todosLeiloesAcabados)
         {
             <div class="rectangle">
                 <TransaçãoCard Leilao="leilao"/>
             </div>
         }
- 
     </div>
 }
 
@@ -88,6 +107,7 @@
     private IEnumerable<Leilao> leiloesHistoricoCompras = null;
     private Leilao[] leiloesHistoricoVendas = null;
     private IEnumerable<Leilao> leiloesPorPagar = null;
+    private IEnumerable<Leilao> todosLeiloesAcabados = null;
 
     private JBLeiloes jb = new JBLeiloes();
 
@@ -98,5 +118,29 @@
         leiloesHistoricoCompras = jb.GetHistoricoCompras(utilizador.username, jb);
         leiloesHistoricoVendas = jb.GetHistoricoVendas(utilizador.username, jb);
         leiloesPorPagar = jb.getLeiloesPorPagarFromUser(utilizador.username);
+        todosLeiloesAcabados = jb.getLeiloesAcabados();
+
+        verificaLeiloesPorPagar();
+
+    }
+
+    private DateTime dataPagamento(DateTime dataPagemento)
+    {
+        DateTime pagamentoate = dataPagemento.AddDays(5);
+
+        return pagamentoate;
+    }
+
+    private void verificaLeiloesPorPagar()
+    {
+        foreach(Leilao leilao in leiloesPorPagar)
+        {
+            DateTime datacheck = dataPagamento(leilao.tempo_de_leilao);
+
+            if(datacheck.Date  < DateTime.Now)
+            {
+                jb.removeLeilaoNaoPago(leilao.id);
+            }
+        }
     }
 }

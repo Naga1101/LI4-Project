@@ -7,6 +7,9 @@
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
+@using System.Diagnostics;
+
+
 <PageTitle>Leilões a decorrer</PageTitle>
 
 <div class="section-container">
@@ -78,7 +81,7 @@
         <div class="user-container">
             @foreach (Leilao leilao in GetFilteredLeiloes())
             {
-                @if (leilao.aprovado == true && leilao.a_decorrer == true && IsWithinPriceRange(leilao.valor_atual == 0 ? leilao.valor_inicial : leilao.valor_atual))
+                @if (leilao.aprovado == true && leilao.a_decorrer == true && IsWithinPriceRange(leilao.valor_atual == 0 ? leilao.valor_inicial : leilao.valor_atual) && IsWithinQuilometragem(GetQuilometragemForVeiculo(leilao)))
                 {
                     @if (aindaDentroTempo(leilao.tempo_de_leilao) == true)
                     {
@@ -273,6 +276,7 @@
     private bool showFilterSection = false;
     private decimal minQuilometragem = 0;
     private decimal maxQuilometragem = 1000000;
+    private decimal quilometragem = 0;
     private decimal minPrice = 0;
     private decimal maxPrice = 1000000000;
     private decimal price = 0;
@@ -286,6 +290,8 @@
 
     private bool IsWithinPriceRange(decimal price)
     {
+        Debug.WriteLine($"PRICE WITHIN: {price}, Min: {minQuilometragem}, Max: {maxQuilometragem}");
+
         return price >= minPrice && price <= maxPrice;
     }
 
@@ -413,14 +419,16 @@
     private decimal GetQuilometragemForVeiculo(Leilao leilao)
     {
         Veiculo veiculo = DBVeiculo.getInstance().getVeiculo(leilao.veiculo);
+        if (veiculo == null){ Debug.WriteLine("MACACO"); }
         decimal quilometragem = veiculo?.Quilometragem ?? 0;
+        Debug.WriteLine($"Quilometragem: {quilometragem}, Min: {minPrice}, Max: {maxPrice}");
 
         return quilometragem;
     }
 
     private bool IsWithinQuilometragem(decimal quilometragem)
     {
-        Console.WriteLine($"Quilometragem: {quilometragem}, Min: {minQuilometragem}, Max: {maxQuilometragem}");
+        Debug.WriteLine($"Quilometragem WITHIN: {quilometragem}, Min: {minQuilometragem}, Max: {maxQuilometragem}");
         bool withinRange = quilometragem >= minQuilometragem && quilometragem <= maxQuilometragem;
 
         return withinRange;

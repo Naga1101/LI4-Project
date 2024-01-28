@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9Qje2MVd+rEdXdKiwvrh/VJxFsYdJCn9hSKsUKdAoyM=",
+  "Hash": "1fL+TvQnibLKOSNq17HTz1FTeXBIDf7hmeo1zAAXyx0=",
   "Source": "JBleiloes",
   "BasePath": "_content/JBleiloes",
   "Mode": "Default",
@@ -473,6 +473,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
+      "Identity": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\filtro.png",
+      "SourceId": "JBleiloes",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\",
+      "BasePath": "_content/JBleiloes",
+      "RelativePath": "filtro.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\filtro.png"
+    },
+    {
       "Identity": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\focus1.jpg",
       "SourceId": "JBleiloes",
       "SourceType": "Discovered",
@@ -832,6 +851,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\mercedes3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\ordenar.png",
+      "SourceId": "JBleiloes",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\",
+      "BasePath": "_content/JBleiloes",
+      "RelativePath": "ordenar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ordenar.png"
     },
     {
       "Identity": "C:\\Users\\Rui\\Desktop\\Projeto-LI4\\JBleiloes\\wwwroot\\setaDireita.png",
