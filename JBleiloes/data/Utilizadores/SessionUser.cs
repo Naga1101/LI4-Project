@@ -16,6 +16,7 @@
 
         public static Utilizador? getSessionUser()
         {
+            if (sessionUser == null) { return  null; }
             return sessionUser;
         }
     }

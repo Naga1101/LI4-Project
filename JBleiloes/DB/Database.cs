@@ -149,10 +149,17 @@ namespace JBleiloes.DB
             DBVeiculo.updateDonoVeiculo(id_veiculo, new_owner);
         }
 
-        public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem, string imagens)
+        public void registaLeilaoEVeiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem, string imagens, int tipo_user)
         {
             int id_veiculo = DBVeiculo.RegistaVeiculo(Marca, Modelo, Ano, Quilometragem, vendedor);
-            DBLeilao.registaLeilao(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo, imagens);
+            if (tipo_user == 1)
+            {
+                DBLeilao.registaLeilao(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo, imagens);
+            }
+            else
+            {
+                DBLeilao.registaLeilaoFuncionario(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo, imagens);
+            }
         }
 
         public string getVencedorLeilao(int id_leilao)
@@ -211,5 +218,9 @@ namespace JBleiloes.DB
             DBLeilao.removeLeilaoNaoPago(id_leilao);
         }
 
+        public void registaLeilaoFuncionario(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, int id_veiculo, string imagens)
+        {
+            DBLeilao.registaLeilaoFuncionario(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo, imagens);
+        }
     }
 }

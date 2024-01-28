@@ -21,10 +21,16 @@
             <br />
             <div class="form-group row">
                 <label for="password" class="col-sm-4 col-form-label">Password:</label>
-                <div class="col-sm-8">
-                    <input id="password" @bind="password" type="password" class="form-control" placeholder="Password" />
+                <div class="col-sm-8 password-input">
+                    <input id="password" @bind="password" @bind:event="oninput" type="@passwordType" class="form-control" placeholder="Password" />
+                    <button type="button" class="toggle-button" @onclick="TogglePasswordVisibility">@toggleButtonText</button>
                 </div>
+                @if (!string.IsNullOrWhiteSpace(passwordMessage))
+                {
+                    <small class="password-message">@passwordMessage</small>
+                }
             </div>
+
             <br />
             <div class="form-group row">
                 <label for="nome" class="col-sm-4 col-form-label">Nome:</label>
@@ -154,7 +160,7 @@
     {
         if (!string.IsNullOrWhiteSpace(password))
         {
-            passwordMessage = "Password will be shown in the right corner.";
+            passwordMessage = "Insert a password";
         }
         else
         {

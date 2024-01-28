@@ -91,9 +91,9 @@ namespace JBleiloes.data
         {
             db.registerUser(username, password, nome, email, nº_cc, NIF, data_nascimento);
         }
-        public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem, string imagens)
+        public void registaLeilaoEveiculo(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, string Marca, string Modelo, int Ano, decimal Quilometragem, string imagens, int tipo_user)
         {
-            db.registaLeilaoEVeiculo(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, Marca, Modelo, Ano, Quilometragem, imagens);
+            db.registaLeilaoEVeiculo(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, Marca, Modelo, Ano, Quilometragem, imagens, tipo_user);
         }
         public void addHistoricoVendas(string cliente, int id_leilao)
         {
@@ -167,6 +167,11 @@ namespace JBleiloes.data
         public void removeLeilaoNaoPago(int id_leilao)
         {
             db.removeLeilaoNaoPago(id_leilao);
+        }
+
+        public void registaLeilaoFuncionario(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, int id_veiculo, string imagens)
+        {
+            db.registaLeilaoFuncionario(titulo, valor_inicial, vendedor, valor_minimo, tempo_de_leilao, id_veiculo, imagens);
         }
     }
 }

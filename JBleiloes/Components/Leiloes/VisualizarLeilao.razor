@@ -61,6 +61,19 @@
                     <p class="orange-text">Termina em: @SecondsLeft s</p>
                 }
             }
+            @if (SessionUser.getSessionUser() != null && leilao.vendedor == SessionUser.getSessionUser().username)
+            {
+                <p><span class="link-style" style="text-decoration: underline;" @onclick="ShowPopupH">Histórico de Licitações</span></p>
+
+                <PopupHistorico @ref="popupH" id_leilao="@leilao.id" />
+                <br />
+
+                <div>
+                    <p><span class="link-style" style="text-decoration: underline;" @onclick="ShowPopup">Mais informações</span></p>
+
+                    <PopupMoreInfo @ref="popup" veiculo="@veiculo" />
+                </div>
+            }
 
             @if (user != null && jb.getUtilizador(leilao.vendedor).username != user.username && user.tipo_utilizador != 0 && user.tipo_utilizador != 2 && leilao.a_decorrer == true)
             {
@@ -102,7 +115,7 @@
                             <button type="button" @onclick="() => aprovar(leilao.id)">Aprovar Leilão</button>
                         </div>
                         <div class="bottom-left">
-                            <button type="button" @onclick="() => aprovar(leilao.id)">Reprovar Leilão</button>
+                            <button type="button" @onclick="() => reprovar(leilao.id)">Reprovar Leilão</button>
                         </div>
                     </div>
                 }
@@ -124,7 +137,10 @@
                 <p> Ano: @veiculo.Ano</p>
                 <p> Quilometragem: @veiculo.Quilometragem</p>
 
-                <p> Estado: Terminado</p>
+                @if (leilao.aprovado == true)
+                {
+                    <p> Estado: Terminado</p>
+                }
 
                 @if (leilao.Pago == false && String.Equals(SessionUser.getSessionUser().username, leilao.comprador, StringComparison.OrdinalIgnoreCase))
                 {
@@ -428,6 +444,13 @@
     private void aprovar(int id_leilao)
     {
         jb.aprovaLeilao(id_leilao);
+        StateHasChanged();
+        NavigationManager.NavigateTo("/aprovar");
+    }
+
+    private void reprovar(int id_leilao)
+    {
+        jb.removeLeilaoNaoPago(id_leilao);
         StateHasChanged();
         NavigationManager.NavigateTo("/aprovar");
     }

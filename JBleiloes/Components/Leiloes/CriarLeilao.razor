@@ -206,7 +206,16 @@
 
             UpdateEndTime();
             JBLeiloes jb = new JBLeiloes();
-            jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, dataFinal, Marca, Modelo, ano_parsed, quilometragem_parsed, imageFileNames);
+            Utilizador user = jb.getUtilizador(SessionUser.getSessionUser().username);
+
+            if (user.tipo_utilizador == 1) {
+                jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, dataFinal, Marca, Modelo, ano_parsed, quilometragem_parsed, imageFileNames, 1);
+            }
+            else
+            {
+                jb.registaLeilaoEveiculo(titulo, valor_inicial_parsed, SessionUser.getSessionUser().username, valor_minimo_parsed, dataFinal, Marca, Modelo, ano_parsed, quilometragem_parsed, imageFileNames, 2);
+
+            }
             NavigationManager.NavigateTo("/meuslotes");
         }
     }

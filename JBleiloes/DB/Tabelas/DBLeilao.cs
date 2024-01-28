@@ -142,12 +142,32 @@ namespace JBleiloes.DB.Tabelas
         }
         public void registaLeilao(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, int id_veiculo, string imagens)
         {
-            byte aprovado = (vendedor == "admin") ? (byte)1 : (byte)0;
 
             string formattedDate = tempo_de_leilao.ToString("yyyy-MM-dd HH:mm:ss");
 
             string query = $"INSERT INTO [dbo].[Leilao] (titulo, valor_inicial, vendedor, valor_minimo, valor_atual, veiculo, aprovado, a_decorrer, comprador, tempo_de_leilao, imagem, Pago)" +
-                           $"VALUES ('{titulo}', {valor_inicial}, '{vendedor}', {valor_minimo}, 0, {id_veiculo}, {aprovado}, 0, NULL, '{formattedDate}', '{imagens}', 0)";
+                           $"VALUES ('{titulo}', {valor_inicial}, '{vendedor}', {valor_minimo}, 0, {id_veiculo}, 0, 0, NULL, '{formattedDate}', '{imagens}', 0)";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+                {
+                    connection.Open();
+                    connection.Execute(query);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void registaLeilaoFuncionario(string titulo, decimal valor_inicial, string vendedor, decimal valor_minimo, DateTime tempo_de_leilao, int id_veiculo, string imagens)
+        {
+            string formattedDate = tempo_de_leilao.ToString("yyyy-MM-dd HH:mm:ss");
+
+            string query = $"INSERT INTO [dbo].[Leilao] (titulo, valor_inicial, vendedor, valor_minimo, valor_atual, veiculo, aprovado, a_decorrer, comprador, tempo_de_leilao, imagem, Pago)" +
+                           $"VALUES ('{titulo}', {valor_inicial}, '{vendedor}', {valor_minimo}, 0, {id_veiculo}, 1, 1, NULL, '{formattedDate}', '{imagens}', 0)";
 
             try
             {
@@ -282,6 +302,17 @@ namespace JBleiloes.DB.Tabelas
             {
                 connection.Open();
                 connection.Query(query);
+            }
+        }
+
+        public IEnumerable<Leilao> getLeiloesPorAprovar()
+        {
+            string query = "SELECT * FROM [dbo].[Leilao] WHERE aprovado = 0";
+
+            using (SqlConnection connection = new SqlConnection(DBConfig.Connection()))
+            {
+                connection.Open();
+                return connection.Query<Leilao>(query);
             }
         }
     }      

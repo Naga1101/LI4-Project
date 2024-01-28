@@ -6,6 +6,7 @@
 @using JBleiloes.DB.Tabelas
 @using JBleiloes.Components.Leiloes
 @rendermode InteractiveServer
+@using System.Diagnostics;
 
 
 <PageTitle>Transações</PageTitle>
@@ -120,6 +121,7 @@ else
         leiloesPorPagar = jb.getLeiloesPorPagarFromUser(utilizador.username);
         todosLeiloesAcabados = jb.getLeiloesAcabados();
 
+        Debug.WriteLine("ENTROU AQUIIIIIIIIIII MACAOC");
         verificaLeiloesPorPagar();
 
     }
@@ -133,11 +135,10 @@ else
 
     private void verificaLeiloesPorPagar()
     {
-        foreach(Leilao leilao in leiloesPorPagar)
+        foreach (Leilao leilao in todosLeiloesAcabados)
         {
-            DateTime datacheck = dataPagamento(leilao.tempo_de_leilao);
-
-            if(datacheck.Date  < DateTime.Now)
+            DateTime datacheck = dataPagamento(leilao.tempo_de_leilao);;
+            if (datacheck < DateTime.Now && leilao.Pago == false)
             {
                 jb.removeLeilaoNaoPago(leilao.id);
             }
