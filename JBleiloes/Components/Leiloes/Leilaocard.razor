@@ -3,6 +3,7 @@
 @using JBleiloes.data.Utilizadores
 @using JBleiloes.data.Veiculos
 @using JBleiloes.DB.Tabelas
+@using JBleiloes.data.Licitacoes
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
@@ -127,6 +128,8 @@ else
     public Leilao? Leilao { get; set; }
 
     public Veiculo carro;
+
+    private Utilizador? user = @SessionUser.getSessionUser();
 
     private int countDown = 0;
     private int TotalSecondsLeft { get; set; }

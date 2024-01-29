@@ -43,17 +43,20 @@
                     }
                 </div>
 
-                <div class="vl"></div>
-                <div class="filter-marca">
-                    <label for="modeloFilter">Modelo:</label>
-                    @foreach (var modeloGroup in getModelosDistintos())
-                    {
-                        <div>
-                            <input type="checkbox" id="@($"modelo_{modeloGroup.Modelo}")" @onchange="() => ToggleModelo(modeloGroup.Modelo)" />
-                            <label for="@($"modelo_{modeloGroup.Modelo}")">@($"{modeloGroup.Modelo} ({modeloGroup.Count})")</label>
-                        </div>
-                    }
-                </div>
+                @if (showModelo)
+                {
+                    <div class="vl"></div>
+                    <div class="filter-modelo">
+                        <label for="modeloFilter">Modelo:</label>
+                        @foreach (var modeloGroup in getModelosDistintos())
+                        {
+                            <div>
+                                <input type="checkbox" id="@($"modelo_{modeloGroup.Modelo}")" @onchange="() => ToggleModelo(modeloGroup.Modelo)" />
+                                <label for="@($"modelo_{modeloGroup.Modelo}")">@($"{modeloGroup.Modelo} ({modeloGroup.Count})")</label>
+                            </div>
+                        }
+                    </div>
+                }
 
                 <div class="vl"></div>
                 <div class="filter-ano">
@@ -114,6 +117,14 @@
         justify-content: space-evenly;
     }
 
+    .filter-modelo{
+        display: grid;
+        grid-template-columns: max-content;
+        align-content: center;
+        justify-items: start;
+        align-items: center;
+        justify-content: space-evenly;
+    }
     .filter-marca{
         display: grid;
         grid-template-columns: max-content;
@@ -284,6 +295,7 @@
 @code {
     public string ordem { get; private set; }
     private bool showFilterSection = false;
+    private bool showModelo = false;
     private decimal minQuilometragem = 0;
     private decimal maxQuilometragem = 1000000;
     private decimal quilometragem = 0;
@@ -320,6 +332,9 @@
         {
             selectedMarcas.Add(marca);
         }
+
+        showModelo = showModelos();
+        StateHasChanged();
     }
 
     private void ToggleModelo(string modelo)
@@ -371,6 +386,11 @@
         showFilterSection = !showFilterSection;
     }
 
+    private bool showModelos()
+    {
+        return selectedMarcas.Count > 0;
+    }
+
     private void OrderClicked()
     {
         if (ordem == "cresc")
@@ -413,17 +433,22 @@
 
     private IEnumerable<ModeloCount> getModelosDistintos()
     {
-        var distincModelos = leiloes
+        // Filter models based on selected brands
+        var filteredLeiloes = leiloes
             .Where(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao))
+            .Where(leilao => selectedMarcas.Count == 0 || selectedMarcas.Contains(GetMarcaForLeilao(leilao)))
+            .ToList();
+
+        var distinctModelos = filteredLeiloes
             .Select(leilao => GetModeloForLeilao(leilao))
             .Distinct();
 
-        return distincModelos
+        return distinctModelos
             .OrderBy(modelo => modelo)
             .Select(modelo => new ModeloCount
                 {
                     Modelo = modelo,
-                    Count = leiloes.Count(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao) && GetModeloForLeilao(leilao) == modelo)
+                    Count = filteredLeiloes.Count(leilao => GetModeloForLeilao(leilao) == modelo)
                 });
     }
 
