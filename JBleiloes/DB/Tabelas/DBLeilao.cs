@@ -42,7 +42,7 @@ namespace JBleiloes.DB.Tabelas
         public List<Leilao> GetLeiloesDecorrer()
         {
             List<Leilao> leiloes = new List<Leilao>();
-            string query = "SELECT * FROM dbo.Leilao WHERE a_decorrer = 1 AND aprovado = 1"; // Filter auctions in progress
+            string query = "SELECT * FROM dbo.Leilao WHERE a_decorrer = 1 AND aprovado = 1";
 
             try
             {
@@ -204,7 +204,7 @@ namespace JBleiloes.DB.Tabelas
         public List<Leilao> GetLeiloesDecorrerEAprovados()
         {
             List<Leilao> leiloes = new List<Leilao>();
-            string query = "SELECT * FROM dbo.Leilao WHERE a_decorrer = 1 AND aprovado = 1"; // Filter auctions in progress
+            string query = "SELECT * FROM dbo.Leilao WHERE a_decorrer = 1 AND aprovado = 1";
 
             try
             {

@@ -65,11 +65,11 @@
         <div class="input-group">
             @if (!@ativar)
             {
-                <button type="button" class="finalize-button enabled" @onclick="registo" @onmouseover="UpdateButton" @onmouseout="UpdateButton">Finalizar Lista</button>
+                <button type="button" class="finalize-button disabled" @onmouseover="UpdateButton" @onmouseout="UpdateButton">Finalizar Lista</button>
             }
             else
             {
-                <button type="button" class="finalize-button disabled" @onmouseover="UpdateButton" @onmouseout="UpdateButton">Finalizar Lista</button>
+                <button type="button" class="finalize-button enabled" @onclick="registo" @onmouseover="UpdateButton" @onmouseout="UpdateButton">Finalizar Lista</button>
             }
         </div>
     </div>
@@ -162,7 +162,6 @@
         var files = e.GetMultipleFiles();
         var selectedFileNames = files.Select(file => file.Name).ToList();
 
-        // Append new file names to the existing string, separated by "|"
         if (string.IsNullOrEmpty(imageFileNames))
         {
             imageFileNames = string.Join("|", selectedFileNames);
@@ -200,7 +199,6 @@
                 !decimal.TryParse(valor_minimo, out decimal valor_minimo_parsed) ||
                 !decimal.TryParse(Quilometragem, out decimal quilometragem_parsed))
             {
-                // Handle parsing errors (e.g., show a message to the user)
                 return;
             }
 

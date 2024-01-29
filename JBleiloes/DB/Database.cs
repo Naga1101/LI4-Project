@@ -44,8 +44,6 @@ namespace JBleiloes.DB
         {
             try
             {
-                // You can perform additional checks here if needed
-                // For now, just check if getUser and getLeiloesDecorrer methods return non-null values
                 Utilizador user = this.DBUtilizador.getUser("sampleUsername");
                 List<Leilao> leiloes = this.DBLeilao.GetLeiloesDecorrerEAprovados();
 

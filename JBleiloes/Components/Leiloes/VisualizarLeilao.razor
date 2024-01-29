@@ -61,7 +61,7 @@
                     <p class="orange-text">Termina em: @SecondsLeft s</p>
                 }
             }
-            @if (SessionUser.getSessionUser() != null && leilao.vendedor == SessionUser.getSessionUser().username)
+            @if (SessionUser.getSessionUser() != null && leilao.vendedor == SessionUser.getSessionUser().username && leilao.aprovado == true)
             {
                 <p><span class="link-style" style="text-decoration: underline;" @onclick="ShowPopupH">Histórico de Licitações</span></p>
 
@@ -167,9 +167,9 @@
 <style>
 
     .button-container {
-        display: flex; /* Enables Flexbox */
-        gap: 10px; /* Adds space between the flex items */
-        justify-content: center; /* Centers the buttons horizontally */
+        display: flex;
+        gap: 10px; 
+        justify-content: center; 
     }
 
     .title {
@@ -193,37 +193,36 @@
         margin-left: 20px;
         position: relative;
         display: flex;
-        flex-direction: column; /* Organize content in a column */
-        justify-content: space-between; /* This will space out the main content and the footer */
+        flex-direction: column; 
+        justify-content: space-between;
     }
 
     .licitacao-container {
         display: flex;
         align-items: center;
-        gap: 10px; /* Adjust the space between elements */
+        gap: 10px;
     }
 
         .licitacao-container label {
-            margin-right: 5px; /* Adjust space after the label if needed */
+            margin-right: 5px;
         }
 
         .licitacao-container input {
             flex-grow: 1;
-            padding: 3px; /* Adjust to align with the button */
+            padding: 3px; 
         }
 
     .confirm-button {
-        background-color: #007bff; /* Lighter blue color */
+        background-color: #007bff; 
         color: white;
         border: none;
-        padding: 5px 10px; /* Adjust padding to match the input field */
-        font-size: 0.9em; /* Adjust font size if necessary */
+        padding: 5px 10px; 
+        font-size: 0.9em;
         cursor: pointer;
     }
 
-        /* Optional: Add some hover effect for the button */
         .confirm-button:hover {
-            background-color: #0056b3; /* Slightly darker shade for hover */
+            background-color: #0056b3;
         }
 
     .orange-text {
@@ -235,8 +234,8 @@
     }
 
     .bottom-left {
-        margin-top: auto; /* Pushes to the bottom */
-        padding-top: 20px; /* Adds space above the buttons */
+        margin-top: auto;
+        padding-top: 20px;
     }
 
     .addWatchlist-button {
@@ -249,7 +248,7 @@
     }
 
     .rmWatchlist-button {
-        background-color: #FF0000; /* Red color */
+        background-color: #FF0000;
         color: white;
         padding: 10px 15px;
         border: none;
@@ -258,9 +257,9 @@
     }
 
     .bottom-right {
-        position: absolute; /* Position relative to the .right container */
-        bottom: 20px; /* Distance from the bottom */
-        right: 20px; /* Distance from the right */
+        position: absolute; 
+        bottom: 20px; 
+        right: 20px; 
     }
 
     .gallery-container {
@@ -270,22 +269,22 @@
 
     .large-image-container {
         margin-bottom: 20px;
-        overflow: hidden; /* Add this to prevent large images from overflowing */
+        overflow: hidden;
     }
 
     .large-image {
-        width: 80%; /* Adjust the width as needed */
-        height: 300px; /* Adjust the height to get the desired rectangular shape */
-        object-fit: cover; /* This ensures that the image covers the area without distorting its aspect ratio */
+        width: 80%;
+        height: 300px;
+        object-fit: cover; 
         border: 1px solid #ddd;
         border-radius: 4px;
         padding: 5px;
     }
 
     .thumbnail-image {
-        width: 100px; /* Adjust the width as needed */
-        height: 60px; /* Adjust the height to get the desired rectangular shape */
-        object-fit: cover; /* This ensures that the image covers the area without distorting its aspect ratio */
+        width: 100px;
+        height: 60px;
+        object-fit: cover;
         border: 1px solid #ddd;
         border-radius: 4px;
         margin-right: 10px;
@@ -360,7 +359,6 @@
 
             countDown = (int)(leilao.tempo_de_leilao - DateTime.Now).TotalSeconds;
 
-            // Start the timer
             timer = new Timer(Countdown, null, 0, 1000);
 
             selectedImageUrl = GetFirstImageName(leilao.imagem);
@@ -396,6 +394,11 @@
             {
                 jb.removerA_Decorrer(leilao.id);
                 jb.defineComprador(leilao.id, winner);
+            }
+            else if (winner == "null")
+            {
+                jb.removerA_Decorrer(leilao.id);
+                jb.removeLeilaoNaoPago(leilao.id);
             }
             else
             {
@@ -435,8 +438,8 @@
                 HoursLeft = span.Hours;
                 MinutesLeft = span.Minutes;
                 SecondsLeft = span.Seconds;
-                timer.Change(0, Timeout.Infinite); // Stop the current timer
-                timer = new Timer(Countdown, null, 0, 1000); // Start a new timer
+                timer.Change(0, Timeout.Infinite);
+                timer = new Timer(Countdown, null, 0, 1000);
             }
         }
     }

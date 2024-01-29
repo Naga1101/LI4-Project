@@ -74,18 +74,18 @@ else
 <style>
     .leilao-container {
         display: flex;
-        gap: 5px; /* Add gap between cards */
+        gap: 5px;
         padding: 10px;
-        align-items: flex-start; /* Allow cards to expand above container limits */
-        margin-right: 30px; /* Add right margin */
-        margin-left: 30px; /* Add right margin */
+        align-items: flex-start;
+        margin-right: 30px;
+        margin-left: 30px;
     }
 
     .rectangle {
         width: 354px;
         height: 400px;
-        padding: 10px; /* Add some padding for better spacing */
-        position: relative; /* Add relative positioning for pseudo-element */
+        padding: 10px;
+        position: relative;
     }
 
     .redirect-link {
@@ -93,7 +93,7 @@ else
     }
 
     .link-text {
-        font-size: 40px; /* Adjust as needed */
+        font-size: 40px;
         color: gray;
         text-decoration: none;
     }
@@ -121,7 +121,6 @@ else
         leiloesPorPagar = jb.getLeiloesPorPagarFromUser(utilizador.username);
         todosLeiloesAcabados = jb.getLeiloesAcabados();
 
-        Debug.WriteLine("ENTROU AQUIIIIIIIIIII MACAOC");
         verificaLeiloesPorPagar();
 
     }

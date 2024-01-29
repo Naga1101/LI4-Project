@@ -16,7 +16,7 @@
     else
     {
         <div class="section-container">
-            <!-- Admin Leiloes Section -->
+            <!-- Admin Leiloes -->
             <div class="leiloes-stand-header">
                 <div class="titulo-class">
                     <h2 style="font-size: 24px;">Lotes do Stand José Bonifácio</h2>
@@ -61,7 +61,7 @@
         <div class="line"></div>
 
         <div class="section-container">
-            <!-- User Leiloes Section -->
+            <!-- User Leiloes -->
             <div class="leiloes-users-header">
                 <div class="titulo-class">
                     <h2 style="font-size: 24px;">Lotes de Utilizadores</h2>
@@ -119,18 +119,18 @@
         display: flex;
         flex-direction: column;
         align-items: baseline;
-        gap: 15px; /* Add gap between sections */
+        gap: 15px;
         padding: 10px;
     }
 
     .admin-container,
     .user-container {
         display: flex;
-        gap: 15px; /* Add gap between cards */
+        gap: 15px;
         padding: 10px;
-        align-items: flex-start; /* Allow cards to expand above container limits */
-        margin-right: 30px; /* Add right margin */
-        margin-left: 30px; /* Add right margin */
+        align-items: flex-start;
+        margin-right: 30px;
+        margin-left: 30px;
     }
 
     .leiloes-stand-header,
@@ -143,29 +143,29 @@
     }
 
     .titulo-class {
-        font-size: 24px; /* Adjust font size */
-        font-weight: bold; /* Make the text bold */
+        font-size: 24px;
+        font-weight: bold;
     }
 
     .butao-class {
-        margin-left: auto; /* Push the button to the right */
+        margin-left: auto;
     }
 
         .butao-leilao-class button {
-            color: #007bff; /* Blue color for the button text */
+            color: #007bff;
             text-decoration: none;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 16px; /* Adjust font size */
+            font-size: 16px;
         }
 
     .user-rectangle,
     .admin-rectangle {
         width: 354px;
         height: 400px;
-        padding: 10px; /* Add some padding for better spacing */
-        position: relative; /* Add relative positioning for pseudo-element */
+        padding: 10px;
+        position: relative;
     }
 
     .arrow {
@@ -177,8 +177,8 @@
     .line {
         width: 100%;
         height: 1px;
-        background-color: #ccc; /* Color for the line */
-        margin: 20px 0; /* Adjust margin as needed */
+        background-color: #ccc;
+        margin: 20px 0;
     }
 
     h2 {
@@ -188,12 +188,12 @@
     .leiloescards-proxant-section {
         display: flex;
         flex-direction: row;
-        justify-content: space-between; /* Align items at the beginning, between, and at the end */
-        align-items: center; /* Vertically center items */
-        gap: 5px; /* Add gap between cards */
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
         padding: 10px;
-        margin-right: 30px; /* Add right margin */
-        margin-left: 30px; /* Add left margin */
+        margin-right: 30px;
+        margin-left: 30px;
     }
 
     .arrow-img {
@@ -224,7 +224,6 @@
     private IEnumerable<Leilao> leiloesUsers = DBLeilao.getInstance().getAllUserLeiloes();
     private IEnumerable<Leilao> leiloesAdmins = DBLeilao.getInstance().getAllAdminLeiloes();
 
-    // Variable to keep track of the current page index for both admin and user leiloes
     private int adminCurrentPageIndex = 0;
     private int userCurrentPageIndex = 0;
 
@@ -246,7 +245,6 @@
         return (int)Math.Ceiling((double)maxLeiloesToShow / pageSize) - 1;
     }
 
-    // Method to get the leiloes for the current page index for admins
     private ICollection<Leilao> GetAdminLeiloesForCurrentPage()
     {
         int pageSize = 4;
@@ -254,7 +252,6 @@
         return leiloesAdmins.Skip(startIndex).Take(pageSize).ToList();
     }
 
-    // Method to get the leiloes for the current page index for users
     private ICollection<Leilao> GetUserLeiloesForCurrentPage()
     {
         int pageSize = 4;
@@ -262,17 +259,14 @@
         return leiloesUsers.Skip(startIndex).Take(pageSize).ToList();
     }
 
-    // Method to handle the next button click for admin leiloes
     private void NextAdminLeiloes()
     {
         int pageSize = 4;
         int totalAdminLeiloes = leiloesAdmins.Count();
         int maxLeiloesToShow = 12;
 
-        // Calculate the maximum page index based on the limit
         int maxPageIndex = (int)Math.Ceiling((double)maxLeiloesToShow / pageSize) - 1;
 
-        // Check if there are more leiloes to show and not exceeding the limit
         if (adminCurrentPageIndex < maxPageIndex && (adminCurrentPageIndex + 1) * pageSize < totalAdminLeiloes)
         {
             adminCurrentPageIndex++;
@@ -283,25 +277,20 @@
     {
         int pageSize = 4;
 
-        // Check if there are leiloes to go back to
         if (adminCurrentPageIndex > 0)
         {
             adminCurrentPageIndex--;
         }
     }
 
-    // Method to handle the next button click for user leiloes
-    // Method to handle the next button click for user leiloes
     private void NextUserLeiloes()
     {
         int pageSize = 4;
         int totalUserLeiloes = leiloesUsers.Count(leilao => leilao.aprovado == true && leilao.a_decorrer == true);
         int maxLeiloesToShow = 12;
 
-        // Calculate the maximum page index based on the limit
         int maxPageIndex = (int)Math.Ceiling((double)maxLeiloesToShow / pageSize) - 1;
 
-        // Check if there are more leiloes to show and not exceeding the limit
         if (userCurrentPageIndex < maxPageIndex && (userCurrentPageIndex + 1) * pageSize < totalUserLeiloes)
         {
             userCurrentPageIndex++;
@@ -313,7 +302,6 @@
     {
         int pageSize = 4;
 
-        // Check if there are leiloes to go back to
         if (userCurrentPageIndex > 0)
         {
             userCurrentPageIndex--;

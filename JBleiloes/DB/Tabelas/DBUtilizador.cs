@@ -36,12 +36,10 @@ namespace JBleiloes.DB.Tabelas
             }
             catch (SqlException ex)
             {
-                // Handle specific SQL exceptions if needed
                 throw new Exception($"Error retrieving user: {ex.Message}");
             }
             catch (Exception ex)
             {
-                // Handle other exceptions
                 throw new Exception($"Unexpected error: {ex.Message}");
             }
 

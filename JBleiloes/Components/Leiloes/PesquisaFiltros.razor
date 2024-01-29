@@ -189,7 +189,7 @@
     }
 
         .filter-section label {
-            margin-top: 5px; /* Adjust as needed */
+            margin-top: 5px;
         }
 
     .Filtros {
@@ -423,7 +423,7 @@
             .Distinct();
 
         return distinctMarcas
-            .OrderBy(marca => marca) // Order marcas alphabetically
+            .OrderBy(marca => marca)
             .Select(marca => new MarcaCount
                 {
                     Marca = marca,
@@ -433,7 +433,6 @@
 
     private IEnumerable<ModeloCount> getModelosDistintos()
     {
-        // Filter models based on selected brands
         var filteredLeiloes = leiloes
             .Where(leilao => leilao.aprovado && leilao.a_decorrer && aindaDentroTempo(leilao.tempo_de_leilao))
             .Where(leilao => selectedMarcas.Count == 0 || selectedMarcas.Contains(GetMarcaForLeilao(leilao)))

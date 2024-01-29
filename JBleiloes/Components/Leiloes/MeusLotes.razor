@@ -64,18 +64,23 @@ else{
 <style>
     .leilao-container {
         display: flex;
-        gap: 5px; /* Add gap between cards */
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
         padding: 10px;
-        align-items: flex-start; /* Allow cards to expand above container limits */
-        margin-right: 30px; /* Add right margin */
-        margin-left: 30px; /* Add right margin */
+        margin-right: 30px;
+        margin-left: 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
     }
 
     .rectangle {
         width: 354px;
         height: 400px;
-        padding: 10px; /* Add some padding for better spacing */
-        position: relative; /* Add relative positioning for pseudo-element */
+        padding: 10px;
+        position: relative;
     }
 
     .redirect-link {
@@ -95,10 +100,8 @@ else{
 
     private Utilizador? user = @SessionUser.getSessionUser();
 
-    // Instantiate LeilaoRepository
     private JBLeiloes jb = new JBLeiloes();
 
-    // Call the GetLeiloes method during the component initialization
     protected override void OnInitialized()
     {
         if (SessionUser.getSessionUser().tipo_utilizador == 1)
