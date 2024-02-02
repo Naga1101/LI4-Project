@@ -1,0 +1,45 @@
+Titulo: Pagani Zonda
+Marca: Pagani
+Modelo: Zonda
+Ano: 2020
+Descrição: Novo carro da pagani
+Quilometragem: 100
+Valor Inicial: 100000
+Valor Minimo: 10000
+IMAGENS: pag1 pag2 pag3
+
+-----------------------------------------------
+
+Titulo: Toyota GT
+Marca: Toyota 
+Modelo: GT
+Ano: 2022
+Descrição: Novo carro da toyota
+Quilometragem: 25000
+Valor Inicial: 125000
+Valor Minimo: 10000
+IMAGENS: to1 to2 to3
+
+-----------------------------------------------
+
+Titulo: lamborghini veneno
+Marca: lamborghini 
+Modelo: veneno
+Ano: 2018
+Descrição: lambo
+Quilometragem: 5000
+Valor Inicial: 200000
+Valor Minimo: 10000
+IMAGENS: ven1 ven2 ven3
+
+-----------------------------------------------
+
+Joao
+Joao
+Joao
+Joao@gmail.com
+4422
+4422
+19-02-1998
+
+UPDATE Leilao SET tempo_de_leilao = 'data' WHERE id = iddd;

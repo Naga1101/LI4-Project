@@ -423,7 +423,7 @@
     {
         decimal valor_licitação = decimal.Parse(licitação);
 
-        if (valor_licitação > leilao.valor_atual && valor_licitação >= (leilao.valor_atual + leilao.valor_minimo))
+        if (valor_licitação > leilao.valor_atual && valor_licitação >= (leilao.valor_atual + leilao.valor_minimo) && valor_licitação >= leilao.valor_inicial)
         {
 
             jb.atualizarValorAtualLeilao(leilao.id, valor_licitação);

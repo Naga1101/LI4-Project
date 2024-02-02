@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JBleiloes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+990e151a3564570ae10f6c89b86e2ea55567cbab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af1869bb8ff3d3b14aa6d03e430d4d7af66dc5dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("JBleiloes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JBleiloes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
